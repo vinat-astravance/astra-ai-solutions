@@ -9,40 +9,53 @@ const Index = () => {
     {
       title: "Computer Vision",
       description: "Advanced vision models for object detection, recognition, segmentation, OCR, and real-time analytics across industries.",
-      link: "/computer-vision"
+      link: "/computer-vision",
+      image: "/images/ai-visualization.jpg"
     },
     {
       title: "Generative AI & LLMs",
       description: "Fine-tuned language models and diffusion systems for chatbots, content generation, and document processing.",
-      link: "/generative-ai"
+      link: "/generative-ai",
+      image: "/images/code-screen.jpg"
     },
     {
       title: "Custom AI Applications",
       description: "Full-stack AI solutions from data pipelines and model integration to UI/UX design and deployment.",
-      link: "/custom-ai"
+      link: "/custom-ai",
+      image: "/images/ai-development.jpg"
     },
     {
       title: "Data Annotation Services",
       description: "High-quality, human-in-the-loop data labeling for images, video, audio, and text classification.",
-      link: "/data-annotation"
+      link: "/data-annotation",
+      image: "/images/laptop-code.jpg"
     },
     {
       title: "AI Infrastructure & MLOps",
       description: "Robust MLOps pipelines and scalable deployment across cloud and edge environments.",
-      link: "/mlops"
+      link: "/mlops",
+      image: "/images/ai-visualization.jpg"
     },
     {
       title: "Research & Feasibility",
       description: "Deep research and feasibility studies to validate AI approaches before development begins.",
-      link: "/research"
+      link: "/research",
+      image: "/images/code-screen.jpg"
     }
   ];
 
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-50 to-cyan-50 py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Hero Section with Background Image */}
+      <section className="relative bg-gradient-to-br from-blue-50 to-cyan-50 py-20 overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <img 
+            src="/images/hero-bg.jpg" 
+            alt="AI Technology Background" 
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
               Advance Your Business with
@@ -68,7 +81,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Services Overview */}
+      {/* Services Overview with Images */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -83,7 +96,14 @@ const Index = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow duration-300">
+              <Card key={index} className="hover:shadow-lg transition-shadow duration-300 overflow-hidden">
+                <div className="aspect-video overflow-hidden">
+                  <img 
+                    src={service.image} 
+                    alt={service.title}
+                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                  />
+                </div>
                 <CardHeader>
                   <CardTitle className="text-xl text-gray-900">{service.title}</CardTitle>
                 </CardHeader>
@@ -103,7 +123,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Why Choose Us */}
+      {/* Why Choose Us with Visual Elements */}
       <section className="bg-gray-100 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
