@@ -1,5 +1,5 @@
 
-import React, { useState, useRef, useCallback } from 'react';
+import React, { useState, useRef, useCallback, useEffect } from 'react';
 
 interface SegmentationBox {
   type: 'polygon';
@@ -33,18 +33,50 @@ const InteractiveSegmentationImage: React.FC<InteractiveSegmentationImageProps> 
 }) => {
   const [hoveredObject, setHoveredObject] = useState<string | null>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [displayDimensions, setDisplayDimensions] = useState({ width: 0, height: 0 });
   const imageRef = useRef<HTMLDivElement>(null);
+  const imgElementRef = useRef<HTMLImageElement>(null);
+
+  // Update display dimensions when image loads or container resizes
+  const updateDisplayDimensions = useCallback(() => {
+    if (imgElementRef.current) {
+      const rect = imgElementRef.current.getBoundingClientRect();
+      setDisplayDimensions({ width: rect.width, height: rect.height });
+    }
+  }, []);
+
+  useEffect(() => {
+    updateDisplayDimensions();
+    window.addEventListener('resize', updateDisplayDimensions);
+    return () => window.removeEventListener('resize', updateDisplayDimensions);
+  }, [updateDisplayDimensions]);
+
+  // Scale coordinates from annotation space to display space
+  const scaleCoordinates = useCallback((x: number, y: number) => {
+    const scaleX = displayDimensions.width / segmentationData.width;
+    const scaleY = displayDimensions.height / segmentationData.height;
+    return [x * scaleX, y * scaleY];
+  }, [displayDimensions, segmentationData]);
+
+  // Scale polygon points
+  const scalePolygonPoints = useCallback((points: number[][]) => {
+    return points.map(point => scaleCoordinates(point[0], point[1]));
+  }, [scaleCoordinates]);
 
   const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-    if (!imageRef.current) return;
+    if (!imageRef.current || displayDimensions.width === 0) return;
 
     const rect = imageRef.current.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * segmentationData.width;
-    const y = ((e.clientY - rect.top) / rect.height) * segmentationData.height;
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
 
-    setMousePosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+    // Convert mouse position to annotation coordinate space
+    const annotationX = (mouseX / displayDimensions.width) * segmentationData.width;
+    const annotationY = (mouseY / displayDimensions.height) * segmentationData.height;
 
-    // Check which object the mouse is over
+    setMousePosition({ x: mouseX, y: mouseY });
+
+    // Check which object the mouse is over using original annotation coordinates
     const hoveredBox = segmentationData.boxes.find(box => {
       // Check if point is inside polygon using ray casting algorithm
       const points = box.points;
@@ -54,7 +86,7 @@ const InteractiveSegmentationImage: React.FC<InteractiveSegmentationImageProps> 
         const xi = points[i][0], yi = points[i][1];
         const xj = points[j][0], yj = points[j][1];
         
-        if (((yi > y) !== (yj > y)) && (x < (xj - xi) * (y - yi) / (yj - yi) + xi)) {
+        if (((yi > annotationY) !== (yj > annotationY)) && (annotationX < (xj - xi) * (annotationY - yi) / (yj - yi) + xi)) {
           inside = !inside;
         }
       }
@@ -63,14 +95,15 @@ const InteractiveSegmentationImage: React.FC<InteractiveSegmentationImageProps> 
     });
 
     setHoveredObject(hoveredBox ? hoveredBox.label : null);
-  }, [segmentationData]);
+  }, [segmentationData, displayDimensions]);
 
   const handleMouseLeave = useCallback(() => {
     setHoveredObject(null);
   }, []);
 
   const createPolygonPath = (points: number[][]) => {
-    return points.map((point, index) => 
+    const scaledPoints = scalePolygonPoints(points);
+    return scaledPoints.map((point, index) => 
       `${index === 0 ? 'M' : 'L'} ${point[0]} ${point[1]}`
     ).join(' ') + ' Z';
   };
@@ -103,28 +136,32 @@ const InteractiveSegmentationImage: React.FC<InteractiveSegmentationImageProps> 
       >
         {/* Base Image */}
         <img 
+          ref={imgElementRef}
           src={imageSrc}
           alt={title}
           className="w-full h-full object-cover"
+          onLoad={updateDisplayDimensions}
         />
         
         {/* SVG Overlay for Segmentation Masks */}
-        <svg 
-          className="absolute inset-0 w-full h-full pointer-events-none"
-          viewBox={`0 0 ${segmentationData.width} ${segmentationData.height}`}
-          preserveAspectRatio="none"
-        >
-          {segmentationData.boxes.map((box, index) => (
-            <path
-              key={index}
-              d={createPolygonPath(box.points)}
-              fill={hoveredObject === box.label ? labelColors[box.label].fill : 'transparent'}
-              stroke={hoveredObject === box.label ? labelColors[box.label].stroke : 'transparent'}
-              strokeWidth="2"
-              className="transition-all duration-200 ease-in-out"
-            />
-          ))}
-        </svg>
+        {displayDimensions.width > 0 && (
+          <svg 
+            className="absolute inset-0 w-full h-full pointer-events-none"
+            viewBox={`0 0 ${displayDimensions.width} ${displayDimensions.height}`}
+            preserveAspectRatio="none"
+          >
+            {segmentationData.boxes.map((box, index) => (
+              <path
+                key={index}
+                d={createPolygonPath(box.points)}
+                fill={hoveredObject === box.label ? labelColors[box.label].fill : 'transparent'}
+                stroke={hoveredObject === box.label ? labelColors[box.label].stroke : 'transparent'}
+                strokeWidth="2"
+                className="transition-all duration-200 ease-in-out"
+              />
+            ))}
+          </svg>
+        )}
 
         {/* Object Label Tooltip */}
         {hoveredObject && (
