@@ -2,9 +2,18 @@
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { Slider } from "@/components/ui/slider";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const ComputerVision = () => {
+  const [sliderValues, setSliderValues] = useState<{ [key: string]: number }>({
+    segmentation: 50,
+    detection: 50,
+    tracking: 50
+  });
+
   const capabilities = [
     {
       title: "Object Detection & Recognition",
@@ -32,6 +41,30 @@ const ComputerVision = () => {
     }
   ];
 
+  const cvProjects = [
+    {
+      id: "segmentation",
+      title: "Image Segmentation",
+      description: "Precise pixel-level object segmentation for medical imaging and autonomous systems",
+      beforeImage: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=800&q=80",
+      afterImage: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      id: "detection",
+      title: "Object Detection",
+      description: "Real-time detection and classification of multiple objects in complex scenes",
+      beforeImage: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&w=800&q=80",
+      afterImage: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      id: "tracking",
+      title: "Object Tracking",
+      description: "Multi-object tracking across video sequences for surveillance and analytics",
+      beforeImage: "https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?auto=format&fit=crop&w=800&q=80",
+      afterImage: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=800&q=80"
+    }
+  ];
+
   const industries = [
     "Manufacturing & Quality Control",
     "Healthcare & Medical Imaging",
@@ -40,6 +73,13 @@ const ComputerVision = () => {
     "Automotive & Transportation",
     "Agriculture & Environmental Monitoring"
   ];
+
+  const handleSliderChange = (projectId: string, value: number[]) => {
+    setSliderValues(prev => ({
+      ...prev,
+      [projectId]: value[0]
+    }));
+  };
 
   return (
     <Layout>
@@ -68,6 +108,102 @@ const ComputerVision = () => {
               </Link>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Computer Vision Projects Carousel */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Our Computer Vision Projects in Action
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              See the power of our computer vision solutions through interactive before/after comparisons
+            </p>
+          </div>
+
+          <Carousel className="w-full max-w-5xl mx-auto">
+            <CarouselContent>
+              {cvProjects.map((project) => (
+                <CarouselItem key={project.id}>
+                  <Card className="border-0 shadow-lg">
+                    <CardHeader className="text-center">
+                      <CardTitle className="text-2xl text-gray-900">{project.title}</CardTitle>
+                      <CardDescription className="text-lg text-gray-600">
+                        {project.description}
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent className="p-8">
+                      <div className="relative w-full h-96 bg-gray-100 rounded-lg overflow-hidden">
+                        {/* Before Image */}
+                        <div 
+                          className="absolute inset-0 transition-all duration-300 ease-in-out"
+                          style={{ 
+                            clipPath: `inset(0 ${100 - sliderValues[project.id]}% 0 0)` 
+                          }}
+                        >
+                          <img 
+                            src={project.beforeImage}
+                            alt={`${project.title} - Before`}
+                            className="w-full h-full object-cover"
+                          />
+                          <div className="absolute top-4 left-4 bg-black/70 text-white px-3 py-1 rounded text-sm font-medium">
+                            Original
+                          </div>
+                        </div>
+                        
+                        {/* After Image */}
+                        <div 
+                          className="absolute inset-0 transition-all duration-300 ease-in-out"
+                          style={{ 
+                            clipPath: `inset(0 0 0 ${sliderValues[project.id]}%)` 
+                          }}
+                        >
+                          <img 
+                            src={project.afterImage}
+                            alt={`${project.title} - After`}
+                            className="w-full h-full object-cover"
+                          />
+                          <div className="absolute top-4 right-4 bg-cyan-600 text-white px-3 py-1 rounded text-sm font-medium">
+                            Processed
+                          </div>
+                        </div>
+
+                        {/* Slider Handle */}
+                        <div 
+                          className="absolute top-0 bottom-0 w-1 bg-white shadow-lg z-10 transition-all duration-300 ease-in-out"
+                          style={{ left: `${sliderValues[project.id]}%` }}
+                        >
+                          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white rounded-full shadow-lg border-2 border-gray-300 flex items-center justify-center">
+                            <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Slider Control */}
+                      <div className="mt-6">
+                        <Slider
+                          value={[sliderValues[project.id]]}
+                          onValueChange={(value) => handleSliderChange(project.id, value)}
+                          max={100}
+                          min={0}
+                          step={1}
+                          className="w-full"
+                        />
+                        <div className="flex justify-between text-sm text-gray-500 mt-2">
+                          <span>Original Image</span>
+                          <span>AI Processed</span>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
         </div>
       </section>
 
