@@ -3,9 +3,8 @@ import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { Slider } from "@/components/ui/slider";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useRef, useCallback } from "react";
 
 const ComputerVision = () => {
   const [sliderValues, setSliderValues] = useState<{ [key: string]: number }>({
@@ -74,11 +73,79 @@ const ComputerVision = () => {
     "Agriculture & Environmental Monitoring"
   ];
 
-  const handleSliderChange = (projectId: string, value: number[]) => {
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>, projectId: string) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
+    
     setSliderValues(prev => ({
       ...prev,
-      [projectId]: value[0]
+      [projectId]: percentage
     }));
+  }, []);
+
+  const BeforeAfterSlider = ({ project }: { project: typeof cvProjects[0] }) => {
+    return (
+      <div className="relative w-full h-96 bg-gray-100 rounded-lg overflow-hidden">
+        {/* Before Image */}
+        <div 
+          className="absolute inset-0 transition-all duration-75 ease-out"
+          style={{ 
+            clipPath: `inset(0 ${100 - sliderValues[project.id]}% 0 0)` 
+          }}
+        >
+          <img 
+            src={project.beforeImage}
+            alt={`${project.title} - Before`}
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute top-4 left-4 bg-black/70 text-white px-3 py-1 rounded text-sm font-medium">
+            Original
+          </div>
+        </div>
+        
+        {/* After Image */}
+        <div 
+          className="absolute inset-0 transition-all duration-75 ease-out"
+          style={{ 
+            clipPath: `inset(0 0 0 ${sliderValues[project.id]}%)` 
+          }}
+        >
+          <img 
+            src={project.afterImage}
+            alt={`${project.title} - After`}
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute top-4 right-4 bg-cyan-600 text-white px-3 py-1 rounded text-sm font-medium">
+            Processed
+          </div>
+        </div>
+
+        {/* Interactive overlay */}
+        <div 
+          className="absolute inset-0 cursor-col-resize"
+          onMouseMove={(e) => handleMouseMove(e, project.id)}
+        />
+
+        {/* Slider Handle */}
+        <div 
+          className="absolute top-0 bottom-0 w-1 bg-white shadow-lg z-10 transition-all duration-75 ease-out pointer-events-none"
+          style={{ left: `${sliderValues[project.id]}%` }}
+        >
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white rounded-full shadow-lg border-2 border-gray-300 flex items-center justify-center">
+            <div className="flex space-x-0.5">
+              <div className="w-0.5 h-4 bg-gray-400"></div>
+              <div className="w-0.5 h-4 bg-gray-400"></div>
+            </div>
+          </div>
+        </div>
+
+        {/* Instructions */}
+        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/70 text-white px-3 py-1 rounded text-sm">
+          Move mouse to compare
+        </div>
+      </div>
+    );
   };
 
   return (
@@ -123,7 +190,13 @@ const ComputerVision = () => {
             </p>
           </div>
 
-          <Carousel className="w-full max-w-5xl mx-auto">
+          <Carousel 
+            className="w-full max-w-5xl mx-auto"
+            opts={{
+              loop: true,
+              align: "start"
+            }}
+          >
             <CarouselContent>
               {cvProjects.map((project) => (
                 <CarouselItem key={project.id}>
@@ -135,67 +208,7 @@ const ComputerVision = () => {
                       </CardDescription>
                     </CardHeader>
                     <CardContent className="p-8">
-                      <div className="relative w-full h-96 bg-gray-100 rounded-lg overflow-hidden">
-                        {/* Before Image */}
-                        <div 
-                          className="absolute inset-0 transition-all duration-300 ease-in-out"
-                          style={{ 
-                            clipPath: `inset(0 ${100 - sliderValues[project.id]}% 0 0)` 
-                          }}
-                        >
-                          <img 
-                            src={project.beforeImage}
-                            alt={`${project.title} - Before`}
-                            className="w-full h-full object-cover"
-                          />
-                          <div className="absolute top-4 left-4 bg-black/70 text-white px-3 py-1 rounded text-sm font-medium">
-                            Original
-                          </div>
-                        </div>
-                        
-                        {/* After Image */}
-                        <div 
-                          className="absolute inset-0 transition-all duration-300 ease-in-out"
-                          style={{ 
-                            clipPath: `inset(0 0 0 ${sliderValues[project.id]}%)` 
-                          }}
-                        >
-                          <img 
-                            src={project.afterImage}
-                            alt={`${project.title} - After`}
-                            className="w-full h-full object-cover"
-                          />
-                          <div className="absolute top-4 right-4 bg-cyan-600 text-white px-3 py-1 rounded text-sm font-medium">
-                            Processed
-                          </div>
-                        </div>
-
-                        {/* Slider Handle */}
-                        <div 
-                          className="absolute top-0 bottom-0 w-1 bg-white shadow-lg z-10 transition-all duration-300 ease-in-out"
-                          style={{ left: `${sliderValues[project.id]}%` }}
-                        >
-                          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white rounded-full shadow-lg border-2 border-gray-300 flex items-center justify-center">
-                            <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Slider Control */}
-                      <div className="mt-6">
-                        <Slider
-                          value={[sliderValues[project.id]]}
-                          onValueChange={(value) => handleSliderChange(project.id, value)}
-                          max={100}
-                          min={0}
-                          step={1}
-                          className="w-full"
-                        />
-                        <div className="flex justify-between text-sm text-gray-500 mt-2">
-                          <span>Original Image</span>
-                          <span>AI Processed</span>
-                        </div>
-                      </div>
+                      <BeforeAfterSlider project={project} />
                     </CardContent>
                   </Card>
                 </CarouselItem>
