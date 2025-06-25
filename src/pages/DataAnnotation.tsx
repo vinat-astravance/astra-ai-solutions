@@ -2,6 +2,7 @@
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import SemanticSegmentationCarousel from "@/components/SemanticSegmentationCarousel";
 import { Link } from "react-router-dom";
 
 const DataAnnotation = () => {
@@ -59,6 +60,9 @@ const DataAnnotation = () => {
           </div>
         </div>
       </section>
+
+      {/* Interactive Semantic Segmentation Carousel */}
+      <SemanticSegmentationCarousel />
 
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
