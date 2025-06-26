@@ -3,7 +3,6 @@ import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { Slider } from "@/components/ui/slider";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
@@ -12,11 +11,15 @@ const VideoComparisonSlider = ({ beforeVideo, afterVideo, description }: {
   afterVideo: string;
   description: string;
 }) => {
-  const [sliderValue, setSliderValue] = useState([50]);
+  const [isHovered, setIsHovered] = useState(false);
 
   return (
     <div className="relative w-full">
-      <div className="relative aspect-video bg-black rounded-lg overflow-hidden">
+      <div 
+        className="relative aspect-video bg-black rounded-lg overflow-hidden cursor-pointer"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
         {/* Before Video */}
         <div className="absolute inset-0">
           <video 
@@ -31,8 +34,8 @@ const VideoComparisonSlider = ({ beforeVideo, afterVideo, description }: {
         
         {/* After Video */}
         <div 
-          className="absolute inset-0 overflow-hidden"
-          style={{ clipPath: `inset(0 ${100 - sliderValue[0]}% 0 0)` }}
+          className="absolute inset-0 overflow-hidden transition-all duration-500 ease-out"
+          style={{ clipPath: `inset(0 ${isHovered ? 0 : 100}% 0 0)` }}
         >
           <video 
             src={afterVideo}
@@ -44,26 +47,15 @@ const VideoComparisonSlider = ({ beforeVideo, afterVideo, description }: {
           />
         </div>
         
-        {/* Slider Line */}
+        {/* Hover Line */}
         <div 
-          className="absolute top-0 bottom-0 w-0.5 bg-white shadow-lg"
-          style={{ left: `${sliderValue[0]}%` }}
+          className="absolute top-0 bottom-0 w-0.5 bg-white shadow-lg transition-all duration-500 ease-out"
+          style={{ left: isHovered ? '100%' : '0%' }}
         />
-      </div>
-      
-      {/* Slider Control */}
-      <div className="mt-4 px-4">
-        <Slider
-          value={sliderValue}
-          onValueChange={setSliderValue}
-          max={100}
-          min={0}
-          step={1}
-          className="w-full"
-        />
-        <div className="flex justify-between text-sm text-gray-500 mt-2">
-          <span>Before</span>
-          <span>After</span>
+        
+        {/* Hover Instruction */}
+        <div className="absolute bottom-4 left-4 bg-black/50 text-white px-3 py-1 rounded text-sm">
+          Hover to see processed video
         </div>
       </div>
       
@@ -77,11 +69,15 @@ const ImageToVideoSlider = ({ beforeImage, afterVideo, description }: {
   afterVideo: string;
   description: string;
 }) => {
-  const [sliderValue, setSliderValue] = useState([50]);
+  const [isHovered, setIsHovered] = useState(false);
 
   return (
     <div className="relative w-full">
-      <div className="relative aspect-video bg-black rounded-lg overflow-hidden">
+      <div 
+        className="relative aspect-video bg-black rounded-lg overflow-hidden cursor-pointer"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
         {/* Before Image */}
         <div className="absolute inset-0">
           <img 
@@ -93,8 +89,8 @@ const ImageToVideoSlider = ({ beforeImage, afterVideo, description }: {
         
         {/* After Video */}
         <div 
-          className="absolute inset-0 overflow-hidden"
-          style={{ clipPath: `inset(0 ${100 - sliderValue[0]}% 0 0)` }}
+          className="absolute inset-0 overflow-hidden transition-all duration-500 ease-out"
+          style={{ clipPath: `inset(0 ${isHovered ? 0 : 100}% 0 0)` }}
         >
           <video 
             src={afterVideo}
@@ -106,26 +102,15 @@ const ImageToVideoSlider = ({ beforeImage, afterVideo, description }: {
           />
         </div>
         
-        {/* Slider Line */}
+        {/* Hover Line */}
         <div 
-          className="absolute top-0 bottom-0 w-0.5 bg-white shadow-lg"
-          style={{ left: `${sliderValue[0]}%` }}
+          className="absolute top-0 bottom-0 w-0.5 bg-white shadow-lg transition-all duration-500 ease-out"
+          style={{ left: isHovered ? '100%' : '0%' }}
         />
-      </div>
-      
-      {/* Slider Control */}
-      <div className="mt-4 px-4">
-        <Slider
-          value={sliderValue}
-          onValueChange={setSliderValue}
-          max={100}
-          min={0}
-          step={1}
-          className="w-full"
-        />
-        <div className="flex justify-between text-sm text-gray-500 mt-2">
-          <span>Original Image</span>
-          <span>Generated Video</span>
+        
+        {/* Hover Instruction */}
+        <div className="absolute bottom-4 left-4 bg-black/50 text-white px-3 py-1 rounded text-sm">
+          Hover to see generated video
         </div>
       </div>
       
@@ -144,20 +129,20 @@ const CustomAI = () => {
         {
           title: "Person Detection & Tracking",
           description: "Real-time person detection with multi-object tracking across video frames",
-          beforeVideo: "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4",
-          afterVideo: "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_2mb.mp4"
+          beforeVideo: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+          afterVideo: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
         },
         {
           title: "Vehicle Recognition",
           description: "Automated vehicle detection and classification in traffic monitoring systems",
-          beforeVideo: "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4",
-          afterVideo: "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_2mb.mp4"
+          beforeVideo: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+          afterVideo: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"
         },
         {
           title: "Activity Recognition",
           description: "AI-powered activity and behavior analysis for security and monitoring applications",
-          beforeVideo: "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4",
-          afterVideo: "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_2mb.mp4"
+          beforeVideo: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+          afterVideo: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4"
         }
       ]
     },
@@ -170,19 +155,19 @@ const CustomAI = () => {
           title: "Portrait Animation",
           description: "Bring portrait photos to life with natural facial expressions and movements",
           beforeImage: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80",
-          afterVideo: "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4"
+          afterVideo: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4"
         },
         {
           title: "Scene Animation",
           description: "Add dynamic elements to landscape and architectural images",
           beforeImage: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=800&q=80",
-          afterVideo: "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_2mb.mp4"
+          afterVideo: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4"
         },
         {
           title: "Product Showcase",
           description: "Transform product images into engaging marketing videos with smooth transitions",
           beforeImage: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80",
-          afterVideo: "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4"
+          afterVideo: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4"
         }
       ]
     }
@@ -223,12 +208,18 @@ const CustomAI = () => {
               Interactive Video AI Showcase
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Explore our video AI capabilities through interactive demonstrations. Use the sliders to see before and after comparisons.
+              Explore our video AI capabilities through interactive demonstrations. Hover over the videos to see before and after comparisons.
             </p>
           </div>
 
           {/* Parent Carousel for Project Types */}
-          <Carousel className="w-full max-w-6xl mx-auto">
+          <Carousel 
+            className="w-full max-w-6xl mx-auto"
+            opts={{
+              loop: true,
+              align: "center"
+            }}
+          >
             <CarouselContent>
               {projectTypes.map((projectType) => (
                 <CarouselItem key={projectType.id}>
@@ -243,7 +234,13 @@ const CustomAI = () => {
                     </CardHeader>
                     <CardContent className="p-8">
                       {/* Child Carousel for Projects */}
-                      <Carousel className="w-full">
+                      <Carousel 
+                        className="w-full"
+                        opts={{
+                          loop: true,
+                          align: "center"
+                        }}
+                      >
                         <CarouselContent>
                           {projectType.projects.map((project, index) => (
                             <CarouselItem key={index}>
