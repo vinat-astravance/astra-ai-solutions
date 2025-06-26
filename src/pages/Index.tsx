@@ -19,8 +19,8 @@ const Index = () => {
       image: "/images/generative-ai.jpg"
     },
     {
-      title: "Custom AI Applications",
-      description: "Full-stack AI solutions from data pipelines and model integration to UI/UX design and deployment.",
+      title: "Video AI Solutions",
+      description: "Advanced video processing, detection, and generation capabilities including image-to-video transformation.",
       link: "/custom-ai",
       image: "/images/custom-applications.jpg"
     },

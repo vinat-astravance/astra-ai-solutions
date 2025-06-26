@@ -10,7 +10,7 @@ const Navigation = () => {
     { path: "/", label: "Home" },
     { path: "/computer-vision", label: "Computer Vision" },
     { path: "/generative-ai", label: "Generative AI" },
-    { path: "/custom-ai", label: "Custom AI" },
+    { path: "/custom-ai", label: "Video AI" },
     { path: "/data-annotation", label: "Data Annotation" },
     { path: "/mlops", label: "MLOps" },
     { path: "/research", label: "Research" },
