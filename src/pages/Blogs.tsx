@@ -57,22 +57,22 @@ const Blogs = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {blogArticles.map((article, index) => (
-            <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow duration-300 cursor-pointer">
-              <a href={article.url} target="_blank" rel="noopener noreferrer" className="block">
-                <div className="aspect-square overflow-hidden">
+            <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow duration-300 cursor-pointer h-80">
+              <a href={article.url} target="_blank" rel="noopener noreferrer" className="block h-full">
+                <div className="h-40 overflow-hidden">
                   <img 
                     src={article.image} 
                     alt={article.title}
                     className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                   />
                 </div>
-                <CardHeader>
-                  <CardTitle className="text-lg leading-tight hover:text-cyan-600 transition-colors">
+                <CardHeader className="pb-2">
+                  <CardTitle className="text-base leading-tight hover:text-cyan-600 transition-colors line-clamp-2">
                     {article.title}
                   </CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600 text-sm">
+                <CardContent className="pt-0">
+                  <p className="text-gray-600 text-sm line-clamp-3">
                     {article.description}
                   </p>
                 </CardContent>

@@ -23,8 +23,8 @@ const Navigation = () => {
 
   const mainNavItems = [
     { path: "/", label: "Home" },
-    { path: "/research", label: "Consulting & Feasibility" },
     { path: "/data-annotation", label: "Data Annotations" },
+    { path: "/research", label: "Consulting & POC" },
     { path: "/blogs", label: "Blogs" },
     { path: "/contact", label: "Contact" }
   ];

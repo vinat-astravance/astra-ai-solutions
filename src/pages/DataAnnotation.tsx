@@ -6,33 +6,6 @@ import SemanticSegmentationCarousel from "@/components/SemanticSegmentationCarou
 import { Link } from "react-router-dom";
 
 const DataAnnotation = () => {
-  const services = [
-    {
-      title: "Image Annotation",
-      description: "Bounding boxes, polygons, semantic segmentation, and keypoint annotation for computer vision projects."
-    },
-    {
-      title: "Video Annotation",
-      description: "Frame-by-frame labeling, object tracking, action recognition, and temporal event annotation."
-    },
-    {
-      title: "Text Classification",
-      description: "Sentiment analysis, intent classification, named entity recognition, and document categorization."
-    },
-    {
-      title: "Audio Annotation",
-      description: "Speech transcription, speaker identification, emotion recognition, and acoustic event labeling."
-    },
-    {
-      title: "Quality Assurance",
-      description: "Multi-tier review processes with expert validators to ensure annotation accuracy and consistency."
-    },
-    {
-      title: "Custom Workflows",
-      description: "Tailored annotation pipelines designed for your specific use case and quality requirements."
-    }
-  ];
-
   return (
     <Layout>
       <section className="bg-gradient-to-r from-orange-600 to-red-600 text-white py-20">
@@ -68,26 +41,107 @@ const DataAnnotation = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Professional Data Annotation Services
+              What We Offer
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Comprehensive annotation services with rigorous quality control for all your machine learning needs.
-            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => (
-              <Card key={index} className="h-full">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Left side - Screenshot/Image */}
+            <div className="bg-gray-100 rounded-lg p-8 flex justify-center">
+              <img 
+                src="/lovable-uploads/3029fb0a-9008-453e-93ae-ba505b8c7086.png" 
+                alt="Data Annotation Interface" 
+                className="max-w-full h-auto rounded-lg shadow-lg"
+              />
+            </div>
+
+            {/* Right side - Content */}
+            <div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">
+                Image Processing/Annotation
+              </h3>
+              <p className="text-gray-600 mb-8 leading-relaxed">
+                Human-annotated data is more accurate and of higher quality than data 
+                annotated by a machine. To guarantee an excellent machine learning experience, 
+                Mindy Support finds specialists with the necessary skills to provide data 
+                annotation services: 2D bounding boxes, polygons, semantic segmentation, 
+                labeling, and point and landmark annotations.
+              </p>
+              <Button className="bg-green-500 hover:bg-green-600 text-white px-8 py-3 text-lg font-semibold">
+                LEARN MORE
+              </Button>
+            </div>
+          </div>
+
+          {/* Additional Services Grid */}
+          <div className="mt-20">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <Card className="h-full">
                 <CardHeader>
-                  <CardTitle className="text-lg text-gray-900">{service.title}</CardTitle>
+                  <CardTitle className="text-lg text-gray-900">Video Annotation</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <CardDescription className="text-gray-600">
-                    {service.description}
+                    Frame-by-frame labeling, object tracking, action recognition, and temporal event annotation.
                   </CardDescription>
                 </CardContent>
               </Card>
-            ))}
+
+              <Card className="h-full">
+                <CardHeader>
+                  <CardTitle className="text-lg text-gray-900">Text Classification</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-gray-600">
+                    Sentiment analysis, intent classification, named entity recognition, and document categorization.
+                  </CardDescription>
+                </CardContent>
+              </Card>
+
+              <Card className="h-full">
+                <CardHeader>
+                  <CardTitle className="text-lg text-gray-900">Audio Annotation</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-gray-600">
+                    Speech transcription, speaker identification, emotion recognition, and acoustic event labeling.
+                  </CardDescription>
+                </CardContent>
+              </Card>
+
+              <Card className="h-full">
+                <CardHeader>
+                  <CardTitle className="text-lg text-gray-900">Quality Assurance</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-gray-600">
+                    Multi-tier review processes with expert validators to ensure annotation accuracy and consistency.
+                  </CardDescription>
+                </CardContent>
+              </Card>
+
+              <Card className="h-full">
+                <CardHeader>
+                  <CardTitle className="text-lg text-gray-900">Custom Workflows</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-gray-600">
+                    Tailored annotation pipelines designed for your specific use case and quality requirements.
+                  </CardDescription>
+                </CardContent>
+              </Card>
+
+              <Card className="h-full">
+                <CardHeader>
+                  <CardTitle className="text-lg text-gray-900">3D Point Cloud Annotation</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-gray-600">
+                    Precise 3D object detection and segmentation for autonomous vehicles and robotics applications.
+                  </CardDescription>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </div>
       </section>
