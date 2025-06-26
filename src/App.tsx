@@ -15,12 +15,15 @@ import MLOps from "./pages/MLOps";
 import Research from "./pages/Research";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import Blogs from "./pages/Blogs";
+import AudioAI from "./pages/AudioAI";
+import DocumentAI from "./pages/DocumentAI";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <ThemeProvider defaultTheme="system" storageKey="astravance-ui-theme">
+    <ThemeProvider defaultTheme="light" storageKey="astravance-ui-theme">
       <TooltipProvider>
         <Toaster />
         <Sonner />
@@ -35,6 +38,9 @@ const App = () => (
             <Route path="/research" element={<Research />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/blogs" element={<Blogs />} />
+            <Route path="/audio-ai" element={<AudioAI />} />
+            <Route path="/document-ai" element={<DocumentAI />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

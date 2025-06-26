@@ -1,20 +1,31 @@
 
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ThemeToggle } from "./ThemeToggle";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu";
 
 const Navigation = () => {
   const location = useLocation();
 
-  const navItems = [
-    { path: "/", label: "Home" },
+  const solutionItems = [
     { path: "/computer-vision", label: "Computer Vision" },
     { path: "/generative-ai", label: "Generative AI" },
     { path: "/custom-ai", label: "Video AI" },
-    { path: "/data-annotation", label: "Data Annotation" },
     { path: "/mlops", label: "MLOps" },
-    { path: "/research", label: "Research" },
-    { path: "/about", label: "About" },
+    { path: "/audio-ai", label: "Audio AI" },
+    { path: "/document-ai", label: "Document AI" },
+  ];
+
+  const mainNavItems = [
+    { path: "/", label: "Home" },
+    { path: "/research", label: "Consulting & Feasibility" },
+    { path: "/data-annotation", label: "Data Annotations" },
+    { path: "/blogs", label: "Blogs" },
     { path: "/contact", label: "Contact" }
   ];
 
@@ -34,22 +45,44 @@ const Navigation = () => {
             </div>
           </Link>
           
-          <div className="hidden md:flex space-x-1">
-            {navItems.map((item) => (
-              <Link key={item.path} to={item.path}>
-                <Button 
-                  variant={location.pathname === item.path ? "default" : "ghost"}
-                  size="sm"
-                  className="text-sm"
-                >
-                  {item.label}
-                </Button>
-              </Link>
-            ))}
+          <div className="hidden md:flex items-center space-x-1">
+            <NavigationMenu>
+              <NavigationMenuList>
+                {mainNavItems.map((item) => (
+                  <NavigationMenuItem key={item.path}>
+                    <Link to={item.path}>
+                      <Button 
+                        variant={location.pathname === item.path ? "default" : "ghost"}
+                        size="sm"
+                        className="text-sm"
+                      >
+                        {item.label}
+                      </Button>
+                    </Link>
+                  </NavigationMenuItem>
+                ))}
+                
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger className="text-sm">Solutions</NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <div className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                      {solutionItems.map((item) => (
+                        <Link
+                          key={item.path}
+                          to={item.path}
+                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                        >
+                          <div className="text-sm font-medium leading-none">{item.label}</div>
+                        </Link>
+                      ))}
+                    </div>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+              </NavigationMenuList>
+            </NavigationMenu>
           </div>
 
           <div className="flex items-center space-x-2">
-            <ThemeToggle />
             <div className="md:hidden">
               <Button variant="ghost" size="sm">
                 Menu
