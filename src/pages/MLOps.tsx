@@ -22,34 +22,22 @@ const MLOps = () => {
     {
       icon: <BarChart3 className="w-8 h-8 text-green-600" />,
       title: "Model Benchmarking",
-      description: "Comprehensive benchmarking solutions to evaluate and compare model performance across different frameworks and environments.",
+      description: "Comprehensive benchmarking solutions to evaluate and compare model performance across different deployment environments.",
       features: [
-        "Framework Comparison (TensorFlow, PyTorch, ONNX)",
         "Performance Profiling & Analysis",
         "A/B Testing for Model Variants",
         "Deployment Environment Testing",
-        "Latency & Throughput Analysis"
-      ]
-    },
-    {
-      icon: <Cloud className="w-8 h-8 text-purple-600" />,
-      title: "Advanced Deployment",
-      description: "Enterprise-grade deployment solutions for edge devices, cloud environments, and hybrid infrastructures.",
-      features: [
-        "Edge Device Optimization",
-        "Multi-Cloud Deployment",
-        "Kubernetes & Docker Integration",
-        "Auto-scaling & Load Balancing",
-        "Blue-Green Deployment Strategies"
+        "Latency & Throughput Analysis",
+        "Cross-Platform Compatibility"
       ]
     },
     {
       icon: <Activity className="w-8 h-8 text-orange-600" />,
       title: "Monitoring & Retraining",
-      description: "Continuous monitoring and automated retraining pipelines to maintain model performance over time.",
+      description: "Continuous monitoring and automated retraining pipelines to maintain model performance over time with real-time drift detection.",
       features: [
         "Data Drift Detection",
-        "Model Performance Monitoring",
+        "Model Performance Monitoring", 
         "Automated Retraining Pipelines",
         "Feature Store Management",
         "Experiment Tracking & Versioning"
@@ -65,9 +53,9 @@ const MLOps = () => {
       features: ["Device Optimization", "Offline Processing", "Real-time Inference", "Resource Constraints Handling"]
     },
     {
-      title: "Cloud Deployment",
+      title: "Cloud Deployment", 
       description: "Scalable cloud solutions with auto-scaling and high availability across multiple regions.",
-      image: "/images/computer-vision.jpg", 
+      image: "/images/computer-vision.jpg",
       features: ["Multi-Region Deployment", "Auto-scaling", "Load Balancing", "99.9% Uptime SLA"]
     },
     {
@@ -118,7 +106,7 @@ const MLOps = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
               <Card key={index} className="h-full hover:shadow-lg transition-shadow duration-300">
                 <CardHeader>
@@ -146,154 +134,13 @@ const MLOps = () => {
         </div>
       </section>
 
-      {/* Framework Comparison Section */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Framework Comparison & Performance Analysis
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Comprehensive benchmarking across popular ML frameworks to help you make informed decisions.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <Card className="text-center">
-              <CardHeader>
-                <CardTitle className="text-2xl font-bold text-blue-600">TensorFlow</CardTitle>
-                <CardDescription>Production-ready ecosystem with extensive deployment options</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-3">
-                  <div className="flex justify-between">
-                    <span className="text-sm text-gray-600">Performance</span>
-                    <div className="w-20 bg-gray-200 rounded-full h-2">
-                      <div className="bg-blue-600 h-2 rounded-full" style={{width: '85%'}}></div>
-                    </div>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-sm text-gray-600">Scalability</span>
-                    <div className="w-20 bg-gray-200 rounded-full h-2">
-                      <div className="bg-blue-600 h-2 rounded-full" style={{width: '90%'}}></div>
-                    </div>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-sm text-gray-600">Ease of Use</span>
-                    <div className="w-20 bg-gray-200 rounded-full h-2">
-                      <div className="bg-blue-600 h-2 rounded-full" style={{width: '75%'}}></div>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center">
-              <CardHeader>
-                <CardTitle className="text-2xl font-bold text-orange-600">PyTorch</CardTitle>
-                <CardDescription>Research-friendly with dynamic computation graphs</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-3">
-                  <div className="flex justify-between">
-                    <span className="text-sm text-gray-600">Performance</span>
-                    <div className="w-20 bg-gray-200 rounded-full h-2">
-                      <div className="bg-orange-600 h-2 rounded-full" style={{width: '88%'}}></div>
-                    </div>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-sm text-gray-600">Scalability</span>
-                    <div className="w-20 bg-gray-200 rounded-full h-2">
-                      <div className="bg-orange-600 h-2 rounded-full" style={{width: '80%'}}></div>
-                    </div>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-sm text-gray-600">Ease of Use</span>
-                    <div className="w-20 bg-gray-200 rounded-full h-2">
-                      <div className="bg-orange-600 h-2 rounded-full" style={{width: '92%'}}></div>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center">
-              <CardHeader>
-                <CardTitle className="text-2xl font-bold text-green-600">ONNX</CardTitle>
-                <CardDescription>Cross-platform optimization and deployment standard</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-3">
-                  <div className="flex justify-between">
-                    <span className="text-sm text-gray-600">Performance</span>
-                    <div className="w-20 bg-gray-200 rounded-full h-2">
-                      <div className="bg-green-600 h-2 rounded-full" style={{width: '92%'}}></div>
-                    </div>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-sm text-gray-600">Scalability</span>
-                    <div className="w-20 bg-gray-200 rounded-full h-2">
-                      <div className="bg-green-600 h-2 rounded-full" style={{width: '85%'}}></div>
-                    </div>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-sm text-gray-600">Ease of Use</span>
-                    <div className="w-20 bg-gray-200 rounded-full h-2">
-                      <div className="bg-green-600 h-2 rounded-full" style={{width: '70%'}}></div>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Deployment Options */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Flexible Deployment Solutions
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Choose the right deployment strategy for your specific needs, from edge devices to cloud-scale infrastructure.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {deploymentOptions.map((option, index) => (
-              <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow duration-300">
-                <div className="h-48 bg-gradient-to-br from-blue-500 to-purple-600"></div>
-                <CardHeader>
-                  <CardTitle className="text-xl text-gray-900">{option.title}</CardTitle>
-                  <CardDescription className="text-gray-600">
-                    {option.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2">
-                    {option.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-center text-sm text-gray-700">
-                        <div className="w-2 h-2 bg-purple-500 rounded-full mr-3"></div>
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Monitoring Section */}
+      {/* Monitoring Section with Dashboard */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                Continuous Monitoring & Drift Detection
+                Real-time Model Health Monitoring
               </h2>
               <p className="text-lg text-gray-600 mb-8">
                 Keep your models performing at their best with real-time monitoring, automated drift detection, 
@@ -341,6 +188,50 @@ const MLOps = () => {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Deployment Options */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Flexible Deployment Solutions
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Choose the right deployment strategy for your specific needs, from edge devices to cloud-scale infrastructure.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {deploymentOptions.map((option, index) => (
+              <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                <div className="h-48 overflow-hidden">
+                  <img 
+                    src={option.image} 
+                    alt={option.title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <CardHeader>
+                  <CardTitle className="text-xl text-gray-900">{option.title}</CardTitle>
+                  <CardDescription className="text-gray-600">
+                    {option.description}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-2">
+                    {option.features.map((feature, idx) => (
+                      <li key={idx} className="flex items-center text-sm text-gray-700">
+                        <div className="w-2 h-2 bg-purple-500 rounded-full mr-3"></div>
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
