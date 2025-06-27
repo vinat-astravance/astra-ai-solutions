@@ -1,23 +1,6 @@
 
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuPortal,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 
 const Navigation = () => {
   const location = useLocation();
@@ -62,131 +45,123 @@ const Navigation = () => {
           </Link>
           
           <div className="hidden md:flex items-center space-x-1">
-            <NavigationMenu>
-              <NavigationMenuList>
-                <NavigationMenuItem>
-                  <Link to="/">
-                    <Button 
-                      variant={location.pathname === "/" ? "default" : "ghost"}
-                      size="sm"
-                      className="text-sm bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-medium shadow-md"
-                    >
-                      Home
-                    </Button>
-                  </Link>
-                </NavigationMenuItem>
-                
-                <NavigationMenuItem>
-                  <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                      <Button 
-                        variant="ghost" 
-                        size="sm" 
-                        className="text-sm text-gray-700 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 font-medium transition-all duration-200"
+            <Link to="/">
+              <Button 
+                variant={location.pathname === "/" ? "default" : "ghost"}
+                size="sm"
+                className="text-sm bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-medium shadow-md"
+              >
+                Home
+              </Button>
+            </Link>
+            
+            {/* Solutions Menu */}
+            <div className="relative group">
+              <Button 
+                variant="ghost" 
+                size="sm" 
+                className="text-sm text-gray-700 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 font-medium transition-all duration-200"
+              >
+                Solutions
+              </Button>
+              
+              {/* Solutions Dropdown */}
+              <div className="absolute left-0 top-full mt-1 w-64 bg-white border border-blue-200 shadow-xl rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div className="py-2">
+                  {solutionItems.map((item) => (
+                    item.hasSubmenu ? (
+                      <div key={item.path} className="relative group/sub">
+                        <div className="px-4 py-2 text-gray-700 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 cursor-pointer flex items-center justify-between">
+                          {item.label}
+                          <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          </svg>
+                        </div>
+                        
+                        {/* Generative AI Submenu */}
+                        <div className="absolute left-full top-0 ml-1 w-48 bg-white border border-blue-200 shadow-xl rounded-md opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-200 z-50">
+                          <div className="py-2">
+                            {generativeAIItems.map((subItem) => (
+                              <Link
+                                key={subItem.path}
+                                to={subItem.path}
+                                className="block px-4 py-2 text-gray-600 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50"
+                              >
+                                {subItem.label}
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    ) : (
+                      <Link
+                        key={item.path}
+                        to={item.path}
+                        className="block px-4 py-2 text-gray-700 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50"
                       >
-                        Solutions
-                      </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent className="w-64 bg-white/98 backdrop-blur-sm border-blue-200 shadow-xl">
-                      {solutionItems.map((item) => (
-                        item.hasSubmenu ? (
-                          <DropdownMenuSub key={item.path}>
-                            <DropdownMenuSubTrigger className="text-gray-700 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50">
-                              {item.label}
-                            </DropdownMenuSubTrigger>
-                            <DropdownMenuPortal>
-                              <DropdownMenuSubContent className="bg-white/98 backdrop-blur-sm border-blue-200 shadow-xl">
-                                {generativeAIItems.map((subItem) => (
-                                  <DropdownMenuItem key={subItem.path} asChild>
-                                    <Link
-                                      to={subItem.path}
-                                      className="text-gray-600 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50"
-                                    >
-                                      {subItem.label}
-                                    </Link>
-                                  </DropdownMenuItem>
-                                ))}
-                              </DropdownMenuSubContent>
-                            </DropdownMenuPortal>
-                          </DropdownMenuSub>
-                        ) : (
-                          <DropdownMenuItem key={item.path} asChild>
-                            <Link
-                              to={item.path}
-                              className="text-gray-700 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50"
-                            >
-                              {item.label}
-                            </Link>
-                          </DropdownMenuItem>
-                        )
-                      ))}
-                    </DropdownMenuContent>
-                  </DropdownMenu>
-                </NavigationMenuItem>
+                        {item.label}
+                      </Link>
+                    )
+                  ))}
+                </div>
+              </div>
+            </div>
 
-                <NavigationMenuItem>
-                  <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                      <Button 
-                        variant="ghost" 
-                        size="sm" 
-                        className="text-sm text-gray-700 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 font-medium transition-all duration-200"
-                      >
-                        Data Annotations
-                      </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent className="w-64 bg-white/98 backdrop-blur-sm border-blue-200 shadow-xl">
-                      {dataAnnotationItems.map((item, index) => (
-                        <DropdownMenuItem key={index} asChild>
-                          <Link
-                            to={item.path}
-                            className="text-gray-700 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50"
-                          >
-                            {item.label}
-                          </Link>
-                        </DropdownMenuItem>
-                      ))}
-                    </DropdownMenuContent>
-                  </DropdownMenu>
-                </NavigationMenuItem>
-                
-                <NavigationMenuItem>
-                  <Link to="/research">
-                    <Button 
-                      variant={location.pathname === "/research" ? "default" : "ghost"}
-                      size="sm"
-                      className="text-sm text-gray-700 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 font-medium transition-all duration-200"
+            {/* Data Annotations Menu */}
+            <div className="relative group">
+              <Button 
+                variant="ghost" 
+                size="sm" 
+                className="text-sm text-gray-700 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 font-medium transition-all duration-200"
+              >
+                Data Annotations
+              </Button>
+              
+              {/* Data Annotations Dropdown */}
+              <div className="absolute left-0 top-full mt-1 w-64 bg-white border border-blue-200 shadow-xl rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div className="py-2">
+                  {dataAnnotationItems.map((item, index) => (
+                    <Link
+                      key={index}
+                      to={item.path}
+                      className="block px-4 py-2 text-gray-700 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50"
                     >
-                      Consulting & POC
-                    </Button>
-                  </Link>
-                </NavigationMenuItem>
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+            
+            <Link to="/research">
+              <Button 
+                variant={location.pathname === "/research" ? "default" : "ghost"}
+                size="sm"
+                className="text-sm text-gray-700 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 font-medium transition-all duration-200"
+              >
+                Consulting & POC
+              </Button>
+            </Link>
 
-                <NavigationMenuItem>
-                  <Link to="/blogs">
-                    <Button 
-                      variant={location.pathname === "/blogs" ? "default" : "ghost"}
-                      size="sm"
-                      className="text-sm text-gray-700 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 font-medium transition-all duration-200"
-                    >
-                      Blogs
-                    </Button>
-                  </Link>
-                </NavigationMenuItem>
+            <Link to="/blogs">
+              <Button 
+                variant={location.pathname === "/blogs" ? "default" : "ghost"}
+                size="sm"
+                className="text-sm text-gray-700 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 font-medium transition-all duration-200"
+              >
+                Blogs
+              </Button>
+            </Link>
 
-                <NavigationMenuItem>
-                  <Link to="/contact">
-                    <Button 
-                      variant={location.pathname === "/contact" ? "default" : "ghost"}
-                      size="sm"
-                      className="text-sm bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-medium shadow-md"
-                    >
-                      Contact
-                    </Button>
-                  </Link>
-                </NavigationMenuItem>
-              </NavigationMenuList>
-            </NavigationMenu>
+            <Link to="/contact">
+              <Button 
+                variant={location.pathname === "/contact" ? "default" : "ghost"}
+                size="sm"
+                className="text-sm bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-medium shadow-md"
+              >
+                Contact
+              </Button>
+            </Link>
           </div>
 
           <div className="flex items-center space-x-2">
