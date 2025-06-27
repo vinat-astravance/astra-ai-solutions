@@ -61,33 +61,37 @@ const Layout = ({ children }: LayoutProps) => {
             <div>
               <h3 className="font-semibold mb-4 text-foreground">AI Services</h3>
               <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-muted-foreground text-sm">
-                <Link to="/computer-vision" onClick={handleLinkClick} className="hover:text-foreground transition-colors">
-                  Computer Vision
-                </Link>
-                <Link to="/generative-ai/llms" onClick={handleLinkClick} className="hover:text-foreground transition-colors">
-                  Generative AI & LLMs
-                </Link>
-                <Link to="/custom-ai" onClick={handleLinkClick} className="hover:text-foreground transition-colors">
-                  Video AI
-                </Link>
-                <Link to="/audio-ai" onClick={handleLinkClick} className="hover:text-foreground transition-colors">
-                  Audio AI
-                </Link>
-                <Link to="/document-ai" onClick={handleLinkClick} className="hover:text-foreground transition-colors">
-                  Document AI
-                </Link>
-                <Link to="/mlops" onClick={handleLinkClick} className="hover:text-foreground transition-colors">
-                  MLOps
-                </Link>
-                <Link to="/cloud-infrastructure" onClick={handleLinkClick} className="hover:text-foreground transition-colors">
-                  Cloud Infrastructure
-                </Link>
-                <Link to="/data-annotation" onClick={handleLinkClick} className="hover:text-foreground transition-colors">
-                  Data Annotation
-                </Link>
-                <Link to="/research" onClick={handleLinkClick} className="hover:text-foreground transition-colors">
-                  Consulting & POC
-                </Link>
+                <div className="flex flex-col space-y-2">
+                  <Link to="/computer-vision" onClick={handleLinkClick} className="hover:text-foreground transition-colors">
+                    Computer Vision
+                  </Link>
+                  <Link to="/custom-ai" onClick={handleLinkClick} className="hover:text-foreground transition-colors">
+                    Video AI
+                  </Link>
+                  <Link to="/document-ai" onClick={handleLinkClick} className="hover:text-foreground transition-colors">
+                    Document AI
+                  </Link>
+                  <Link to="/audio-ai" onClick={handleLinkClick} className="hover:text-foreground transition-colors">
+                    Audio AI
+                  </Link>
+                  <Link to="/generative-ai/llms" onClick={handleLinkClick} className="hover:text-foreground transition-colors">
+                    Generative AI & LLMs
+                  </Link>
+                </div>
+                <div className="flex flex-col space-y-2">
+                  <Link to="/mlops" onClick={handleLinkClick} className="hover:text-foreground transition-colors">
+                    MLOps
+                  </Link>
+                  <Link to="/data-annotation" onClick={handleLinkClick} className="hover:text-foreground transition-colors">
+                    Data Annotation
+                  </Link>
+                  <Link to="/cloud-infrastructure" onClick={handleLinkClick} className="hover:text-foreground transition-colors">
+                    Cloud Infrastructure
+                  </Link>
+                  <Link to="/research" onClick={handleLinkClick} className="hover:text-foreground transition-colors">
+                    Consulting & POC
+                  </Link>
+                </div>
               </div>
             </div>
             
