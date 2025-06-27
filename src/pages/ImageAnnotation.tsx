@@ -1,3 +1,4 @@
+
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -293,29 +294,9 @@ const ImageAnnotation = () => {
                                 </CarouselItem>
                               ))}
                             </CarouselContent>
-                            {/* Child carousel arrows - positioned at image middle */}
-                            <button
-                              className="absolute left-2 top-[calc(50%+2rem)] -translate-y-1/2 w-10 h-10 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white rounded-full flex items-center justify-center shadow-lg transition-colors z-10"
-                              onClick={() => {
-                                const carousel = annotationType.subProjects;
-                                // Handle child carousel prev logic here
-                              }}
-                            >
-                              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                              </svg>
-                            </button>
-                            <button
-                              className="absolute right-2 top-[calc(50%+2rem)] -translate-y-1/2 w-10 h-10 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white rounded-full flex items-center justify-center shadow-lg transition-colors z-10"
-                              onClick={() => {
-                                const carousel = annotationType.subProjects;
-                                // Handle child carousel next logic here
-                              }}
-                            >
-                              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                              </svg>
-                            </button>
+                            {/* Child carousel arrows - positioned at edge of image */}
+                            <CarouselPrevious className="left-4 top-[calc(50%+8rem)] w-10 h-10 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white border-none" />
+                            <CarouselNext className="right-4 top-[calc(50%+8rem)] w-10 h-10 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white border-none" />
                           </Carousel>
                         </div>
                       </CardContent>
@@ -327,7 +308,7 @@ const ImageAnnotation = () => {
             
             {/* Parent carousel arrows - wider and positioned outside, at image middle */}
             <button
-              className="absolute -left-8 top-[calc(50%+4rem)] -translate-y-1/2 w-16 h-16 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white rounded-full flex items-center justify-center shadow-lg transition-colors z-20"
+              className="absolute -left-8 top-[calc(50%+8rem)] -translate-y-1/2 w-16 h-16 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white rounded-full flex items-center justify-center shadow-lg transition-colors z-20"
               onClick={() => emblaApi?.scrollPrev()}
             >
               <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -335,7 +316,7 @@ const ImageAnnotation = () => {
               </svg>
             </button>
             <button
-              className="absolute -right-8 top-[calc(50%+4rem)] -translate-y-1/2 w-16 h-16 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white rounded-full flex items-center justify-center shadow-lg transition-colors z-20"
+              className="absolute -right-8 top-[calc(50%+8rem)] -translate-y-1/2 w-16 h-16 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white rounded-full flex items-center justify-center shadow-lg transition-colors z-20"
               onClick={() => emblaApi?.scrollNext()}
             >
               <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">

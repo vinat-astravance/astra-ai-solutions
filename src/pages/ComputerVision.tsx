@@ -220,7 +220,7 @@ const ComputerVision = () => {
     const sliderValue = sliderValues[project.id] || 50;
     
     return (
-      <div className="relative w-full h-96 bg-gray-100 rounded-lg overflow-hidden">
+      <div className="relative w-full h-80 bg-gray-100 rounded-lg overflow-hidden">
         {/* Before Image */}
         <div 
           className="absolute inset-0 transition-all duration-75 ease-out"
@@ -314,7 +314,7 @@ const ComputerVision = () => {
 
       {/* Computer Vision Projects Two-Level Carousel */}
       <section className="py-20 bg-gray-50">
-        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Computer Vision Capabilities
@@ -325,7 +325,7 @@ const ComputerVision = () => {
           </div>
 
           {/* Parent Carousel - Project Types */}
-          <div className="relative">
+          <div className="relative px-24">
             <div className="overflow-hidden" ref={emblaRef}>
               <div className="flex">
                 {cvProjectTypes.map((projectType, index) => (
@@ -339,29 +339,31 @@ const ComputerVision = () => {
                       </CardHeader>
                       <CardContent className="p-8">
                         {/* Child Carousel - Sub Projects */}
-                        <Carousel 
-                          className="w-full"
-                          opts={{
-                            loop: true,
-                            align: "start"
-                          }}
-                        >
-                          <CarouselContent>
-                            {projectType.subProjects.map((subProject) => (
-                              <CarouselItem key={subProject.id}>
-                                <div className="space-y-4">
-                                  <div className="text-center bg-gray-50 p-4 rounded-lg border-l-4 border-cyan-500">
-                                    <h3 className="text-2xl font-semibold text-gray-900 mb-2">{subProject.title}</h3>
-                                    <p className="text-gray-600 text-base">{subProject.description}</p>
+                        <div className="max-w-4xl mx-auto">
+                          <Carousel 
+                            className="w-full"
+                            opts={{
+                              loop: true,
+                              align: "start"
+                            }}
+                          >
+                            <CarouselContent>
+                              {projectType.subProjects.map((subProject) => (
+                                <CarouselItem key={subProject.id}>
+                                  <div className="space-y-4">
+                                    <div className="text-center bg-gray-50 p-4 rounded-lg border-l-4 border-cyan-500">
+                                      <h3 className="text-2xl font-semibold text-gray-900 mb-2">{subProject.title}</h3>
+                                      <p className="text-gray-600 text-base">{subProject.description}</p>
+                                    </div>
+                                    <BeforeAfterSlider project={subProject} />
                                   </div>
-                                  <BeforeAfterSlider project={subProject} />
-                                </div>
-                              </CarouselItem>
-                            ))}
-                          </CarouselContent>
-                          <CarouselPrevious className="left-2" />
-                          <CarouselNext className="right-2" />
-                        </Carousel>
+                                </CarouselItem>
+                              ))}
+                            </CarouselContent>
+                            <CarouselPrevious className="left-4 top-[calc(50%+4rem)] w-10 h-10 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white border-none" />
+                            <CarouselNext className="right-4 top-[calc(50%+4rem)] w-10 h-10 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white border-none" />
+                          </Carousel>
+                        </div>
                       </CardContent>
                     </Card>
                   </div>
@@ -369,20 +371,20 @@ const ComputerVision = () => {
               </div>
             </div>
             
-            {/* Custom Cyan Arrow Buttons */}
+            {/* Custom Cyan Arrow Buttons - Wider for parent carousel */}
             <button
-              className="absolute left-8 top-1/2 -translate-y-1/2 w-12 h-12 bg-cyan-600 hover:bg-cyan-700 text-white rounded-full flex items-center justify-center shadow-lg transition-colors z-10"
+              className="absolute -left-10 top-[calc(50%+4rem)] -translate-y-1/2 w-16 h-16 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white rounded-full flex items-center justify-center shadow-lg transition-colors z-10"
               onClick={() => emblaApi?.scrollPrev()}
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
             </button>
             <button
-              className="absolute right-8 top-1/2 -translate-y-1/2 w-12 h-12 bg-cyan-600 hover:bg-cyan-700 text-white rounded-full flex items-center justify-center shadow-lg transition-colors z-10"
+              className="absolute -right-10 top-[calc(50%+4rem)] -translate-y-1/2 w-16 h-16 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white rounded-full flex items-center justify-center shadow-lg transition-colors z-10"
               onClick={() => emblaApi?.scrollNext()}
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </button>
