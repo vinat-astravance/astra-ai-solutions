@@ -1,3 +1,4 @@
+
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -325,7 +326,7 @@ const ComputerVision = () => {
           </div>
 
           {/* Parent Carousel - Project Types */}
-          <div className="relative px-24">
+          <div className="relative px-16">
             <div className="overflow-hidden" ref={emblaRef}>
               <div className="flex">
                 {cvProjectTypes.map((projectType, index) => (
@@ -339,7 +340,7 @@ const ComputerVision = () => {
                       </CardHeader>
                       <CardContent className="p-8">
                         {/* Child Carousel - Sub Projects */}
-                        <div className="max-w-4xl mx-auto">
+                        <div className="max-w-5xl mx-auto relative">
                           <Carousel 
                             className="w-full"
                             opts={{
@@ -360,8 +361,9 @@ const ComputerVision = () => {
                                 </CarouselItem>
                               ))}
                             </CarouselContent>
-                            <CarouselPrevious className="left-4 top-[calc(50%+4rem)] w-10 h-10 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white border-none" />
-                            <CarouselNext className="right-4 top-[calc(50%+4rem)] w-10 h-10 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white border-none" />
+                            {/* Child carousel arrows - positioned just outside the image at middle height */}
+                            <CarouselPrevious className="-left-6 top-[calc(50%+4rem)] w-8 h-8 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white border-none" />
+                            <CarouselNext className="-right-6 top-[calc(50%+4rem)] w-8 h-8 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white border-none" />
                           </Carousel>
                         </div>
                       </CardContent>
@@ -371,20 +373,20 @@ const ComputerVision = () => {
               </div>
             </div>
             
-            {/* Custom Cyan Arrow Buttons - Wider for parent carousel */}
+            {/* Parent carousel arrows - slightly wider than child arrows and positioned outside */}
             <button
-              className="absolute -left-10 top-[calc(50%+4rem)] -translate-y-1/2 w-16 h-16 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white rounded-full flex items-center justify-center shadow-lg transition-colors z-10"
+              className="absolute -left-6 top-[calc(50%+4rem)] -translate-y-1/2 w-12 h-12 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white rounded-full flex items-center justify-center shadow-lg transition-colors z-10"
               onClick={() => emblaApi?.scrollPrev()}
             >
-              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
             </button>
             <button
-              className="absolute -right-10 top-[calc(50%+4rem)] -translate-y-1/2 w-16 h-16 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white rounded-full flex items-center justify-center shadow-lg transition-colors z-10"
+              className="absolute -right-6 top-[calc(50%+4rem)] -translate-y-1/2 w-12 h-12 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white rounded-full flex items-center justify-center shadow-lg transition-colors z-10"
               onClick={() => emblaApi?.scrollNext()}
             >
-              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </button>
