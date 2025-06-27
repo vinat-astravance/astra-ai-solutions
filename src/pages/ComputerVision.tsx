@@ -1,9 +1,10 @@
+
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Link } from "react-router-dom";
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 
 const ComputerVision = () => {
@@ -183,6 +184,22 @@ const ComputerVision = () => {
     "Agriculture & Environmental Monitoring"
   ];
 
+  // Effect to update selected index when carousel changes
+  useEffect(() => {
+    if (!emblaApi) return;
+
+    const onSelect = () => {
+      setSelectedIndex(emblaApi.selectedScrollSnap());
+    };
+
+    emblaApi.on('select', onSelect);
+    onSelect(); // Set initial index
+
+    return () => {
+      emblaApi.off('select', onSelect);
+    };
+  }, [emblaApi]);
+
   const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>, projectId: string) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX - rect.left;
@@ -197,7 +214,6 @@ const ComputerVision = () => {
   const scrollTo = useCallback((index: number) => {
     if (emblaApi) {
       emblaApi.scrollTo(index);
-      setSelectedIndex(index);
     }
   }, [emblaApi]);
 
@@ -465,7 +481,6 @@ const ComputerVision = () => {
         </div>
       </section>
 
-      {/* CTA */}
       <section className="bg-cyan-600 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
