@@ -1,4 +1,3 @@
-
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -17,15 +16,10 @@ const CloudInfrastructure = () => {
               We have partnered with leading cloud infrastructure firms to provide comprehensive Infrastructure as a Service (IaaS) solutions. 
               Let us help your company scale with reliable, secure, and cost-effective cloud infrastructure.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex justify-center sm:justify-start">
               <Link to="/contact">
                 <Button size="lg" variant="secondary" className="px-8 py-3">
                   Get Infrastructure Support
-                </Button>
-              </Link>
-              <Link to="/research">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600 px-8 py-3">
-                  Consultation
                 </Button>
               </Link>
             </div>

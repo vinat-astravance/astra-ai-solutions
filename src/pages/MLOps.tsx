@@ -1,4 +1,3 @@
-
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -81,15 +80,10 @@ const MLOps = () => {
               Comprehensive MLOps services to optimize, deploy, and maintain your AI models at scale. 
               From model optimization to production monitoring, we ensure your AI systems perform reliably in real-world environments.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex justify-center sm:justify-start">
               <Link to="/contact">
                 <Button size="lg" variant="secondary" className="px-8 py-3">
                   Plan Your MLOps Strategy
-                </Button>
-              </Link>
-              <Link to="/research">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-indigo-600 px-8 py-3">
-                  Technical Consultation
                 </Button>
               </Link>
             </div>
