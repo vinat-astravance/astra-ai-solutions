@@ -11,6 +11,7 @@ const MLOps = () => {
       icon: <Zap className="w-8 h-8 text-blue-600" />,
       title: "Model Optimization",
       description: "Advanced techniques to optimize your AI models for peak performance, including quantization, pruning, and knowledge distillation.",
+      image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=800&q=80",
       features: [
         "Model Compression & Quantization",
         "Neural Architecture Search (NAS)",
@@ -23,6 +24,7 @@ const MLOps = () => {
       icon: <BarChart3 className="w-8 h-8 text-green-600" />,
       title: "Model Benchmarking",
       description: "Comprehensive benchmarking solutions to evaluate and compare model performance across different deployment environments.",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
       features: [
         "Performance Profiling & Analysis",
         "A/B Testing for Model Variants",
@@ -35,6 +37,7 @@ const MLOps = () => {
       icon: <Activity className="w-8 h-8 text-orange-600" />,
       title: "Monitoring & Retraining",
       description: "Continuous monitoring and automated retraining pipelines to maintain model performance over time with real-time drift detection.",
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
       features: [
         "Data Drift Detection",
         "Model Performance Monitoring", 
@@ -49,19 +52,19 @@ const MLOps = () => {
     {
       title: "Edge Deployment",
       description: "Optimized deployment for edge devices with minimal latency and offline capabilities.",
-      image: "/images/ai-development.jpg",
+      image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80",
       features: ["Device Optimization", "Offline Processing", "Real-time Inference", "Resource Constraints Handling"]
     },
     {
       title: "Cloud Deployment", 
       description: "Scalable cloud solutions with auto-scaling and high availability across multiple regions.",
-      image: "/images/computer-vision.jpg",
+      image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80",
       features: ["Multi-Region Deployment", "Auto-scaling", "Load Balancing", "99.9% Uptime SLA"]
     },
     {
       title: "Hybrid Infrastructure",
       description: "Seamless integration between edge and cloud for optimal performance and cost efficiency.",
-      image: "/images/custom-applications.jpg",
+      image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80",
       features: ["Edge-Cloud Sync", "Data Pipeline Management", "Cost Optimization", "Flexible Scaling"]
     }
   ];
@@ -108,7 +111,14 @@ const MLOps = () => {
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
-              <Card key={index} className="h-full hover:shadow-lg transition-shadow duration-300">
+              <Card key={index} className="h-full hover:shadow-lg transition-shadow duration-300 overflow-hidden">
+                <div className="h-48 overflow-hidden">
+                  <img 
+                    src={service.image} 
+                    alt={service.title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
                 <CardHeader>
                   <div className="flex items-center space-x-3 mb-3">
                     {service.icon}

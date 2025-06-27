@@ -80,7 +80,7 @@ const CloudInfrastructure = () => {
           </p>
           <Link to="/contact">
             <Button size="lg" variant="secondary" className="px-8 py-3">
-              Connect with Our Partners
+              Connect with Us
             </Button>
           </Link>
         </div>

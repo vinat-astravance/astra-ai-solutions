@@ -1,4 +1,3 @@
-
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -315,10 +314,10 @@ const ComputerVision = () => {
 
       {/* Computer Vision Projects Two-Level Carousel */}
       <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Our Computer Vision Projects in Action
+              Computer Vision Capabilities
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Explore our comprehensive computer vision capabilities through interactive demonstrations
@@ -331,7 +330,7 @@ const ComputerVision = () => {
               <div className="flex">
                 {cvProjectTypes.map((projectType, index) => (
                   <div key={projectType.id} className="flex-[0_0_100%] min-w-0">
-                    <Card className="border-0 shadow-lg mx-4">
+                    <Card className="border-0 shadow-lg mx-2">
                       <CardHeader className="text-center border-b border-gray-200 bg-gradient-to-r from-blue-50 to-cyan-50">
                         <CardTitle className="text-4xl text-gray-900 mb-3 font-bold">{projectType.title}</CardTitle>
                         <CardDescription className="text-lg text-gray-700 mb-4 leading-relaxed">
@@ -372,7 +371,7 @@ const ComputerVision = () => {
             
             {/* Custom Cyan Arrow Buttons */}
             <button
-              className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-cyan-600 hover:bg-cyan-700 text-white rounded-full flex items-center justify-center shadow-lg transition-colors z-10"
+              className="absolute left-8 top-1/2 -translate-y-1/2 w-12 h-12 bg-cyan-600 hover:bg-cyan-700 text-white rounded-full flex items-center justify-center shadow-lg transition-colors z-10"
               onClick={() => emblaApi?.scrollPrev()}
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -380,7 +379,7 @@ const ComputerVision = () => {
               </svg>
             </button>
             <button
-              className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-cyan-600 hover:bg-cyan-700 text-white rounded-full flex items-center justify-center shadow-lg transition-colors z-10"
+              className="absolute right-8 top-1/2 -translate-y-1/2 w-12 h-12 bg-cyan-600 hover:bg-cyan-700 text-white rounded-full flex items-center justify-center shadow-lg transition-colors z-10"
               onClick={() => emblaApi?.scrollNext()}
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -400,36 +399,6 @@ const ComputerVision = () => {
                 />
               ))}
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Capabilities */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Advanced Computer Vision Capabilities
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Our computer vision expertise spans the full spectrum of visual AI, 
-              delivering robust solutions tailored to your specific requirements.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {capabilities.map((capability, index) => (
-              <Card key={index} className="h-full">
-                <CardHeader>
-                  <CardTitle className="text-lg text-gray-900">{capability.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-gray-600">
-                    {capability.description}
-                  </CardDescription>
-                </CardContent>
-              </Card>
-            ))}
           </div>
         </div>
       </section>
