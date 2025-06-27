@@ -1,4 +1,3 @@
-
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -259,7 +258,7 @@ const ImageAnnotation = () => {
           </div>
 
           {/* Parent Carousel - Annotation Types */}
-          <div className="relative">
+          <div className="relative px-20">
             <div className="overflow-hidden" ref={emblaRef}>
               <div className="flex">
                 {imageAnnotationTypes.map((annotationType, index) => (
@@ -273,29 +272,52 @@ const ImageAnnotation = () => {
                       </CardHeader>
                       <CardContent className="p-8">
                         {/* Child Carousel - Sub Projects */}
-                        <Carousel 
-                          className="w-full"
-                          opts={{
-                            loop: true,
-                            align: "start"
-                          }}
-                        >
-                          <CarouselContent>
-                            {annotationType.subProjects.map((subProject) => (
-                              <CarouselItem key={subProject.id}>
-                                <div className="space-y-4">
-                                  <div className="text-center bg-gray-50 p-4 rounded-lg border-l-4 border-blue-500">
-                                    <h3 className="text-2xl font-semibold text-gray-900 mb-2">{subProject.title}</h3>
-                                    <p className="text-gray-600 text-base">{subProject.description}</p>
+                        <div className="relative">
+                          <Carousel 
+                            className="w-full"
+                            opts={{
+                              loop: true,
+                              align: "start"
+                            }}
+                          >
+                            <CarouselContent>
+                              {annotationType.subProjects.map((subProject) => (
+                                <CarouselItem key={subProject.id}>
+                                  <div className="space-y-4">
+                                    <div className="text-center bg-gray-50 p-4 rounded-lg border-l-4 border-blue-500">
+                                      <h3 className="text-2xl font-semibold text-gray-900 mb-2">{subProject.title}</h3>
+                                      <p className="text-gray-600 text-base">{subProject.description}</p>
+                                    </div>
+                                    <BeforeAfterSlider project={subProject} />
                                   </div>
-                                  <BeforeAfterSlider project={subProject} />
-                                </div>
-                              </CarouselItem>
-                            ))}
-                          </CarouselContent>
-                          <CarouselPrevious className="left-2 w-10 h-10 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white border-0" />
-                          <CarouselNext className="right-2 w-10 h-10 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white border-0" />
-                        </Carousel>
+                                </CarouselItem>
+                              ))}
+                            </CarouselContent>
+                            {/* Child carousel arrows - positioned at image middle */}
+                            <button
+                              className="absolute left-2 top-[calc(50%+2rem)] -translate-y-1/2 w-10 h-10 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white rounded-full flex items-center justify-center shadow-lg transition-colors z-10"
+                              onClick={() => {
+                                const carousel = annotationType.subProjects;
+                                // Handle child carousel prev logic here
+                              }}
+                            >
+                              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                              </svg>
+                            </button>
+                            <button
+                              className="absolute right-2 top-[calc(50%+2rem)] -translate-y-1/2 w-10 h-10 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white rounded-full flex items-center justify-center shadow-lg transition-colors z-10"
+                              onClick={() => {
+                                const carousel = annotationType.subProjects;
+                                // Handle child carousel next logic here
+                              }}
+                            >
+                              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                              </svg>
+                            </button>
+                          </Carousel>
+                        </div>
                       </CardContent>
                     </Card>
                   </div>
@@ -303,9 +325,9 @@ const ImageAnnotation = () => {
               </div>
             </div>
             
-            {/* Custom Blue-Green Arrow Buttons - Wider for outer carousel */}
+            {/* Parent carousel arrows - wider and positioned outside, at image middle */}
             <button
-              className="absolute left-8 top-1/2 -translate-y-1/2 w-16 h-16 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white rounded-full flex items-center justify-center shadow-lg transition-colors z-10"
+              className="absolute -left-8 top-[calc(50%+4rem)] -translate-y-1/2 w-16 h-16 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white rounded-full flex items-center justify-center shadow-lg transition-colors z-20"
               onClick={() => emblaApi?.scrollPrev()}
             >
               <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -313,7 +335,7 @@ const ImageAnnotation = () => {
               </svg>
             </button>
             <button
-              className="absolute right-8 top-1/2 -translate-y-1/2 w-16 h-16 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white rounded-full flex items-center justify-center shadow-lg transition-colors z-10"
+              className="absolute -right-8 top-[calc(50%+4rem)] -translate-y-1/2 w-16 h-16 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white rounded-full flex items-center justify-center shadow-lg transition-colors z-20"
               onClick={() => emblaApi?.scrollNext()}
             >
               <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
