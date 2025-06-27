@@ -21,7 +21,7 @@ const Navigation = () => {
   ];
 
   const dataAnnotationItems = [
-    { path: "/data-annotation", label: "Image" },
+    { path: "/image-annotation", label: "Image" },
     { path: "/data-annotation", label: "Audio" },
     { path: "/data-annotation", label: "Video" },
     { path: "/data-annotation", label: "Text" },
@@ -50,7 +50,10 @@ const Navigation = () => {
               <Button 
                 variant={location.pathname === "/" ? "default" : "ghost"}
                 size="sm"
-                className="text-sm bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-medium shadow-md"
+                className={location.pathname === "/" 
+                  ? "text-sm bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-medium shadow-md"
+                  : "text-sm text-gray-700 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 font-medium transition-all duration-200"
+                }
               >
                 Home
               </Button>
@@ -110,13 +113,15 @@ const Navigation = () => {
 
             {/* Data Annotations Menu */}
             <div className="relative group">
-              <Button 
-                variant="ghost" 
-                size="sm" 
-                className="text-sm text-gray-700 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 font-medium transition-all duration-200"
-              >
-                Data Annotations
-              </Button>
+              <Link to="/data-annotation">
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  className="text-sm text-gray-700 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 font-medium transition-all duration-200"
+                >
+                  Data Annotations
+                </Button>
+              </Link>
               
               {/* Data Annotations Dropdown */}
               <div className="absolute left-0 top-full mt-1 w-64 bg-white border border-blue-200 shadow-xl rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
@@ -136,7 +141,7 @@ const Navigation = () => {
             
             <Link to="/research">
               <Button 
-                variant={location.pathname === "/research" ? "default" : "ghost"}
+                variant="ghost"
                 size="sm"
                 className="text-sm text-gray-700 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 font-medium transition-all duration-200"
               >
@@ -146,7 +151,7 @@ const Navigation = () => {
 
             <Link to="/blogs">
               <Button 
-                variant={location.pathname === "/blogs" ? "default" : "ghost"}
+                variant="ghost"
                 size="sm"
                 className="text-sm text-gray-700 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 font-medium transition-all duration-200"
               >
@@ -158,7 +163,10 @@ const Navigation = () => {
               <Button 
                 variant={location.pathname === "/contact" ? "default" : "ghost"}
                 size="sm"
-                className="text-sm bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-medium shadow-md"
+                className={location.pathname === "/contact"
+                  ? "text-sm bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-medium shadow-md"
+                  : "text-sm bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-medium shadow-md"
+                }
               >
                 Contact
               </Button>
