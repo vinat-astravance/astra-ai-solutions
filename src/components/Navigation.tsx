@@ -1,3 +1,4 @@
+
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
@@ -152,6 +153,16 @@ const Navigation = () => {
                 className="text-sm text-gray-700 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 font-medium transition-all duration-200"
               >
                 Blogs
+              </Button>
+            </Link>
+
+            <Link to="/about">
+              <Button 
+                variant="ghost"
+                size="sm"
+                className="text-sm text-gray-700 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 font-medium transition-all duration-200"
+              >
+                About Us
               </Button>
             </Link>
 

@@ -6,7 +6,6 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { Link } from "react-router-dom";
 import { useState, useRef, useCallback, useEffect } from "react";
 import useEmblaCarousel from "embla-carousel-react";
-import SemanticSegmentationCarousel from "@/components/SemanticSegmentationCarousel";
 
 const ImageAnnotation = () => {
   const [sliderValues, setSliderValues] = useState<{ [key: string]: number }>({});
@@ -229,8 +228,7 @@ const ImageAnnotation = () => {
               Advanced Image Annotation
             </h1>
             <p className="text-xl mb-8 text-blue-100">
-              Experience our interactive semantic segmentation tools and advanced annotation capabilities. 
-              Our platform provides precision tools for complex image labeling tasks.
+              Experience our comprehensive image annotation capabilities with precision tools for complex image labeling tasks.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link to="/contact">
@@ -247,9 +245,6 @@ const ImageAnnotation = () => {
           </div>
         </div>
       </section>
-
-      {/* Interactive Semantic Segmentation Carousel */}
-      <SemanticSegmentationCarousel />
 
       {/* Image Annotation Capabilities Carousel */}
       <section className="py-20 bg-gray-50">
