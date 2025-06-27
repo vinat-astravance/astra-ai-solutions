@@ -17,8 +17,8 @@ const CVCapabilitiesSection: React.FC = () => {
           id: "object-detection",
           title: "Object Detection",
           description: "Real-time detection and classification of multiple objects in complex scenes",
-          beforeImage: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&w=800&q=80",
-          afterImage: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80"
+          beforeImage: "/lovable-uploads/aa405ee8-a573-44c0-a3e4-6eff7a65af9b.png",
+          afterImage: "/lovable-uploads/3a8a8f3f-d598-48d4-9000-02ecf98000db.png"
         },
         {
           id: "face-recognition",
@@ -31,8 +31,8 @@ const CVCapabilitiesSection: React.FC = () => {
           id: "anomaly-detection",
           title: "Anomaly Detection",
           description: "Identify unusual patterns and defects in manufacturing and quality control",
-          beforeImage: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80",
-          afterImage: "https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=800&q=80"
+          beforeImage: "/lovable-uploads/52dbdd14-360a-4765-ae2a-ccec443abc3e.png",
+          afterImage: "/lovable-uploads/7fa2402a-8c64-4f57-a57d-b7ce18009e5b.png"
         }
       ]
     },
@@ -45,8 +45,8 @@ const CVCapabilitiesSection: React.FC = () => {
           id: "semantic-segmentation",
           title: "Semantic Segmentation",
           description: "Classify every pixel in an image to understand scene composition",
-          beforeImage: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=800&q=80",
-          afterImage: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80"
+          beforeImage: "/lovable-uploads/d6122299-e2be-4fb7-85ee-d1b8e99f5175.png",
+          afterImage: "/lovable-uploads/74ca8e90-fd46-497a-afd0-00f76d696ef4.png"
         },
         {
           id: "instance-segmentation",
@@ -73,8 +73,8 @@ const CVCapabilitiesSection: React.FC = () => {
           id: "human-pose",
           title: "Human Pose Estimation",
           description: "Detect and track human body keypoints for motion analysis",
-          beforeImage: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=80",
-          afterImage: "https://images.unsplash.com/photo-1544717297-fa95b6ee9643?auto=format&fit=crop&w=800&q=80"
+          beforeImage: "/lovable-uploads/c5ef4be0-fb7c-4ea3-839d-738a0e92875c.png",
+          afterImage: "/lovable-uploads/23a3be1d-5219-49d5-a9de-7c5d04bf602b.png"
         }
       ]
     },
@@ -136,8 +136,8 @@ const CVCapabilitiesSection: React.FC = () => {
           id: "depth-estimation",
           title: "Depth Estimation",
           description: "Estimate depth information from 2D images for 3D understanding",
-          beforeImage: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80",
-          afterImage: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80"
+          beforeImage: "/lovable-uploads/e2186d98-e02e-4276-972c-84e62a3d91a6.png",
+          afterImage: "/lovable-uploads/2e3f547c-2ae5-4f80-9409-bd564f28b480.png"
         }
       ]
     }
