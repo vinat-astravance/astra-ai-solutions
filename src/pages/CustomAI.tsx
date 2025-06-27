@@ -24,17 +24,12 @@ const VideoComparisonSlider = ({ beforeVideo, afterVideo, description }: {
     }
   };
 
-  const handleMouseLeave = () => {
-    setSliderPosition(50);
-  };
-
   return (
     <div className="relative w-full">
       <div 
         ref={containerRef}
         className="relative aspect-video bg-black rounded-lg overflow-hidden cursor-crosshair"
         onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
       >
         {/* Before Video */}
         <div className="absolute inset-0">
@@ -118,25 +113,29 @@ const CustomAI = () => {
       projects: [
         {
           title: "Facial Recognition & License Plate Recognition",
-          description: "Advanced facial recognition and automatic license plate detection with high accuracy",
+          description: "Advanced facial recognition and automatic license plate detection with high accuracy for security and access control systems.",
+          briefDescription: "AI-powered identification and recognition systems for enhanced security and automated access control.",
           beforeVideo: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
           afterVideo: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
         },
         {
           title: "Object Tracking & People Counting",
-          description: "Real-time object tracking and automated people counting for crowd analysis",
+          description: "Real-time object tracking and automated people counting for crowd analysis, retail analytics, and security monitoring.",
+          briefDescription: "Intelligent tracking and counting solutions for comprehensive crowd and object analytics.",
           beforeVideo: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
           afterVideo: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"
         },
         {
           title: "Action Recognition & Behavior Analysis",
-          description: "AI-powered activity recognition and behavioral pattern analysis",
+          description: "AI-powered activity recognition and behavioral pattern analysis for security, healthcare, and sports applications.",
+          briefDescription: "Advanced behavior analysis for understanding and predicting human activities and patterns.",
           beforeVideo: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
           afterVideo: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4"
         },
         {
           title: "Video Summarization & Highlights",
-          description: "Automatic video summarization and highlight generation from long-form content",
+          description: "Automatic video summarization and highlight generation from long-form content for efficient content consumption.",
+          briefDescription: "Intelligent content curation and summarization for streamlined video consumption and analysis.",
           video: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4"
         }
       ]
@@ -148,12 +147,14 @@ const CustomAI = () => {
       projects: [
         {
           title: "Semantic Scene Segmentation",
-          description: "Pixel-level scene understanding and semantic segmentation in video streams",
+          description: "Pixel-level scene understanding and semantic segmentation in video streams for autonomous systems and content analysis.",
+          briefDescription: "Detailed scene understanding with pixel-perfect segmentation for advanced video analysis.",
           video: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4"
         },
         {
           title: "Instance Segmentation",
-          description: "Individual object instance detection and segmentation in complex scenes",
+          description: "Individual object instance detection and segmentation in complex scenes for precise object identification and tracking.",
+          briefDescription: "Precise object separation and identification in complex multi-object environments.",
           beforeVideo: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4",
           afterVideo: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/VolkswagenGTIReview.mp4"
         }
@@ -166,13 +167,15 @@ const CustomAI = () => {
       projects: [
         {
           title: "Super-Resolution",
-          description: "AI-powered video upscaling and super-resolution for enhanced quality",
+          description: "AI-powered video upscaling and super-resolution for enhanced quality and detail preservation in low-resolution content.",
+          briefDescription: "Transform low-quality videos into high-resolution content with AI-powered enhancement.",
           beforeVideo: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WhatCarCanYouGetForAGrand.mp4",
           afterVideo: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4"
         },
         {
           title: "Denoising",
-          description: "Advanced video denoising and artifact removal for cleaner output",
+          description: "Advanced video denoising and artifact removal for cleaner output and improved visual quality in noisy environments.",
+          briefDescription: "Remove noise and artifacts to produce crystal-clear video content.",
           video: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
         }
       ]
@@ -184,12 +187,14 @@ const CustomAI = () => {
       projects: [
         {
           title: "Anomaly Detection",
-          description: "Real-time detection of unusual activities and behavioral anomalies",
+          description: "Real-time detection of unusual activities and behavioral anomalies for proactive security and safety monitoring.",
+          briefDescription: "Identify unusual patterns and behaviors automatically for enhanced security and safety.",
           video: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
         },
         {
           title: "Event Recognition",
-          description: "Automated detection and classification of specific events in video content",
+          description: "Automated detection and classification of specific events in video content for surveillance and content analysis.",
+          briefDescription: "Automatically detect and classify important events in video streams.",
           beforeVideo: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
           afterVideo: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"
         }
@@ -202,12 +207,14 @@ const CustomAI = () => {
       projects: [
         {
           title: "Automated Content Screening",
-          description: "AI-driven content analysis for policy compliance and safety screening",
+          description: "AI-driven content analysis for policy compliance and safety screening to maintain platform standards and regulations.",
+          briefDescription: "Ensure content compliance and safety through intelligent automated screening.",
           video: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4"
         },
         {
           title: "Inappropriate Content Detection",
-          description: "Advanced detection of inappropriate or harmful content in video streams",
+          description: "Advanced detection of inappropriate or harmful content in video streams for safer digital environments.",
+          briefDescription: "Protect users by detecting and filtering inappropriate or harmful video content.",
           beforeVideo: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
           afterVideo: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4"
         }
@@ -295,6 +302,9 @@ const CustomAI = () => {
                                 <Card className="border border-gray-200">
                                   <CardHeader>
                                     <CardTitle className="text-lg text-gray-800">{project.title}</CardTitle>
+                                    <CardDescription className="text-sm text-blue-600 font-medium">
+                                      {project.briefDescription}
+                                    </CardDescription>
                                   </CardHeader>
                                   <CardContent>
                                     {project.beforeVideo && project.afterVideo ? (

@@ -44,7 +44,7 @@ const Navigation = () => {
             </div>
           </Link>
           
-          <div className="hidden md:flex items-center space-x-1">
+          <div className="hidden md:flex items-center space-x-1 ml-auto">
             <Link to="/">
               <Button 
                 variant={location.pathname === "/" ? "default" : "ghost"}
