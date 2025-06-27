@@ -18,6 +18,7 @@ import Contact from "./pages/Contact";
 import Blogs from "./pages/Blogs";
 import AudioAI from "./pages/AudioAI";
 import DocumentAI from "./pages/DocumentAI";
+import CloudInfrastructure from "./pages/CloudInfrastructure";
 
 const queryClient = new QueryClient();
 
@@ -35,6 +36,7 @@ const App = () => (
             <Route path="/custom-ai" element={<CustomAI />} />
             <Route path="/data-annotation" element={<DataAnnotation />} />
             <Route path="/mlops" element={<MLOps />} />
+            <Route path="/cloud-infrastructure" element={<CloudInfrastructure />} />
             <Route path="/research" element={<Research />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />

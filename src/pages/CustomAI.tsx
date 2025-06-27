@@ -273,7 +273,7 @@ const CustomAI = () => {
           </div>
 
           {/* Parent Carousel */}
-          <div className="relative">
+          <div className="relative px-16">
             <div className="overflow-hidden" ref={emblaRef}>
               <div className="flex">
                 {projectTypes.map((projectType) => (
@@ -334,9 +334,9 @@ const CustomAI = () => {
               </div>
             </div>
             
-            {/* Custom Navigation Arrows */}
+            {/* Custom Navigation Arrows - Outside the child carousel */}
             <button
-              className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white shadow-lg border-2 border-cyan-300 text-cyan-600 hover:bg-cyan-50 transition-all duration-200 flex items-center justify-center z-10"
+              className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white shadow-lg border-2 border-teal-400 text-teal-600 hover:bg-teal-50 transition-all duration-200 flex items-center justify-center z-10"
               onClick={() => emblaApi && emblaApi.scrollPrev()}
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -344,7 +344,7 @@ const CustomAI = () => {
               </svg>
             </button>
             <button
-              className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white shadow-lg border-2 border-cyan-300 text-cyan-600 hover:bg-cyan-50 transition-all duration-200 flex items-center justify-center z-10"
+              className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white shadow-lg border-2 border-teal-400 text-teal-600 hover:bg-teal-50 transition-all duration-200 flex items-center justify-center z-10"
               onClick={() => emblaApi && emblaApi.scrollNext()}
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

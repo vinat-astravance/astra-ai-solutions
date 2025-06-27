@@ -9,9 +9,10 @@ const Navigation = () => {
     { path: "/computer-vision", label: "Computer Vision" },
     { path: "/generative-ai", label: "Generative AI", hasSubmenu: true },
     { path: "/custom-ai", label: "Video AI" },
-    { path: "/mlops", label: "MLOps" },
-    { path: "/audio-ai", label: "Audio AI" },
     { path: "/document-ai", label: "Document AI" },
+    { path: "/audio-ai", label: "Audio AI" },
+    { path: "/mlops", label: "MLOps" },
+    { path: "/cloud-infrastructure", label: "Cloud Infrastructure" },
   ];
 
   const generativeAIItems = [
@@ -44,7 +45,7 @@ const Navigation = () => {
             </div>
           </Link>
           
-          <div className="hidden md:flex items-center space-x-1 ml-auto">
+          <div className="hidden md:flex items-center space-x-1 ml-auto mr-4">
             <Link to="/">
               <Button 
                 variant={location.pathname === "/" ? "default" : "ghost"}
