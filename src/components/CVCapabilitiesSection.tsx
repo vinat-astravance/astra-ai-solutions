@@ -17,22 +17,22 @@ const CVCapabilitiesSection: React.FC = () => {
           id: "object-detection",
           title: "Object Detection",
           description: "Real-time detection and classification of multiple objects in complex scenes",
-          beforeImage: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&w=800&q=80",
-          afterImage: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80"
+          beforeImage: "/images/computer_vision/detection_parent.png",
+          afterImage: "/images/computer_vision/detection_child.png"
         },
         {
           id: "face-recognition",
           title: "Face Recognition",
           description: "Accurate facial recognition and identification systems for security applications",
-          beforeImage: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80",
-          afterImage: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&w=800&q=80"
+          beforeImage: "/images/computer_vision/fr_parent.png",
+          afterImage: "/images/computer_vision/fr_child.png"
         },
         {
           id: "anomaly-detection",
           title: "Anomaly Detection",
           description: "Identify unusual patterns and defects in manufacturing and quality control",
-          beforeImage: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80",
-          afterImage: "https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=800&q=80"
+          beforeImage: "/images/computer_vision/fault_parent.jpg",
+          afterImage: "/images/computer_vision/fault_child.jpg"
         }
       ]
     },
@@ -59,8 +59,8 @@ const CVCapabilitiesSection: React.FC = () => {
           id: "panoptic-segmentation",
           title: "Panoptic Segmentation",
           description: "Combine semantic and instance segmentation for complete scene understanding",
-          beforeImage: "https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?auto=format&fit=crop&w=800&q=80",
-          afterImage: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=800&q=80"
+          beforeImage: "/images/computer_vision/segmentation_parent.png",
+          afterImage: "/images/computer_vision/segmentation_child.png"
         }
       ]
     },
@@ -73,8 +73,8 @@ const CVCapabilitiesSection: React.FC = () => {
           id: "human-pose",
           title: "Human Pose Estimation",
           description: "Detect and track human body keypoints for motion analysis",
-          beforeImage: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=80",
-          afterImage: "https://images.unsplash.com/photo-1544717297-fa95b6ee9643?auto=format&fit=crop&w=800&q=80"
+          beforeImage: "/images/computer_vision/pe_parent.jpg",
+          afterImage: "/images/computer_vision/pe_child.jpg"
         }
       ]
     },
@@ -114,20 +114,6 @@ const CVCapabilitiesSection: React.FC = () => {
       ]
     },
     {
-      id: "tracking",
-      title: "Tracking",
-      description: "Multi-object tracking across video sequences for surveillance, analytics, and motion analysis.",
-      subProjects: [
-        {
-          id: "multi-object-tracking",
-          title: "Multi-Object Tracking",
-          description: "Track multiple objects simultaneously across video sequences",
-          beforeImage: "https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?auto=format&fit=crop&w=800&q=80",
-          afterImage: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=800&q=80"
-        }
-      ]
-    },
-    {
       id: "reconstruction",
       title: "Reconstruction & Depth",
       description: "3D reconstruction and depth estimation for spatial understanding and modeling.",
@@ -136,8 +122,8 @@ const CVCapabilitiesSection: React.FC = () => {
           id: "depth-estimation",
           title: "Depth Estimation",
           description: "Estimate depth information from 2D images for 3D understanding",
-          beforeImage: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80",
-          afterImage: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80"
+          beforeImage: "/images/computer_vision/dm_parent.png",
+          afterImage: "/images/computer_vision/dm_child.png"
         }
       ]
     }
