@@ -9,6 +9,10 @@ interface LayoutProps {
 }
 
 const Layout = ({ children }: LayoutProps) => {
+  const handleLinkClick = () => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
@@ -56,53 +60,35 @@ const Layout = ({ children }: LayoutProps) => {
             
             <div>
               <h3 className="font-semibold mb-4 text-foreground">AI Services</h3>
-              <ul className="space-y-2 text-muted-foreground text-sm">
-                <li>
-                  <Link to="/computer-vision" className="hover:text-foreground transition-colors">
-                    Computer Vision
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/generative-ai/llms" className="hover:text-foreground transition-colors">
-                    Generative AI & LLMs
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/custom-ai" className="hover:text-foreground transition-colors">
-                    Video AI
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/audio-ai" className="hover:text-foreground transition-colors">
-                    Audio AI
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/document-ai" className="hover:text-foreground transition-colors">
-                    Document AI
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/mlops" className="hover:text-foreground transition-colors">
-                    MLOps
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/cloud-infrastructure" className="hover:text-foreground transition-colors">
-                    Cloud Infrastructure
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/data-annotation" className="hover:text-foreground transition-colors">
-                    Data Annotation
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/research" className="hover:text-foreground transition-colors">
-                    Consulting & POC
-                  </Link>
-                </li>
-              </ul>
+              <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-muted-foreground text-sm">
+                <Link to="/computer-vision" onClick={handleLinkClick} className="hover:text-foreground transition-colors">
+                  Computer Vision
+                </Link>
+                <Link to="/generative-ai/llms" onClick={handleLinkClick} className="hover:text-foreground transition-colors">
+                  Generative AI & LLMs
+                </Link>
+                <Link to="/custom-ai" onClick={handleLinkClick} className="hover:text-foreground transition-colors">
+                  Video AI
+                </Link>
+                <Link to="/audio-ai" onClick={handleLinkClick} className="hover:text-foreground transition-colors">
+                  Audio AI
+                </Link>
+                <Link to="/document-ai" onClick={handleLinkClick} className="hover:text-foreground transition-colors">
+                  Document AI
+                </Link>
+                <Link to="/mlops" onClick={handleLinkClick} className="hover:text-foreground transition-colors">
+                  MLOps
+                </Link>
+                <Link to="/cloud-infrastructure" onClick={handleLinkClick} className="hover:text-foreground transition-colors">
+                  Cloud Infrastructure
+                </Link>
+                <Link to="/data-annotation" onClick={handleLinkClick} className="hover:text-foreground transition-colors">
+                  Data Annotation
+                </Link>
+                <Link to="/research" onClick={handleLinkClick} className="hover:text-foreground transition-colors">
+                  Consulting & POC
+                </Link>
+              </div>
             </div>
             
             <div>
