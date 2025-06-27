@@ -9,6 +9,8 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import ComputerVision from "./pages/ComputerVision";
 import GenerativeAI from "./pages/GenerativeAI";
+import LLMs from "./pages/LLMs";
+import AgenticAI from "./pages/AgenticAI";
 import CustomAI from "./pages/CustomAI";
 import DataAnnotation from "./pages/DataAnnotation";
 import MLOps from "./pages/MLOps";
@@ -33,6 +35,8 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/computer-vision" element={<ComputerVision />} />
             <Route path="/generative-ai" element={<GenerativeAI />} />
+            <Route path="/generative-ai/llms" element={<LLMs />} />
+            <Route path="/generative-ai/agentic-ai" element={<AgenticAI />} />
             <Route path="/custom-ai" element={<CustomAI />} />
             <Route path="/data-annotation" element={<DataAnnotation />} />
             <Route path="/mlops" element={<MLOps />} />
