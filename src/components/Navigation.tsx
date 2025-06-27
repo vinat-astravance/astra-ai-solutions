@@ -35,13 +35,6 @@ const Navigation = () => {
     { path: "/data-annotation", label: "Other Services" },
   ];
 
-  const mainNavItems = [
-    { path: "/", label: "Home" },
-    { path: "/research", label: "Consulting & POC" },
-    { path: "/blogs", label: "Blogs" },
-    { path: "/contact", label: "Contact" }
-  ];
-
   return (
     <nav className="bg-background shadow-sm border-b sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -123,19 +116,41 @@ const Navigation = () => {
                   </NavigationMenuContent>
                 </NavigationMenuItem>
                 
-                {mainNavItems.map((item) => (
-                  <NavigationMenuItem key={item.path}>
-                    <Link to={item.path}>
-                      <Button 
-                        variant={location.pathname === item.path ? "default" : "ghost"}
-                        size="sm"
-                        className="text-sm"
-                      >
-                        {item.label}
-                      </Button>
-                    </Link>
-                  </NavigationMenuItem>
-                ))}
+                <NavigationMenuItem>
+                  <Link to="/research">
+                    <Button 
+                      variant={location.pathname === "/research" ? "default" : "ghost"}
+                      size="sm"
+                      className="text-sm"
+                    >
+                      Consulting & POC
+                    </Button>
+                  </Link>
+                </NavigationMenuItem>
+
+                <NavigationMenuItem>
+                  <Link to="/blogs">
+                    <Button 
+                      variant={location.pathname === "/blogs" ? "default" : "ghost"}
+                      size="sm"
+                      className="text-sm"
+                    >
+                      Blogs
+                    </Button>
+                  </Link>
+                </NavigationMenuItem>
+
+                <NavigationMenuItem>
+                  <Link to="/contact">
+                    <Button 
+                      variant={location.pathname === "/contact" ? "default" : "ghost"}
+                      size="sm"
+                      className="text-sm"
+                    >
+                      Contact
+                    </Button>
+                  </Link>
+                </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>
           </div>

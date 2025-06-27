@@ -1,4 +1,3 @@
-
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -44,7 +43,6 @@ const ComputerVision = () => {
       id: "detection",
       title: "Detection",
       description: "Advanced detection algorithms for identifying and locating objects, faces, and anomalies in images and video streams.",
-      useCases: "Security surveillance, quality control, autonomous vehicles, medical diagnosis",
       subProjects: [
         {
           id: "object-detection",
@@ -73,7 +71,6 @@ const ComputerVision = () => {
       id: "segmentation",
       title: "Image Segmentation",
       description: "Precise pixel-level segmentation techniques for detailed image analysis and understanding.",
-      useCases: "Medical imaging, autonomous driving, satellite imagery, robotics",
       subProjects: [
         {
           id: "semantic-segmentation",
@@ -102,7 +99,6 @@ const ComputerVision = () => {
       id: "pose-estimation",
       title: "Pose Estimation",
       description: "Accurate human pose detection and tracking for motion analysis and interaction systems.",
-      useCases: "Sports analysis, healthcare monitoring, gaming, augmented reality",
       subProjects: [
         {
           id: "human-pose",
@@ -117,7 +113,6 @@ const ComputerVision = () => {
       id: "enhancement",
       title: "Image Enhancement",
       description: "Advanced image processing techniques to improve image quality, resolution, and clarity.",
-      useCases: "Photography, medical imaging, satellite imagery, surveillance",
       subProjects: [
         {
           id: "super-resolution",
@@ -153,7 +148,6 @@ const ComputerVision = () => {
       id: "tracking",
       title: "Tracking",
       description: "Multi-object tracking across video sequences for surveillance, analytics, and motion analysis.",
-      useCases: "Video surveillance, sports analytics, traffic monitoring, behavior analysis",
       subProjects: [
         {
           id: "multi-object-tracking",
@@ -168,7 +162,6 @@ const ComputerVision = () => {
       id: "reconstruction",
       title: "Reconstruction & Depth",
       description: "3D reconstruction and depth estimation for spatial understanding and modeling.",
-      useCases: "3D modeling, robotics, augmented reality, architectural visualization",
       subProjects: [
         {
           id: "depth-estimation",
@@ -328,10 +321,6 @@ const ComputerVision = () => {
                         <CardDescription className="text-lg text-gray-700 mb-4 leading-relaxed">
                           {projectType.description}
                         </CardDescription>
-                        <div className="bg-blue-100 p-4 rounded-lg">
-                          <h4 className="font-semibold text-blue-900 mb-2">Use Cases:</h4>
-                          <p className="text-blue-800 text-sm">{projectType.useCases}</p>
-                        </div>
                       </CardHeader>
                       <CardContent className="p-8">
                         {/* Child Carousel - Sub Projects */}
@@ -365,9 +354,9 @@ const ComputerVision = () => {
               </div>
             </div>
             
-            {/* Custom Green Arrow Buttons */}
+            {/* Custom Cyan Arrow Buttons */}
             <button
-              className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-green-500 hover:bg-green-600 text-white rounded-full flex items-center justify-center shadow-lg transition-colors z-10"
+              className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-cyan-600 hover:bg-cyan-700 text-white rounded-full flex items-center justify-center shadow-lg transition-colors z-10"
               onClick={() => emblaApi?.scrollPrev()}
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -375,7 +364,7 @@ const ComputerVision = () => {
               </svg>
             </button>
             <button
-              className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-green-500 hover:bg-green-600 text-white rounded-full flex items-center justify-center shadow-lg transition-colors z-10"
+              className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-cyan-600 hover:bg-cyan-700 text-white rounded-full flex items-center justify-center shadow-lg transition-colors z-10"
               onClick={() => emblaApi?.scrollNext()}
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -389,7 +378,7 @@ const ComputerVision = () => {
                 <button
                   key={index}
                   className={`w-3 h-3 rounded-full transition-colors ${
-                    index === selectedIndex ? 'bg-green-500' : 'bg-gray-300 hover:bg-gray-400'
+                    index === selectedIndex ? 'bg-cyan-600' : 'bg-gray-300 hover:bg-gray-400'
                   }`}
                   onClick={() => scrollTo(index)}
                 />
