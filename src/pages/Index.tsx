@@ -5,6 +5,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Link } from "react-router-dom";
 
 const Index = () => {
+  const handleLinkClick = () => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  };
+
   const services = [
     {
       title: "Computer Vision",
@@ -111,7 +115,7 @@ const Index = () => {
                   <CardDescription className="text-gray-600 mb-4">
                     {service.description}
                   </CardDescription>
-                  <Link to={service.link}>
+                  <Link to={service.link} onClick={handleLinkClick}>
                     <Button variant="outline" size="sm">
                       Learn More
                     </Button>
