@@ -14,6 +14,11 @@ import AgenticAI from "./pages/AgenticAI";
 import CustomAI from "./pages/CustomAI";
 import DataAnnotation from "./pages/DataAnnotation";
 import ImageAnnotation from "./pages/ImageAnnotation";
+import AudioAnnotation from "./pages/AudioAnnotation";
+import VideoAnnotation from "./pages/VideoAnnotation";
+import TextAnnotation from "./pages/TextAnnotation";
+import MultiSensorAnnotation from "./pages/MultiSensorAnnotation";
+import OtherServices from "./pages/OtherServices";
 import MLOps from "./pages/MLOps";
 import Research from "./pages/Research";
 import About from "./pages/About";
@@ -41,6 +46,11 @@ const App = () => (
             <Route path="/custom-ai" element={<CustomAI />} />
             <Route path="/data-annotation" element={<DataAnnotation />} />
             <Route path="/image-annotation" element={<ImageAnnotation />} />
+            <Route path="/audio-annotation" element={<AudioAnnotation />} />
+            <Route path="/video-annotation" element={<VideoAnnotation />} />
+            <Route path="/text-annotation" element={<TextAnnotation />} />
+            <Route path="/multi-sensor-annotation" element={<MultiSensorAnnotation />} />
+            <Route path="/other-services" element={<OtherServices />} />
             <Route path="/mlops" element={<MLOps />} />
             <Route path="/cloud-infrastructure" element={<CloudInfrastructure />} />
             <Route path="/research" element={<Research />} />

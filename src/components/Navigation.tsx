@@ -1,4 +1,3 @@
-
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
@@ -22,11 +21,11 @@ const Navigation = () => {
 
   const dataAnnotationItems = [
     { path: "/image-annotation", label: "Image" },
-    { path: "/data-annotation", label: "Audio" },
-    { path: "/data-annotation", label: "Video" },
-    { path: "/data-annotation", label: "Text" },
-    { path: "/data-annotation", label: "Multi Sensor Data" },
-    { path: "/data-annotation", label: "Other Services" },
+    { path: "/audio-annotation", label: "Audio" },
+    { path: "/video-annotation", label: "Video" },
+    { path: "/text-annotation", label: "Text" },
+    { path: "/multi-sensor-annotation", label: "Multi Sensor Data" },
+    { path: "/other-services", label: "Other Services" },
   ];
 
   return (
@@ -48,12 +47,9 @@ const Navigation = () => {
           <div className="hidden md:flex items-center space-x-1 ml-auto mr-4">
             <Link to="/">
               <Button 
-                variant={location.pathname === "/" ? "default" : "ghost"}
+                variant="ghost"
                 size="sm"
-                className={location.pathname === "/" 
-                  ? "text-sm bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-medium shadow-md"
-                  : "text-sm text-gray-700 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 font-medium transition-all duration-200"
-                }
+                className="text-sm text-gray-700 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 font-medium transition-all duration-200"
               >
                 Home
               </Button>
