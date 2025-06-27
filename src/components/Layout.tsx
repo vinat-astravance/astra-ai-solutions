@@ -62,19 +62,19 @@ const Layout = ({ children }: LayoutProps) => {
                 <li>Audio AI</li>
                 <li>Document AI</li>
                 <li>MLOps & Cloud Infrastructure</li>
+                <li>Data Annotation</li>
+                <li>Consulting & POC</li>
               </ul>
             </div>
             
             <div>
-              <h3 className="font-semibold mb-4 text-foreground">Data Annotation</h3>
-              <ul className="space-y-2 text-muted-foreground text-sm">
-                <li>Image Annotation</li>
-                <li>Video Annotation</li>
-                <li>Audio Annotation</li>
-                <li>Text Annotation</li>
-                <li>Multi-Sensor Data</li>
-                <li>Data Cleaning & Enrichment</li>
-              </ul>
+              <h3 className="font-semibold mb-4 text-foreground">Get Started</h3>
+              <p className="text-muted-foreground text-sm mb-4">
+                Ready to transform your business with AI?
+              </p>
+              <p className="text-muted-foreground text-sm">
+                Get in touch with our experts today.
+              </p>
             </div>
           </div>
           

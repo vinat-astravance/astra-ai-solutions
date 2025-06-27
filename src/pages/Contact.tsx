@@ -17,11 +17,6 @@ const Contact = () => {
       title: "Feasibility Study",
       description: "Request a comprehensive analysis of your AI approach and technical requirements.",
       action: "Request Study"
-    },
-    {
-      title: "Technical Partnership",
-      description: "Explore long-term collaboration opportunities for ongoing AI development needs.",
-      action: "Discuss Partnership"
     }
   ];
 
