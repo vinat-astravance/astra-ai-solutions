@@ -58,7 +58,8 @@ const Index = () => {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-              <span className="text-cyan-600">AI that Works the Way You Want</span>
+              <span className="text-black">AI that Works the Way </span>
+              <span className="text-cyan-600">You Want</span>
             </h1>
             <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
               Astravance AI delivers cutting-edge artificial intelligence solutions tailored to your unique challenges. 

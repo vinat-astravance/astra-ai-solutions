@@ -1,7 +1,6 @@
 
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import SemanticSegmentationCarousel from "@/components/SemanticSegmentationCarousel";
 import { Link } from "react-router-dom";
 
@@ -45,17 +44,15 @@ const DataAnnotation = () => {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Left side - Screenshot/Image */}
+          {/* Image Annotation */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
             <div className="bg-gray-100 rounded-lg p-8 flex justify-center">
               <img 
                 src="/lovable-uploads/3029fb0a-9008-453e-93ae-ba505b8c7086.png" 
-                alt="Data Annotation Interface" 
+                alt="Image Annotation Interface" 
                 className="max-w-full h-auto rounded-lg shadow-lg"
               />
             </div>
-
-            {/* Right side - Content */}
             <div>
               <h3 className="text-2xl font-bold text-gray-900 mb-6">
                 Image Processing/Annotation
@@ -63,9 +60,8 @@ const DataAnnotation = () => {
               <p className="text-gray-600 mb-8 leading-relaxed">
                 Human-annotated data is more accurate and of higher quality than data 
                 annotated by a machine. To guarantee an excellent machine learning experience, 
-                Mindy Support finds specialists with the necessary skills to provide data 
-                annotation services: 2D bounding boxes, polygons, semantic segmentation, 
-                labeling, and point and landmark annotations.
+                we provide specialists with the necessary skills for data annotation services: 
+                2D bounding boxes, polygons, semantic segmentation, labeling, and point and landmark annotations.
               </p>
               <Button className="bg-green-500 hover:bg-green-600 text-white px-8 py-3 text-lg font-semibold">
                 LEARN MORE
@@ -73,74 +69,103 @@ const DataAnnotation = () => {
             </div>
           </div>
 
-          {/* Additional Services Grid */}
-          <div className="mt-20">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <Card className="h-full">
-                <CardHeader>
-                  <CardTitle className="text-lg text-gray-900">Video Annotation</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-gray-600">
-                    Frame-by-frame labeling, object tracking, action recognition, and temporal event annotation.
-                  </CardDescription>
-                </CardContent>
-              </Card>
+          {/* Text Annotation */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
+            <div className="order-2 lg:order-1">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">
+                Text Annotation & Classification
+              </h3>
+              <p className="text-gray-600 mb-8 leading-relaxed">
+                Comprehensive text annotation services including sentiment analysis, 
+                named entity recognition, intent classification, and document categorization. 
+                Our expert linguists ensure accurate labeling for NLP model training with 
+                multilingual support and domain-specific expertise.
+              </p>
+              <Button className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 text-lg font-semibold">
+                LEARN MORE
+              </Button>
+            </div>
+            <div className="bg-gray-100 rounded-lg p-8 flex justify-center order-1 lg:order-2">
+              <img 
+                src="/images/data-annotation.jpg" 
+                alt="Text Annotation Interface" 
+                className="max-w-full h-auto rounded-lg shadow-lg"
+              />
+            </div>
+          </div>
 
-              <Card className="h-full">
-                <CardHeader>
-                  <CardTitle className="text-lg text-gray-900">Text Classification</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-gray-600">
-                    Sentiment analysis, intent classification, named entity recognition, and document categorization.
-                  </CardDescription>
-                </CardContent>
-              </Card>
+          {/* Audio Annotation */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
+            <div className="bg-gray-100 rounded-lg p-8 flex justify-center">
+              <img 
+                src="/images/computer-vision.jpg" 
+                alt="Audio Annotation Interface" 
+                className="max-w-full h-auto rounded-lg shadow-lg"
+              />
+            </div>
+            <div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">
+                Audio Annotation & Transcription
+              </h3>
+              <p className="text-gray-600 mb-8 leading-relaxed">
+                Professional audio annotation services including speech transcription, 
+                speaker identification, emotion recognition, and acoustic event labeling. 
+                We handle multiple languages and dialects with precise timestamp accuracy 
+                for speech recognition and audio analysis models.
+              </p>
+              <Button className="bg-purple-500 hover:bg-purple-600 text-white px-8 py-3 text-lg font-semibold">
+                LEARN MORE
+              </Button>
+            </div>
+          </div>
 
-              <Card className="h-full">
-                <CardHeader>
-                  <CardTitle className="text-lg text-gray-900">Audio Annotation</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-gray-600">
-                    Speech transcription, speaker identification, emotion recognition, and acoustic event labeling.
-                  </CardDescription>
-                </CardContent>
-              </Card>
+          {/* Video Annotation */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
+            <div className="order-2 lg:order-1">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">
+                Video Annotation & Tracking
+              </h3>
+              <p className="text-gray-600 mb-8 leading-relaxed">
+                Comprehensive video annotation services including frame-by-frame labeling, 
+                object tracking, action recognition, and temporal event annotation. 
+                Our specialists provide precise tracking of objects across video sequences 
+                for computer vision and video analysis applications.
+              </p>
+              <Button className="bg-red-500 hover:bg-red-600 text-white px-8 py-3 text-lg font-semibold">
+                LEARN MORE
+              </Button>
+            </div>
+            <div className="bg-gray-100 rounded-lg p-8 flex justify-center order-1 lg:order-2">
+              <img 
+                src="/images/custom-applications.jpg" 
+                alt="Video Annotation Interface" 
+                className="max-w-full h-auto rounded-lg shadow-lg"
+              />
+            </div>
+          </div>
 
-              <Card className="h-full">
-                <CardHeader>
-                  <CardTitle className="text-lg text-gray-900">Quality Assurance</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-gray-600">
-                    Multi-tier review processes with expert validators to ensure annotation accuracy and consistency.
-                  </CardDescription>
-                </CardContent>
-              </Card>
-
-              <Card className="h-full">
-                <CardHeader>
-                  <CardTitle className="text-lg text-gray-900">Custom Workflows</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-gray-600">
-                    Tailored annotation pipelines designed for your specific use case and quality requirements.
-                  </CardDescription>
-                </CardContent>
-              </Card>
-
-              <Card className="h-full">
-                <CardHeader>
-                  <CardTitle className="text-lg text-gray-900">3D Point Cloud Annotation</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-gray-600">
-                    Precise 3D object detection and segmentation for autonomous vehicles and robotics applications.
-                  </CardDescription>
-                </CardContent>
-              </Card>
+          {/* Multi Sensor Data */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="bg-gray-100 rounded-lg p-8 flex justify-center">
+              <img 
+                src="/images/ai-development.jpg" 
+                alt="Multi Sensor Data Annotation" 
+                className="max-w-full h-auto rounded-lg shadow-lg"
+              />
+            </div>
+            <div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">
+                Multi Sensor Data Annotation
+              </h3>
+              <p className="text-gray-600 mb-8 leading-relaxed">
+                Advanced annotation services for multi-modal data including LiDAR point clouds, 
+                radar data, and sensor fusion datasets. Our team specializes in 3D object detection, 
+                semantic segmentation, and cross-modal data alignment for autonomous systems 
+                and robotics applications.
+              </p>
+              <Button className="bg-indigo-500 hover:bg-indigo-600 text-white px-8 py-3 text-lg font-semibold">
+                LEARN MORE
+              </Button>
             </div>
           </div>
         </div>

@@ -21,9 +21,17 @@ const Navigation = () => {
     { path: "/document-ai", label: "Document AI" },
   ];
 
+  const dataAnnotationItems = [
+    { path: "/data-annotation", label: "Image" },
+    { path: "/data-annotation", label: "Audio" },
+    { path: "/data-annotation", label: "Video" },
+    { path: "/data-annotation", label: "Text" },
+    { path: "/data-annotation", label: "Multi Sensor Data" },
+    { path: "/data-annotation", label: "Other Services" },
+  ];
+
   const mainNavItems = [
     { path: "/", label: "Home" },
-    { path: "/data-annotation", label: "Data Annotations" },
     { path: "/research", label: "Consulting & POC" },
     { path: "/blogs", label: "Blogs" },
     { path: "/contact", label: "Contact" }
@@ -48,6 +56,52 @@ const Navigation = () => {
           <div className="hidden md:flex items-center space-x-1">
             <NavigationMenu>
               <NavigationMenuList>
+                <NavigationMenuItem>
+                  <Link to="/">
+                    <Button 
+                      variant={location.pathname === "/" ? "default" : "ghost"}
+                      size="sm"
+                      className="text-sm"
+                    >
+                      Home
+                    </Button>
+                  </Link>
+                </NavigationMenuItem>
+                
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger className="text-sm">Solutions</NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <div className="grid w-[300px] gap-3 p-4">
+                      {solutionItems.map((item) => (
+                        <Link
+                          key={item.path}
+                          to={item.path}
+                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                        >
+                          <div className="text-sm font-medium leading-none">{item.label}</div>
+                        </Link>
+                      ))}
+                    </div>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger className="text-sm">Data Annotations</NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <div className="grid w-[300px] gap-3 p-4">
+                      {dataAnnotationItems.map((item, index) => (
+                        <Link
+                          key={index}
+                          to={item.path}
+                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                        >
+                          <div className="text-sm font-medium leading-none">{item.label}</div>
+                        </Link>
+                      ))}
+                    </div>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+                
                 {mainNavItems.map((item) => (
                   <NavigationMenuItem key={item.path}>
                     <Link to={item.path}>
@@ -61,23 +115,6 @@ const Navigation = () => {
                     </Link>
                   </NavigationMenuItem>
                 ))}
-                
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger className="text-sm">Solutions</NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <div className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                      {solutionItems.map((item) => (
-                        <Link
-                          key={item.path}
-                          to={item.path}
-                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                        >
-                          <div className="text-sm font-medium leading-none">{item.label}</div>
-                        </Link>
-                      ))}
-                    </div>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>
           </div>
