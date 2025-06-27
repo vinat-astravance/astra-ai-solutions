@@ -5,9 +5,12 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Link } from "react-router-dom";
 import { useState, useRef, useCallback } from "react";
+import useEmblaCarousel from "embla-carousel-react";
 
 const ComputerVision = () => {
   const [sliderValues, setSliderValues] = useState<{ [key: string]: number }>({});
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
 
   const capabilities = [
     {
@@ -198,6 +201,13 @@ const ComputerVision = () => {
     }));
   }, []);
 
+  const scrollTo = useCallback((index: number) => {
+    if (emblaApi) {
+      emblaApi.scrollTo(index);
+      setSelectedIndex(index);
+    }
+  }, [emblaApi]);
+
   const BeforeAfterSlider = ({ project }: { project: any }) => {
     const sliderValue = sliderValues[project.id] || 50;
     
@@ -307,60 +317,85 @@ const ComputerVision = () => {
           </div>
 
           {/* Parent Carousel - Project Types */}
-          <Carousel 
-            className="w-full max-w-6xl mx-auto"
-            opts={{
-              loop: true,
-              align: "start"
-            }}
-          >
-            <CarouselContent>
-              {cvProjectTypes.map((projectType) => (
-                <CarouselItem key={projectType.id}>
-                  <Card className="border-0 shadow-lg">
-                    <CardHeader className="text-center">
-                      <CardTitle className="text-3xl text-gray-900 mb-2">{projectType.title}</CardTitle>
-                      <CardDescription className="text-lg text-gray-600 mb-4">
-                        {projectType.description}
-                      </CardDescription>
-                      <div className="bg-blue-50 p-4 rounded-lg">
-                        <h4 className="font-semibold text-blue-900 mb-2">Use Cases:</h4>
-                        <p className="text-blue-800 text-sm">{projectType.useCases}</p>
-                      </div>
-                    </CardHeader>
-                    <CardContent className="p-8">
-                      {/* Child Carousel - Sub Projects */}
-                      <Carousel 
-                        className="w-full"
-                        opts={{
-                          loop: true,
-                          align: "start"
-                        }}
-                      >
-                        <CarouselContent>
-                          {projectType.subProjects.map((subProject) => (
-                            <CarouselItem key={subProject.id}>
-                              <div className="space-y-4">
-                                <div className="text-center">
-                                  <h3 className="text-xl font-semibold text-gray-900 mb-2">{subProject.title}</h3>
-                                  <p className="text-gray-600">{subProject.description}</p>
+          <div className="relative">
+            <div className="overflow-hidden" ref={emblaRef}>
+              <div className="flex">
+                {cvProjectTypes.map((projectType, index) => (
+                  <div key={projectType.id} className="flex-[0_0_100%] min-w-0">
+                    <Card className="border-0 shadow-lg mx-4">
+                      <CardHeader className="text-center border-b border-gray-200 bg-gradient-to-r from-blue-50 to-cyan-50">
+                        <CardTitle className="text-4xl text-gray-900 mb-3 font-bold">{projectType.title}</CardTitle>
+                        <CardDescription className="text-lg text-gray-700 mb-4 leading-relaxed">
+                          {projectType.description}
+                        </CardDescription>
+                        <div className="bg-blue-100 p-4 rounded-lg">
+                          <h4 className="font-semibold text-blue-900 mb-2">Use Cases:</h4>
+                          <p className="text-blue-800 text-sm">{projectType.useCases}</p>
+                        </div>
+                      </CardHeader>
+                      <CardContent className="p-8">
+                        {/* Child Carousel - Sub Projects */}
+                        <Carousel 
+                          className="w-full"
+                          opts={{
+                            loop: true,
+                            align: "start"
+                          }}
+                        >
+                          <CarouselContent>
+                            {projectType.subProjects.map((subProject) => (
+                              <CarouselItem key={subProject.id}>
+                                <div className="space-y-4">
+                                  <div className="text-center bg-gray-50 p-4 rounded-lg border-l-4 border-cyan-500">
+                                    <h3 className="text-2xl font-semibold text-gray-900 mb-2">{subProject.title}</h3>
+                                    <p className="text-gray-600 text-base">{subProject.description}</p>
+                                  </div>
+                                  <BeforeAfterSlider project={subProject} />
                                 </div>
-                                <BeforeAfterSlider project={subProject} />
-                              </div>
-                            </CarouselItem>
-                          ))}
-                        </CarouselContent>
-                        <CarouselPrevious className="left-2" />
-                        <CarouselNext className="right-2" />
-                      </Carousel>
-                    </CardContent>
-                  </Card>
-                </CarouselItem>
+                              </CarouselItem>
+                            ))}
+                          </CarouselContent>
+                          <CarouselPrevious className="left-2" />
+                          <CarouselNext className="right-2" />
+                        </Carousel>
+                      </CardContent>
+                    </Card>
+                  </div>
+                ))}
+              </div>
+            </div>
+            
+            {/* Custom Green Arrow Buttons */}
+            <button
+              className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-green-500 hover:bg-green-600 text-white rounded-full flex items-center justify-center shadow-lg transition-colors z-10"
+              onClick={() => emblaApi?.scrollPrev()}
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <button
+              className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-green-500 hover:bg-green-600 text-white rounded-full flex items-center justify-center shadow-lg transition-colors z-10"
+              onClick={() => emblaApi?.scrollNext()}
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+
+            {/* Indicator Dots */}
+            <div className="flex justify-center mt-6 space-x-2">
+              {cvProjectTypes.map((_, index) => (
+                <button
+                  key={index}
+                  className={`w-3 h-3 rounded-full transition-colors ${
+                    index === selectedIndex ? 'bg-green-500' : 'bg-gray-300 hover:bg-gray-400'
+                  }`}
+                  onClick={() => scrollTo(index)}
+                />
               ))}
-            </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
-          </Carousel>
+            </div>
+          </div>
         </div>
       </section>
 

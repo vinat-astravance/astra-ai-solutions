@@ -14,7 +14,7 @@ const Navigation = () => {
 
   const solutionItems = [
     { path: "/computer-vision", label: "Computer Vision" },
-    { path: "/generative-ai", label: "Generative AI" },
+    { path: "/generative-ai", label: "Generative AI", hasSubmenu: true },
     { path: "/custom-ai", label: "Video AI" },
     { path: "/mlops", label: "MLOps" },
     { path: "/audio-ai", label: "Audio AI" },
@@ -76,36 +76,29 @@ const Navigation = () => {
                 <NavigationMenuItem>
                   <NavigationMenuTrigger className="text-sm">Solutions</NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <div className="grid w-[300px] gap-3 p-4">
+                    <div className="w-[300px] p-4">
                       {solutionItems.map((item) => (
-                        <div key={item.path}>
-                          {item.label === "Generative AI" ? (
-                            <div>
-                              <Link
-                                to={item.path}
-                                className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                              >
-                                <div className="text-sm font-medium leading-none">{item.label}</div>
-                              </Link>
-                              <div className="ml-4 space-y-1">
+                        <div key={item.path} className="relative group">
+                          <Link
+                            to={item.path}
+                            className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                          >
+                            <div className="text-sm font-medium leading-none">{item.label}</div>
+                          </Link>
+                          {item.hasSubmenu && (
+                            <div className="absolute left-full top-0 ml-2 w-48 bg-popover border rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                              <div className="p-2">
                                 {generativeAIItems.map((subItem) => (
                                   <Link
                                     key={subItem.path}
                                     to={subItem.path}
-                                    className="block select-none rounded-md p-2 text-xs leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground text-muted-foreground"
+                                    className="block select-none rounded-md p-2 text-sm leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground text-muted-foreground"
                                   >
                                     {subItem.label}
                                   </Link>
                                 ))}
                               </div>
                             </div>
-                          ) : (
-                            <Link
-                              to={item.path}
-                              className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                            >
-                              <div className="text-sm font-medium leading-none">{item.label}</div>
-                            </Link>
                           )}
                         </div>
                       ))}
@@ -116,7 +109,7 @@ const Navigation = () => {
                 <NavigationMenuItem>
                   <NavigationMenuTrigger className="text-sm">Data Annotations</NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <div className="grid w-[300px] gap-3 p-4">
+                    <div className="w-[300px] p-4">
                       {dataAnnotationItems.map((item, index) => (
                         <Link
                           key={index}
