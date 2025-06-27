@@ -7,11 +7,7 @@ import { Link } from "react-router-dom";
 import { useState, useRef, useCallback } from "react";
 
 const ComputerVision = () => {
-  const [sliderValues, setSliderValues] = useState<{ [key: string]: number }>({
-    segmentation: 50,
-    detection: 50,
-    tracking: 50
-  });
+  const [sliderValues, setSliderValues] = useState<{ [key: string]: number }>({});
 
   const capabilities = [
     {
@@ -40,27 +36,145 @@ const ComputerVision = () => {
     }
   ];
 
-  const cvProjects = [
+  const cvProjectTypes = [
+    {
+      id: "detection",
+      title: "Detection",
+      description: "Advanced detection algorithms for identifying and locating objects, faces, and anomalies in images and video streams.",
+      useCases: "Security surveillance, quality control, autonomous vehicles, medical diagnosis",
+      subProjects: [
+        {
+          id: "object-detection",
+          title: "Object Detection",
+          description: "Real-time detection and classification of multiple objects in complex scenes",
+          beforeImage: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&w=800&q=80",
+          afterImage: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80"
+        },
+        {
+          id: "face-recognition",
+          title: "Face Recognition",
+          description: "Accurate facial recognition and identification systems for security applications",
+          beforeImage: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80",
+          afterImage: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&w=800&q=80"
+        },
+        {
+          id: "anomaly-detection",
+          title: "Anomaly Detection",
+          description: "Identify unusual patterns and defects in manufacturing and quality control",
+          beforeImage: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80",
+          afterImage: "https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=800&q=80"
+        }
+      ]
+    },
     {
       id: "segmentation",
       title: "Image Segmentation",
-      description: "Precise pixel-level object segmentation for medical imaging and autonomous systems",
-      beforeImage: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=800&q=80",
-      afterImage: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80"
+      description: "Precise pixel-level segmentation techniques for detailed image analysis and understanding.",
+      useCases: "Medical imaging, autonomous driving, satellite imagery, robotics",
+      subProjects: [
+        {
+          id: "semantic-segmentation",
+          title: "Semantic Segmentation",
+          description: "Classify every pixel in an image to understand scene composition",
+          beforeImage: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=800&q=80",
+          afterImage: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80"
+        },
+        {
+          id: "instance-segmentation",
+          title: "Instance Segmentation",
+          description: "Identify and separate individual object instances in images",
+          beforeImage: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&w=800&q=80",
+          afterImage: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80"
+        },
+        {
+          id: "panoptic-segmentation",
+          title: "Panoptic Segmentation",
+          description: "Combine semantic and instance segmentation for complete scene understanding",
+          beforeImage: "https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?auto=format&fit=crop&w=800&q=80",
+          afterImage: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=800&q=80"
+        }
+      ]
     },
     {
-      id: "detection",
-      title: "Object Detection",
-      description: "Real-time detection and classification of multiple objects in complex scenes",
-      beforeImage: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&w=800&q=80",
-      afterImage: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80"
+      id: "pose-estimation",
+      title: "Pose Estimation",
+      description: "Accurate human pose detection and tracking for motion analysis and interaction systems.",
+      useCases: "Sports analysis, healthcare monitoring, gaming, augmented reality",
+      subProjects: [
+        {
+          id: "human-pose",
+          title: "Human Pose Estimation",
+          description: "Detect and track human body keypoints for motion analysis",
+          beforeImage: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=80",
+          afterImage: "https://images.unsplash.com/photo-1544717297-fa95b6ee9643?auto=format&fit=crop&w=800&q=80"
+        }
+      ]
+    },
+    {
+      id: "enhancement",
+      title: "Image Enhancement",
+      description: "Advanced image processing techniques to improve image quality, resolution, and clarity.",
+      useCases: "Photography, medical imaging, satellite imagery, surveillance",
+      subProjects: [
+        {
+          id: "super-resolution",
+          title: "Super-Resolution",
+          description: "Enhance image resolution and quality using AI upscaling",
+          beforeImage: "https://images.unsplash.com/photo-1516110833967-0b5ee0d87d9b?auto=format&fit=crop&w=800&q=80",
+          afterImage: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80"
+        },
+        {
+          id: "dehazing",
+          title: "Dehazing",
+          description: "Remove atmospheric haze and improve image clarity",
+          beforeImage: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=800&q=80",
+          afterImage: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=800&q=80&brightness=1.2"
+        },
+        {
+          id: "inpainting",
+          title: "Inpainting",
+          description: "Intelligently fill missing or damaged parts of images",
+          beforeImage: "https://images.unsplash.com/photo-1533134486753-c833f0ed4866?auto=format&fit=crop&w=800&q=80",
+          afterImage: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=800&q=80"
+        },
+        {
+          id: "enhancement",
+          title: "Enhancement",
+          description: "General image enhancement for better visual quality",
+          beforeImage: "https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?auto=format&fit=crop&w=800&q=80",
+          afterImage: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=800&q=80"
+        }
+      ]
     },
     {
       id: "tracking",
-      title: "Object Tracking",
-      description: "Multi-object tracking across video sequences for surveillance and analytics",
-      beforeImage: "https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?auto=format&fit=crop&w=800&q=80",
-      afterImage: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=800&q=80"
+      title: "Tracking",
+      description: "Multi-object tracking across video sequences for surveillance, analytics, and motion analysis.",
+      useCases: "Video surveillance, sports analytics, traffic monitoring, behavior analysis",
+      subProjects: [
+        {
+          id: "multi-object-tracking",
+          title: "Multi-Object Tracking",
+          description: "Track multiple objects simultaneously across video sequences",
+          beforeImage: "https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?auto=format&fit=crop&w=800&q=80",
+          afterImage: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=800&q=80"
+        }
+      ]
+    },
+    {
+      id: "reconstruction",
+      title: "Reconstruction & Depth",
+      description: "3D reconstruction and depth estimation for spatial understanding and modeling.",
+      useCases: "3D modeling, robotics, augmented reality, architectural visualization",
+      subProjects: [
+        {
+          id: "depth-estimation",
+          title: "Depth Estimation",
+          description: "Estimate depth information from 2D images for 3D understanding",
+          beforeImage: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80",
+          afterImage: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80"
+        }
+      ]
     }
   ];
 
@@ -84,14 +198,16 @@ const ComputerVision = () => {
     }));
   }, []);
 
-  const BeforeAfterSlider = ({ project }: { project: typeof cvProjects[0] }) => {
+  const BeforeAfterSlider = ({ project }: { project: any }) => {
+    const sliderValue = sliderValues[project.id] || 50;
+    
     return (
       <div className="relative w-full h-96 bg-gray-100 rounded-lg overflow-hidden">
         {/* Before Image */}
         <div 
           className="absolute inset-0 transition-all duration-75 ease-out"
           style={{ 
-            clipPath: `inset(0 ${100 - sliderValues[project.id]}% 0 0)` 
+            clipPath: `inset(0 ${100 - sliderValue}% 0 0)` 
           }}
         >
           <img 
@@ -108,7 +224,7 @@ const ComputerVision = () => {
         <div 
           className="absolute inset-0 transition-all duration-75 ease-out"
           style={{ 
-            clipPath: `inset(0 0 0 ${sliderValues[project.id]}%)` 
+            clipPath: `inset(0 0 0 ${sliderValue}%)` 
           }}
         >
           <img 
@@ -130,7 +246,7 @@ const ComputerVision = () => {
         {/* Slider Handle */}
         <div 
           className="absolute top-0 bottom-0 w-1 bg-white shadow-lg z-10 transition-all duration-75 ease-out pointer-events-none"
-          style={{ left: `${sliderValues[project.id]}%` }}
+          style={{ left: `${sliderValue}%` }}
         >
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white rounded-full shadow-lg border-2 border-gray-300 flex items-center justify-center">
             <div className="flex space-x-0.5">
@@ -178,7 +294,7 @@ const ComputerVision = () => {
         </div>
       </section>
 
-      {/* Computer Vision Projects Carousel */}
+      {/* Computer Vision Projects Two-Level Carousel */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -186,29 +302,57 @@ const ComputerVision = () => {
               Our Computer Vision Projects in Action
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              See the power of our computer vision solutions through interactive before/after comparisons
+              Explore our comprehensive computer vision capabilities through interactive demonstrations
             </p>
           </div>
 
+          {/* Parent Carousel - Project Types */}
           <Carousel 
-            className="w-full max-w-5xl mx-auto"
+            className="w-full max-w-6xl mx-auto"
             opts={{
               loop: true,
               align: "start"
             }}
           >
             <CarouselContent>
-              {cvProjects.map((project) => (
-                <CarouselItem key={project.id}>
+              {cvProjectTypes.map((projectType) => (
+                <CarouselItem key={projectType.id}>
                   <Card className="border-0 shadow-lg">
                     <CardHeader className="text-center">
-                      <CardTitle className="text-2xl text-gray-900">{project.title}</CardTitle>
-                      <CardDescription className="text-lg text-gray-600">
-                        {project.description}
+                      <CardTitle className="text-3xl text-gray-900 mb-2">{projectType.title}</CardTitle>
+                      <CardDescription className="text-lg text-gray-600 mb-4">
+                        {projectType.description}
                       </CardDescription>
+                      <div className="bg-blue-50 p-4 rounded-lg">
+                        <h4 className="font-semibold text-blue-900 mb-2">Use Cases:</h4>
+                        <p className="text-blue-800 text-sm">{projectType.useCases}</p>
+                      </div>
                     </CardHeader>
                     <CardContent className="p-8">
-                      <BeforeAfterSlider project={project} />
+                      {/* Child Carousel - Sub Projects */}
+                      <Carousel 
+                        className="w-full"
+                        opts={{
+                          loop: true,
+                          align: "start"
+                        }}
+                      >
+                        <CarouselContent>
+                          {projectType.subProjects.map((subProject) => (
+                            <CarouselItem key={subProject.id}>
+                              <div className="space-y-4">
+                                <div className="text-center">
+                                  <h3 className="text-xl font-semibold text-gray-900 mb-2">{subProject.title}</h3>
+                                  <p className="text-gray-600">{subProject.description}</p>
+                                </div>
+                                <BeforeAfterSlider project={subProject} />
+                              </div>
+                            </CarouselItem>
+                          ))}
+                        </CarouselContent>
+                        <CarouselPrevious className="left-2" />
+                        <CarouselNext className="right-2" />
+                      </Carousel>
                     </CardContent>
                   </Card>
                 </CarouselItem>

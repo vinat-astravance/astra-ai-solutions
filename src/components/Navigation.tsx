@@ -21,6 +21,11 @@ const Navigation = () => {
     { path: "/document-ai", label: "Document AI" },
   ];
 
+  const generativeAIItems = [
+    { path: "/generative-ai/llms", label: "LLMs" },
+    { path: "/generative-ai/agentic-ai", label: "Agentic AI" },
+  ];
+
   const dataAnnotationItems = [
     { path: "/data-annotation", label: "Image" },
     { path: "/data-annotation", label: "Audio" },
@@ -73,13 +78,36 @@ const Navigation = () => {
                   <NavigationMenuContent>
                     <div className="grid w-[300px] gap-3 p-4">
                       {solutionItems.map((item) => (
-                        <Link
-                          key={item.path}
-                          to={item.path}
-                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                        >
-                          <div className="text-sm font-medium leading-none">{item.label}</div>
-                        </Link>
+                        <div key={item.path}>
+                          {item.label === "Generative AI" ? (
+                            <div>
+                              <Link
+                                to={item.path}
+                                className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                              >
+                                <div className="text-sm font-medium leading-none">{item.label}</div>
+                              </Link>
+                              <div className="ml-4 space-y-1">
+                                {generativeAIItems.map((subItem) => (
+                                  <Link
+                                    key={subItem.path}
+                                    to={subItem.path}
+                                    className="block select-none rounded-md p-2 text-xs leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground text-muted-foreground"
+                                  >
+                                    {subItem.label}
+                                  </Link>
+                                ))}
+                              </div>
+                            </div>
+                          ) : (
+                            <Link
+                              to={item.path}
+                              className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                            >
+                              <div className="text-sm font-medium leading-none">{item.label}</div>
+                            </Link>
+                          )}
+                        </div>
                       ))}
                     </div>
                   </NavigationMenuContent>
