@@ -49,15 +49,10 @@ const LLMs = () => {
               From multilingual capabilities to domain-specific expertise, we deliver tailored 
               language models that understand and generate human-like content.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex justify-center sm:justify-start">
               <Link to="/contact">
                 <Button size="lg" variant="secondary" className="px-8 py-3">
                   Start Your LLM Project
-                </Button>
-              </Link>
-              <Link to="/research">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-purple-600 px-8 py-3">
-                  Feasibility Consultation
                 </Button>
               </Link>
             </div>

@@ -1,4 +1,3 @@
-
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -44,15 +43,10 @@ const GenerativeAI = () => {
               Harness the power of generative AI with custom-trained models that understand your domain. 
               From advanced chatbots to content generation, we deliver LLM solutions that drive innovation.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex justify-center sm:justify-start">
               <Link to="/contact">
                 <Button size="lg" variant="secondary" className="px-8 py-3">
                   Start Your Project
-                </Button>
-              </Link>
-              <Link to="/research">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-purple-600 px-8 py-3">
-                  Feasibility Study
                 </Button>
               </Link>
             </div>

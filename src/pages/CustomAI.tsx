@@ -1,4 +1,3 @@
-
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -245,15 +244,10 @@ const CustomAI = () => {
               Cutting-edge video AI technology for analytics, enhancement, and intelligent processing. From real-time video 
               analysis to advanced content moderation and optimization.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex justify-center sm:justify-start">
               <Link to="/contact">
                 <Button size="lg" variant="secondary" className="px-8 py-3">
                   Explore Video AI
-                </Button>
-              </Link>
-              <Link to="/research">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-purple-600 px-8 py-3">
-                  Technical Deep Dive
                 </Button>
               </Link>
             </div>

@@ -1,4 +1,3 @@
-
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -44,15 +43,10 @@ const Research = () => {
               Make informed decisions with comprehensive research and feasibility studies. We validate AI approaches 
               and provide strategic insights before you invest in development.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex justify-center sm:justify-start">
               <Link to="/contact">
                 <Button size="lg" variant="secondary" className="px-8 py-3">
                   Request Study
-                </Button>
-              </Link>
-              <Link to="/about">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-teal-600 px-8 py-3">
-                  Our Expertise
                 </Button>
               </Link>
             </div>

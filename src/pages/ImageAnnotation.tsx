@@ -1,4 +1,3 @@
-
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -230,15 +229,10 @@ const ImageAnnotation = () => {
             <p className="text-xl mb-8 text-blue-100">
               Experience our comprehensive image annotation capabilities with precision tools for complex image labeling tasks.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex justify-center sm:justify-start">
               <Link to="/contact">
                 <Button size="lg" variant="secondary" className="px-8 py-3">
                   Try Interactive Demo
-                </Button>
-              </Link>
-              <Link to="/research">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600 px-8 py-3">
-                  Technical Specs
                 </Button>
               </Link>
             </div>
@@ -246,7 +240,6 @@ const ImageAnnotation = () => {
         </div>
       </section>
 
-      {/* Image Annotation Capabilities Carousel */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">

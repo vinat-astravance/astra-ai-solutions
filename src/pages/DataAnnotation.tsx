@@ -1,4 +1,3 @@
-
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -59,15 +58,10 @@ const DataAnnotation = () => {
               Transform your raw data into high-quality training datasets with our comprehensive annotation services. 
               From images to multi-sensor data, we provide expert human-in-the-loop labeling for all your AI needs.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex justify-center sm:justify-start">
               <Link to="/contact">
                 <Button size="lg" variant="secondary" className="px-8 py-3">
                   Get Quote
-                </Button>
-              </Link>
-              <Link to="/research">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600 px-8 py-3">
-                  Quality Guidelines
                 </Button>
               </Link>
             </div>
