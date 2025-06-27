@@ -13,6 +13,7 @@ import LLMs from "./pages/LLMs";
 import AgenticAI from "./pages/AgenticAI";
 import CustomAI from "./pages/CustomAI";
 import DataAnnotation from "./pages/DataAnnotation";
+import ImageAnnotation from "./pages/ImageAnnotation";
 import MLOps from "./pages/MLOps";
 import Research from "./pages/Research";
 import About from "./pages/About";
@@ -39,6 +40,7 @@ const App = () => (
             <Route path="/generative-ai/agentic-ai" element={<AgenticAI />} />
             <Route path="/custom-ai" element={<CustomAI />} />
             <Route path="/data-annotation" element={<DataAnnotation />} />
+            <Route path="/image-annotation" element={<ImageAnnotation />} />
             <Route path="/mlops" element={<MLOps />} />
             <Route path="/cloud-infrastructure" element={<CloudInfrastructure />} />
             <Route path="/research" element={<Research />} />

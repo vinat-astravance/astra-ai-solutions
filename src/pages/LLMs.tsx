@@ -1,4 +1,3 @@
-
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -82,11 +81,13 @@ const LLMs = () => {
             {services.map((service, index) => (
               <div key={index} className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-12 items-center`}>
                 <div className="lg:w-1/2">
-                  <img 
-                    src={service.image} 
-                    alt={service.title}
-                    className="w-full h-64 object-cover rounded-lg shadow-lg"
-                  />
+                  <div className="bg-gray-100 rounded-lg p-8 flex justify-center">
+                    <img 
+                      src={service.image} 
+                      alt={service.title}
+                      className="max-w-full h-auto rounded-lg shadow-lg"
+                    />
+                  </div>
                 </div>
                 <div className="lg:w-1/2">
                   <Card className="h-full border-0 shadow-none">

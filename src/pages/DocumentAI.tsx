@@ -75,12 +75,14 @@ const DocumentAI = () => {
             {services.map((service, index) => (
               <div key={index} className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-12 items-center`}>
                 <div className="lg:w-1/2">
-                  <div className="relative bg-gray-900 rounded-lg overflow-hidden shadow-lg">
-                    <div className="aspect-video bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center">
-                      <div className="text-center text-white">
-                        <service.icon className="w-16 h-16 mx-auto mb-4 opacity-80" />
-                        <p className="text-lg font-medium">Video Demo</p>
-                        <p className="text-sm opacity-80">Coming Soon</p>
+                  <div className="bg-gray-100 rounded-lg p-8 flex justify-center">
+                    <div className="relative bg-gray-900 rounded-lg overflow-hidden shadow-lg max-w-full">
+                      <div className="aspect-video bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center">
+                        <div className="text-center text-white">
+                          <service.icon className="w-16 h-16 mx-auto mb-4 opacity-80" />
+                          <p className="text-lg font-medium">Video Demo</p>
+                          <p className="text-sm opacity-80">Coming Soon</p>
+                        </div>
                       </div>
                     </div>
                   </div>

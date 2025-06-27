@@ -1,7 +1,6 @@
 
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
-import SemanticSegmentationCarousel from "@/components/SemanticSegmentationCarousel";
 import { Link } from "react-router-dom";
 
 const DataAnnotation = () => {
@@ -33,9 +32,6 @@ const DataAnnotation = () => {
         </div>
       </section>
 
-      {/* Interactive Semantic Segmentation Carousel */}
-      <SemanticSegmentationCarousel />
-
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -63,9 +59,11 @@ const DataAnnotation = () => {
                 we provide specialists with the necessary skills for data annotation services: 
                 2D bounding boxes, polygons, semantic segmentation, labeling, and point and landmark annotations.
               </p>
-              <Button className="bg-green-500 hover:bg-green-600 text-white px-8 py-3 text-lg font-semibold">
-                LEARN MORE
-              </Button>
+              <Link to="/image-annotation">
+                <Button className="bg-green-500 hover:bg-green-600 text-white px-8 py-3 text-lg font-semibold">
+                  LEARN MORE
+                </Button>
+              </Link>
             </div>
           </div>
 
