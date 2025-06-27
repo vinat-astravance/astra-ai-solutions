@@ -1,10 +1,225 @@
 
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
-import SemanticSegmentationCarousel from "@/components/SemanticSegmentationCarousel";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Link } from "react-router-dom";
+import { useState, useRef, useCallback, useEffect } from "react";
+import useEmblaCarousel from "embla-carousel-react";
+import SemanticSegmentationCarousel from "@/components/SemanticSegmentationCarousel";
 
 const ImageAnnotation = () => {
+  const [sliderValues, setSliderValues] = useState<{ [key: string]: number }>({});
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
+
+  const imageAnnotationTypes = [
+    {
+      id: "detection",
+      title: "Detection & Bounding Boxes",
+      description: "Precise object detection and localization using various bounding box techniques for object identification.",
+      subProjects: [
+        {
+          id: "2d-boxes",
+          title: "2D Bounding Boxes",
+          description: "Standard rectangular bounding boxes for object detection and localization",
+          beforeImage: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&w=800&q=80",
+          afterImage: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80"
+        },
+        {
+          id: "3d-boxes",
+          title: "3D Bounding Boxes",
+          description: "Three-dimensional bounding boxes for spatial object detection and depth estimation",
+          beforeImage: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80",
+          afterImage: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80"
+        }
+      ]
+    },
+    {
+      id: "segmentation",
+      title: "Segmentation",
+      description: "Pixel-level segmentation techniques for detailed image analysis and understanding.",
+      subProjects: [
+        {
+          id: "semantic-segmentation",
+          title: "Semantic Segmentation",
+          description: "Classify every pixel in an image to understand scene composition",
+          beforeImage: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=800&q=80",
+          afterImage: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80"
+        },
+        {
+          id: "instance-segmentation",
+          title: "Instance Segmentation",
+          description: "Identify and separate individual object instances in images",
+          beforeImage: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&w=800&q=80",
+          afterImage: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80"
+        },
+        {
+          id: "panoptic-segmentation",
+          title: "Panoptic Segmentation",
+          description: "Combine semantic and instance segmentation for complete scene understanding",
+          beforeImage: "https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?auto=format&fit=crop&w=800&q=80",
+          afterImage: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=800&q=80"
+        }
+      ]
+    },
+    {
+      id: "keypoints",
+      title: "Keypoints & Shape Annotations",
+      description: "Precise keypoint detection and shape annotation for detailed structural analysis.",
+      subProjects: [
+        {
+          id: "landmarks",
+          title: "Landmarks",
+          description: "Detect and annotate key landmark points in images for facial and object analysis",
+          beforeImage: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80",
+          afterImage: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&w=800&q=80"
+        },
+        {
+          id: "pose-estimation",
+          title: "Pose Estimation",
+          description: "Human pose detection and tracking for motion analysis",
+          beforeImage: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=80",
+          afterImage: "https://images.unsplash.com/photo-1544717297-fa95b6ee9643?auto=format&fit=crop&w=800&q=80"
+        },
+        {
+          id: "lines-splines",
+          title: "Lines/Splines",
+          description: "Precise line and curve annotations for structural and path analysis",
+          beforeImage: "https://images.unsplash.com/photo-1516110833967-0b5ee0d87d9b?auto=format&fit=crop&w=800&q=80",
+          afterImage: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80"
+        },
+        {
+          id: "polylines",
+          title: "Polylines",
+          description: "Complex polyline annotations for detailed shape and boundary marking",
+          beforeImage: "https://images.unsplash.com/photo-1533134486753-c833f0ed4866?auto=format&fit=crop&w=800&q=80",
+          afterImage: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=800&q=80"
+        }
+      ]
+    },
+    {
+      id: "tracking",
+      title: "Tracking & Counting",
+      description: "Advanced tracking and counting techniques for object analysis and monitoring.",
+      subProjects: [
+        {
+          id: "object-tracking",
+          title: "Object Tracking",
+          description: "Track objects across multiple frames for motion and behavior analysis",
+          beforeImage: "https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?auto=format&fit=crop&w=800&q=80",
+          afterImage: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=800&q=80"
+        },
+        {
+          id: "object-counting",
+          title: "Object Counting",
+          description: "Automated counting of objects in images for inventory and analysis",
+          beforeImage: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80",
+          afterImage: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80"
+        }
+      ]
+    }
+  ];
+
+  // Effect to update selected index when carousel changes
+  useEffect(() => {
+    if (!emblaApi) return;
+
+    const onSelect = () => {
+      setSelectedIndex(emblaApi.selectedScrollSnap());
+    };
+
+    emblaApi.on('select', onSelect);
+    onSelect(); // Set initial index
+
+    return () => {
+      emblaApi.off('select', onSelect);
+    };
+  }, [emblaApi]);
+
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>, projectId: string) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
+    
+    setSliderValues(prev => ({
+      ...prev,
+      [projectId]: percentage
+    }));
+  }, []);
+
+  const scrollTo = useCallback((index: number) => {
+    if (emblaApi) {
+      emblaApi.scrollTo(index);
+    }
+  }, [emblaApi]);
+
+  const BeforeAfterSlider = ({ project }: { project: any }) => {
+    const sliderValue = sliderValues[project.id] || 50;
+    
+    return (
+      <div className="relative w-full h-96 bg-gray-100 rounded-lg overflow-hidden">
+        {/* Before Image */}
+        <div 
+          className="absolute inset-0 transition-all duration-75 ease-out"
+          style={{ 
+            clipPath: `inset(0 ${100 - sliderValue}% 0 0)` 
+          }}
+        >
+          <img 
+            src={project.beforeImage}
+            alt={`${project.title} - Before`}
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute top-4 left-4 bg-black/70 text-white px-3 py-1 rounded text-sm font-medium">
+            Original
+          </div>
+        </div>
+        
+        {/* After Image */}
+        <div 
+          className="absolute inset-0 transition-all duration-75 ease-out"
+          style={{ 
+            clipPath: `inset(0 0 0 ${sliderValue}%)` 
+          }}
+        >
+          <img 
+            src={project.afterImage}
+            alt={`${project.title} - After`}
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute top-4 right-4 bg-blue-600 text-white px-3 py-1 rounded text-sm font-medium">
+            Annotated
+          </div>
+        </div>
+
+        {/* Interactive overlay */}
+        <div 
+          className="absolute inset-0 cursor-col-resize"
+          onMouseMove={(e) => handleMouseMove(e, project.id)}
+        />
+
+        {/* Slider Handle */}
+        <div 
+          className="absolute top-0 bottom-0 w-1 bg-white shadow-lg z-10 transition-all duration-75 ease-out pointer-events-none"
+          style={{ left: `${sliderValue}%` }}
+        >
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white rounded-full shadow-lg border-2 border-gray-300 flex items-center justify-center">
+            <div className="flex space-x-0.5">
+              <div className="w-0.5 h-4 bg-gray-400"></div>
+              <div className="w-0.5 h-4 bg-gray-400"></div>
+            </div>
+          </div>
+        </div>
+
+        {/* Instructions */}
+        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/70 text-white px-3 py-1 rounded text-sm">
+          Move mouse to compare
+        </div>
+      </div>
+    );
+  };
+
   return (
     <Layout>
       <section className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-20">
@@ -36,47 +251,92 @@ const ImageAnnotation = () => {
       {/* Interactive Semantic Segmentation Carousel */}
       <SemanticSegmentationCarousel />
 
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Image Annotation Capabilities Carousel */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Precision Annotation Tools
+              Image Annotation Capabilities
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Our advanced annotation platform provides pixel-perfect precision for complex image labeling tasks, 
-              supporting multiple annotation types and collaborative workflows.
+              Explore our comprehensive image annotation capabilities through interactive demonstrations
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-white rounded-lg shadow-lg p-6 border border-gray-200">
-              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
+          {/* Parent Carousel - Annotation Types */}
+          <div className="relative">
+            <div className="overflow-hidden" ref={emblaRef}>
+              <div className="flex">
+                {imageAnnotationTypes.map((annotationType, index) => (
+                  <div key={annotationType.id} className="flex-[0_0_100%] min-w-0">
+                    <Card className="border-0 shadow-lg mx-2">
+                      <CardHeader className="text-center border-b border-gray-200 bg-gradient-to-r from-blue-50 to-purple-50">
+                        <CardTitle className="text-4xl text-gray-900 mb-3 font-bold">{annotationType.title}</CardTitle>
+                        <CardDescription className="text-lg text-gray-700 mb-4 leading-relaxed">
+                          {annotationType.description}
+                        </CardDescription>
+                      </CardHeader>
+                      <CardContent className="p-8">
+                        {/* Child Carousel - Sub Projects */}
+                        <Carousel 
+                          className="w-full"
+                          opts={{
+                            loop: true,
+                            align: "start"
+                          }}
+                        >
+                          <CarouselContent>
+                            {annotationType.subProjects.map((subProject) => (
+                              <CarouselItem key={subProject.id}>
+                                <div className="space-y-4">
+                                  <div className="text-center bg-gray-50 p-4 rounded-lg border-l-4 border-blue-500">
+                                    <h3 className="text-2xl font-semibold text-gray-900 mb-2">{subProject.title}</h3>
+                                    <p className="text-gray-600 text-base">{subProject.description}</p>
+                                  </div>
+                                  <BeforeAfterSlider project={subProject} />
+                                </div>
+                              </CarouselItem>
+                            ))}
+                          </CarouselContent>
+                          <CarouselPrevious className="left-2" />
+                          <CarouselNext className="right-2" />
+                        </Carousel>
+                      </CardContent>
+                    </Card>
+                  </div>
+                ))}
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Bounding Box</h3>
-              <p className="text-gray-600">Precise rectangular annotations for object detection and localization tasks.</p>
             </div>
+            
+            {/* Custom Blue Arrow Buttons */}
+            <button
+              className="absolute left-8 top-1/2 -translate-y-1/2 w-12 h-12 bg-blue-600 hover:bg-blue-700 text-white rounded-full flex items-center justify-center shadow-lg transition-colors z-10"
+              onClick={() => emblaApi?.scrollPrev()}
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <button
+              className="absolute right-8 top-1/2 -translate-y-1/2 w-12 h-12 bg-blue-600 hover:bg-blue-700 text-white rounded-full flex items-center justify-center shadow-lg transition-colors z-10"
+              onClick={() => emblaApi?.scrollNext()}
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
 
-            <div className="bg-white rounded-lg shadow-lg p-6 border border-gray-200">
-              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Polygon</h3>
-              <p className="text-gray-600">Flexible polygon shapes for irregular object boundaries and complex geometries.</p>
-            </div>
-
-            <div className="bg-white rounded-lg shadow-lg p-6 border border-gray-200">
-              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Semantic Segmentation</h3>
-              <p className="text-gray-600">Pixel-level annotations for detailed scene understanding and object segmentation.</p>
+            {/* Indicator Dots */}
+            <div className="flex justify-center mt-6 space-x-2">
+              {imageAnnotationTypes.map((_, index) => (
+                <button
+                  key={index}
+                  className={`w-3 h-3 rounded-full transition-colors ${
+                    index === selectedIndex ? 'bg-blue-600' : 'bg-gray-300 hover:bg-gray-400'
+                  }`}
+                  onClick={() => scrollTo(index)}
+                />
+              ))}
             </div>
           </div>
         </div>

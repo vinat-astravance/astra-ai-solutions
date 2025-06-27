@@ -54,25 +54,27 @@ const Layout = ({ children }: LayoutProps) => {
             </div>
             
             <div>
-              <h3 className="font-semibold mb-4 text-foreground">Services</h3>
+              <h3 className="font-semibold mb-4 text-foreground">AI Services</h3>
               <ul className="space-y-2 text-muted-foreground text-sm">
                 <li>Computer Vision</li>
                 <li>Generative AI & LLMs</li>
                 <li>Custom AI Applications</li>
-                <li>Data Annotation</li>
-                <li>MLOps & Infrastructure</li>
-                <li>Research & Feasibility</li>
+                <li>Audio AI</li>
+                <li>Document AI</li>
+                <li>MLOps & Cloud Infrastructure</li>
               </ul>
             </div>
             
             <div>
-              <h3 className="font-semibold mb-4 text-foreground">Get Started</h3>
-              <p className="text-muted-foreground text-sm mb-4">
-                Ready to transform your business with AI?
-              </p>
-              <p className="text-muted-foreground text-sm">
-                Get in touch with our experts today.
-              </p>
+              <h3 className="font-semibold mb-4 text-foreground">Data Annotation</h3>
+              <ul className="space-y-2 text-muted-foreground text-sm">
+                <li>Image Annotation</li>
+                <li>Video Annotation</li>
+                <li>Audio Annotation</li>
+                <li>Text Annotation</li>
+                <li>Multi-Sensor Data</li>
+                <li>Data Cleaning & Enrichment</li>
+              </ul>
             </div>
           </div>
           
