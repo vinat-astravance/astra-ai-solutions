@@ -1,4 +1,3 @@
-
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -10,7 +9,12 @@ import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 
 const ImageAnnotation = () => {
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
+  const [emblaRef, emblaApi] = useEmblaCarousel({ 
+    loop: true,
+    duration: 25,
+    dragFree: false,
+    containScroll: 'trimSnaps'
+  });
 
   const imageAnnotationTypes = [
     {
@@ -160,7 +164,10 @@ const ImageAnnotation = () => {
                             className="w-full"
                             opts={{
                               loop: true,
-                              align: "start"
+                              align: "start",
+                              duration: 25,
+                              dragFree: false,
+                              containScroll: 'trimSnaps'
                             }}
                           >
                             <CarouselContent>

@@ -1,11 +1,15 @@
-
 import React, { useState, useCallback, useEffect } from 'react';
 import useEmblaCarousel from "embla-carousel-react";
 import CVProjectCard from './CVProjectCard';
 
 const CVCapabilitiesSection: React.FC = () => {
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
+  const [emblaRef, emblaApi] = useEmblaCarousel({ 
+    loop: true,
+    duration: 25,
+    dragFree: false,
+    containScroll: 'trimSnaps'
+  });
 
   const cvProjectTypes = [
     {

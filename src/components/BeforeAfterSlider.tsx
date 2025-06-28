@@ -6,7 +6,7 @@ interface BeforeAfterSliderProps {
     id: string;
     title: string;
     beforeImage: string;
-    afterImage: string;
+    afterImage?: string;
   };
 }
 
@@ -85,6 +85,19 @@ const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({ project }) => {
   }, [imageLoaded, calculateImageBounds]);
 
   const sliderLeft = imageBounds.left + (imageBounds.width * sliderValue / 100);
+
+  // If no afterImage, just show the single image
+  if (!project.afterImage) {
+    return (
+      <div className="relative w-full bg-white rounded-lg overflow-hidden" style={{ height: '540px' }}>
+        <img 
+          src={project.beforeImage}
+          alt={project.title}
+          className="w-full h-full object-contain"
+        />
+      </div>
+    );
+  }
 
   return (
     <div className="relative w-full bg-white rounded-lg overflow-hidden" style={{ height: '540px' }}>

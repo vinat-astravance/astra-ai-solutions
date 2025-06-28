@@ -37,7 +37,10 @@ const CVProjectCard: React.FC<CVProjectCardProps> = ({ projectType }) => {
             className="w-full"
             opts={{
               loop: true,
-              align: "start"
+              align: "start",
+              duration: 25,
+              dragFree: false,
+              containScroll: 'trimSnaps'
             }}
           >
             <CarouselContent>
@@ -48,17 +51,7 @@ const CVProjectCard: React.FC<CVProjectCardProps> = ({ projectType }) => {
                       <h3 className="text-2xl font-semibold text-gray-900 mb-2">{subProject.title}</h3>
                       <p className="text-gray-600 text-base">{subProject.description}</p>
                     </div>
-                    {subProject.afterImage ? (
-                      <BeforeAfterSlider project={subProject} />
-                    ) : (
-                      <div className="relative w-full bg-white rounded-lg overflow-hidden" style={{ height: '540px' }}>
-                        <img 
-                          src={subProject.beforeImage}
-                          alt={subProject.title}
-                          className="w-full h-full object-contain"
-                        />
-                      </div>
-                    )}
+                    <BeforeAfterSlider project={subProject} />
                   </div>
                 </CarouselItem>
               ))}
