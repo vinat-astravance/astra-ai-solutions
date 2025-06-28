@@ -21,7 +21,7 @@ const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({ project }) => {
   }, []);
 
   return (
-    <div className="relative w-full h-80 bg-gray-100 rounded-lg overflow-hidden">
+    <div className="relative w-full bg-gray-100 rounded-lg overflow-hidden" style={{ aspectRatio: '16/9', height: '540px' }}>
       {/* Before Image */}
       <div 
         className="absolute inset-0 transition-all duration-75 ease-out"
@@ -33,6 +33,7 @@ const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({ project }) => {
           src={project.beforeImage}
           alt={`${project.title} - Before`}
           className="w-full h-full object-cover"
+          style={{ objectFit: 'cover' }}
         />
         <div className="absolute top-4 left-4 bg-black/70 text-white px-3 py-1 rounded text-sm font-medium">
           Original
@@ -50,6 +51,7 @@ const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({ project }) => {
           src={project.afterImage}
           alt={`${project.title} - After`}
           className="w-full h-full object-cover"
+          style={{ objectFit: 'cover' }}
         />
         <div className="absolute top-4 right-4 bg-cyan-600 text-white px-3 py-1 rounded text-sm font-medium">
           Processed
