@@ -14,31 +14,31 @@ const Index = () => {
       title: "Computer Vision",
       description: "Advanced vision models for object detection, recognition, segmentation, OCR, and real-time analytics across industries.",
       link: "/computer-vision",
-      image: "/images/computer-vision.jpg"
+      image: "/images/home_page/cv.jpg"
     },
     {
       title: "Generative AI & LLMs",
       description: "Fine-tuned language models and diffusion systems for chatbots, content generation, and document processing.",
       link: "/generative-ai",
-      image: "/images/generative-ai.jpg"
+      image: "/images/home_page/llm.jpg"
     },
     {
       title: "Video AI Solutions",
       description: "Advanced video processing, detection, and generation capabilities including image-to-video transformation.",
       link: "/custom-ai",
-      image: "/images/custom-applications.jpg"
+      image: "/images/home_page/video_ai.jpg"
     },
     {
       title: "Data Annotation Services",
       description: "High-quality, human-in-the-loop data labeling for images, video, audio, and text classification.",
       link: "/data-annotation",
-      image: "/images/data-annotation.jpg"
+      image: "/images/home_page/da.jpg"
     },
     {
       title: "AI Infrastructure & MLOps",
       description: "Robust MLOps pipelines and scalable deployment across cloud and edge environments.",
       link: "/mlops",
-      image: "/images/infrastructure.jpg"
+      image: "/images/home_page/mlops.jpg"
     },
     {
       title: "Research & Feasibility",
