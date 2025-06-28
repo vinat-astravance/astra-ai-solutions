@@ -130,7 +130,7 @@ const ImageAnnotation = () => {
       </section>
 
       <section className="py-20 bg-gray-50">
-        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Image Annotation Capabilities
@@ -141,7 +141,7 @@ const ImageAnnotation = () => {
           </div>
 
           {/* Parent Carousel - Annotation Types */}
-          <div className="relative px-16">
+          <div className="relative px-12">
             <div className="overflow-hidden" ref={emblaRef}>
               <div className="flex">
                 {imageAnnotationTypes.map((annotationType, index) => (
@@ -188,9 +188,9 @@ const ImageAnnotation = () => {
               </div>
             </div>
             
-            {/* Parent carousel arrows - wider and positioned outside, at image middle */}
+            {/* Parent carousel arrows - closer positioning */}
             <button
-              className="absolute -left-6 top-[calc(50%+6rem)] -translate-y-1/2 w-12 h-12 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white rounded-full flex items-center justify-center shadow-lg transition-colors z-20"
+              className="absolute -left-4 top-[calc(50%+6rem)] -translate-y-1/2 w-12 h-12 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white rounded-full flex items-center justify-center shadow-lg transition-colors z-20"
               onClick={() => emblaApi?.scrollPrev()}
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -198,7 +198,7 @@ const ImageAnnotation = () => {
               </svg>
             </button>
             <button
-              className="absolute -right-6 top-[calc(50%+6rem)] -translate-y-1/2 w-12 h-12 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white rounded-full flex items-center justify-center shadow-lg transition-colors z-20"
+              className="absolute -right-4 top-[calc(50%+6rem)] -translate-y-1/2 w-12 h-12 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white rounded-full flex items-center justify-center shadow-lg transition-colors z-20"
               onClick={() => emblaApi?.scrollNext()}
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
