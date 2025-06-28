@@ -1,188 +1,203 @@
-
-import React, { useState, useCallback, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 interface BeforeAfterSliderProps {
   project: {
     id: string;
     title: string;
     beforeImage: string;
-    afterImage: string;
+    afterImage?: string;
   };
 }
 
 const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({ project }) => {
-  const [sliderValue, setSliderValue] = useState(50);
+  const [sliderPosition, setSliderPosition] = useState(50);
+  const [isDragging, setIsDragging] = useState(false);
+  const [imageDimensions, setImageDimensions] = useState({ width: 0, height: 0 });
   const containerRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
-  const [imageLoaded, setImageLoaded] = useState(false);
-  const [imageBounds, setImageBounds] = useState({
-    left: 0,
-    top: 0,
-    width: 0,
-    height: 0
-  });
-
-  const calculateImageBounds = useCallback(() => {
-    if (!imageRef.current || !containerRef.current) return;
-    
-    const img = imageRef.current;
-    const container = containerRef.current;
-    const containerRect = container.getBoundingClientRect();
-    
-    // Get the natural dimensions
-    const naturalRatio = img.naturalWidth / img.naturalHeight;
-    const containerRatio = containerRect.width / containerRect.height;
-    
-    let renderedWidth, renderedHeight, left, top;
-    
-    if (naturalRatio > containerRatio) {
-      // Image is wider - constrained by width
-      renderedWidth = containerRect.width;
-      renderedHeight = containerRect.width / naturalRatio;
-      left = 0;
-      top = (containerRect.height - renderedHeight) / 2;
-    } else {
-      // Image is taller - constrained by height
-      renderedHeight = containerRect.height;
-      renderedWidth = containerRect.height * naturalRatio;
-      top = 0;
-      left = (containerRect.width - renderedWidth) / 2;
-    }
-    
-    setImageBounds({ left, top, width: renderedWidth, height: renderedHeight });
-  }, []);
-
-  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-    if (!containerRef.current || !imageLoaded || imageBounds.width === 0) return;
-    
-    const rect = containerRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const imageLeft = imageBounds.left;
-    const imageRight = imageBounds.left + imageBounds.width;
-    
-    // Only respond to mouse movement within the image bounds
-    if (x < imageLeft || x > imageRight) return;
-    
-    const relativeX = x - imageLeft;
-    const percentage = Math.max(0, Math.min(100, (relativeX / imageBounds.width) * 100));
-    setSliderValue(percentage);
-  }, [imageLoaded, imageBounds]);
-
-  const handleImageLoad = () => {
-    setImageLoaded(true);
-    setTimeout(calculateImageBounds, 0); // Delay to ensure image is rendered
-  };
 
   useEffect(() => {
-    const handleResize = () => {
-      if (imageLoaded) {
-        calculateImageBounds();
+    const handleImageLoad = () => {
+      if (imageRef.current && containerRef.current) {
+        const img = imageRef.current;
+        const container = containerRef.current;
+        
+        const containerWidth = container.offsetWidth;
+        const containerHeight = container.offsetHeight;
+        
+        const imageAspectRatio = img.naturalWidth / img.naturalHeight;
+        const containerAspectRatio = containerWidth / containerHeight;
+        
+        let displayWidth, displayHeight;
+        
+        if (imageAspectRatio > containerAspectRatio) {
+          displayWidth = containerWidth;
+          displayHeight = containerWidth / imageAspectRatio;
+        } else {
+          displayHeight = containerHeight;
+          displayWidth = containerHeight * imageAspectRatio;
+        }
+        
+        setImageDimensions({ width: displayWidth, height: displayHeight });
       }
     };
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, [imageLoaded, calculateImageBounds]);
+    const img = imageRef.current;
+    if (img) {
+      if (img.complete) {
+        handleImageLoad();
+      } else {
+        img.addEventListener('load', handleImageLoad);
+        return () => img.removeEventListener('load', handleImageLoad);
+      }
+    }
+  }, [project.beforeImage, project.afterImage]);
 
-  const sliderLeft = imageBounds.left + (imageBounds.width * sliderValue / 100);
+  const handleMouseDown = (e: React.MouseEvent) => {
+    setIsDragging(true);
+    updateSliderPosition(e);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (isDragging) {
+      updateSliderPosition(e);
+    }
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  const updateSliderPosition = (e: React.MouseEvent) => {
+    if (!containerRef.current || imageDimensions.width === 0) return;
+    
+    const rect = containerRef.current.getBoundingClientRect();
+    const containerCenterX = rect.left + rect.width / 2;
+    const imageCenterX = containerCenterX;
+    const imageLeft = imageCenterX - imageDimensions.width / 2;
+    const imageRight = imageCenterX + imageDimensions.width / 2;
+    
+    const x = Math.max(imageLeft, Math.min(imageRight, e.clientX));
+    const relativeX = x - imageLeft;
+    const percentage = Math.max(0, Math.min(100, (relativeX / imageDimensions.width) * 100));
+    
+    setSliderPosition(percentage);
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setIsDragging(true);
+    updateSliderPositionTouch(e);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (isDragging) {
+      updateSliderPositionTouch(e);
+    }
+  };
+
+  const handleTouchEnd = () => {
+    setIsDragging(false);
+  };
+
+  const updateSliderPositionTouch = (e: React.TouchEvent) => {
+    if (!containerRef.current || imageDimensions.width === 0) return;
+    
+    const rect = containerRef.current.getBoundingClientRect();
+    const containerCenterX = rect.left + rect.width / 2;
+    const imageCenterX = containerCenterX;
+    const imageLeft = imageCenterX - imageDimensions.width / 2;
+    const imageRight = imageCenterX + imageDimensions.width / 2;
+    
+    const touch = e.touches[0];
+    const x = Math.max(imageLeft, Math.min(imageRight, touch.clientX));
+    const relativeX = x - imageLeft;
+    const percentage = Math.max(0, Math.min(100, (relativeX / imageDimensions.width) * 100));
+    
+    setSliderPosition(percentage);
+  };
+
+  // Calculate positions for labels
+  const containerCenterX = imageDimensions.width > 0 ? 50 : 50; // percentage
+  const imageLeftPercentage = imageDimensions.width > 0 ? 
+    (50 - (imageDimensions.width / 2) / (800 / 100)) : 0;
+  const imageRightPercentage = imageDimensions.width > 0 ? 
+    (50 + (imageDimensions.width / 2) / (800 / 100)) : 100;
 
   return (
     <div className="relative w-full bg-white rounded-lg overflow-hidden" style={{ height: '540px' }}>
-      {/* Before Image */}
       <div 
         ref={containerRef}
-        className="absolute inset-0 transition-all duration-75 ease-out"
-        style={{ 
-          clipPath: imageLoaded && imageBounds.width > 0 
-            ? `polygon(0 0, ${imageBounds.left + (imageBounds.width * sliderValue / 100)}px 0, ${imageBounds.left + (imageBounds.width * sliderValue / 100)}px 100%, 0 100%)`
-            : 'polygon(0 0, 50% 0, 50% 100%, 0 100%)'
-        }}
+        className="relative w-full h-full cursor-ew-resize select-none"
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
+        onMouseLeave={handleMouseUp}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
       >
+        {/* Before Image */}
         <img 
           ref={imageRef}
           src={project.beforeImage}
           alt={`${project.title} - Before`}
-          className="w-full h-full object-contain"
-          onLoad={handleImageLoad}
+          className="absolute inset-0 w-full h-full object-contain"
         />
-        {/* Original label - positioned at image edge */}
-        {imageLoaded && imageBounds.width > 0 && (
-          <div 
-            className="absolute bg-black/70 text-white px-3 py-1 text-sm font-medium"
-            style={{ 
-              left: `${imageBounds.left}px`,
-              top: `${imageBounds.top + 16}px`
+        
+        {/* After Image with clip path */}
+        {project.afterImage && (
+          <img 
+            src={project.afterImage}
+            alt={`${project.title} - After`}
+            className="absolute inset-0 w-full h-full object-contain"
+            style={{
+              clipPath: `polygon(${sliderPosition}% 0%, 100% 0%, 100% 100%, ${sliderPosition}% 100%)`
             }}
-          >
-            Original
-          </div>
+          />
         )}
-      </div>
-      
-      {/* After Image */}
-      <div 
-        className="absolute inset-0 transition-all duration-75 ease-out"
-        style={{ 
-          clipPath: imageLoaded && imageBounds.width > 0 
-            ? `polygon(${imageBounds.left + (imageBounds.width * sliderValue / 100)}px 0, 100% 0, 100% 100%, ${imageBounds.left + (imageBounds.width * sliderValue / 100)}px 100%)`
-            : 'polygon(50% 0, 100% 0, 100% 100%, 50% 100%)'
-        }}
-      >
-        <img 
-          src={project.afterImage}
-          alt={`${project.title} - After`}
-          className="w-full h-full object-contain"
-        />
-        {/* Processed label - positioned at image edge */}
-        {imageLoaded && imageBounds.width > 0 && (
-          <div 
-            className="absolute bg-cyan-600 text-white px-3 py-1 text-sm font-medium"
-            style={{ 
-              right: `${containerRef.current ? containerRef.current.clientWidth - (imageBounds.left + imageBounds.width) : 0}px`,
-              top: `${imageBounds.top + 16}px`
-            }}
-          >
-            Processed
-          </div>
+        
+        {/* Slider Line */}
+        {project.afterImage && imageDimensions.width > 0 && (
+          <>
+            <div 
+              className="absolute top-0 bottom-0 w-0.5 bg-white shadow-lg pointer-events-none z-10"
+              style={{
+                left: `calc(50% - ${imageDimensions.width / 2}px + ${(sliderPosition / 100) * imageDimensions.width}px)`
+              }}
+            />
+            
+            {/* Slider Handle */}
+            <div 
+              className="absolute w-8 h-8 bg-white rounded-full shadow-lg border-2 border-gray-300 pointer-events-none z-20 transform -translate-x-1/2 -translate-y-1/2"
+              style={{
+                left: `calc(50% - ${imageDimensions.width / 2}px + ${(sliderPosition / 100) * imageDimensions.width}px)`,
+                top: '50%'
+              }}
+            />
+          </>
         )}
-      </div>
-
-      {/* Interactive overlay - only over the image area */}
-      {imageLoaded && imageBounds.width > 0 && (
-        <div 
-          className="absolute cursor-col-resize"
-          style={{
-            left: `${imageBounds.left}px`,
-            top: `${imageBounds.top}px`,
-            width: `${imageBounds.width}px`,
-            height: `${imageBounds.height}px`
-          }}
-          onMouseMove={handleMouseMove}
-        />
-      )}
-
-      {/* Slider Handle - positioned only within image bounds */}
-      {imageLoaded && imageBounds.width > 0 && (
-        <div 
-          className="absolute w-0.5 bg-white shadow-lg z-10 transition-all duration-75 ease-out pointer-events-none"
-          style={{ 
-            left: `${sliderLeft}px`,
-            top: `${imageBounds.top}px`,
-            height: `${imageBounds.height}px`
-          }}
-        >
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white rounded-full shadow-lg border-2 border-gray-300 flex items-center justify-center">
-            <div className="flex space-x-0.5">
-              <div className="w-0.5 h-4 bg-gray-400"></div>
-              <div className="w-0.5 h-4 bg-gray-400"></div>
+        
+        {/* Labels */}
+        {project.afterImage && imageDimensions.width > 0 && (
+          <>
+            <div 
+              className="absolute top-4 bg-black bg-opacity-70 text-white px-3 py-1 rounded text-sm font-medium"
+              style={{
+                left: `calc(50% - ${imageDimensions.width / 2}px + 12px)`
+              }}
+            >
+              Original
             </div>
-          </div>
-        </div>
-      )}
-
-      {/* Instructions */}
-      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/70 text-white px-3 py-1 rounded text-sm">
-        Move mouse to compare
+            <div 
+              className="absolute top-4 bg-black bg-opacity-70 text-white px-3 py-1 rounded text-sm font-medium"
+              style={{
+                right: `calc(50% - ${imageDimensions.width / 2}px + 12px)`
+              }}
+            >
+              Processed
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
