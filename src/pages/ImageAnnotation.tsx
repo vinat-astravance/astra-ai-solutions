@@ -50,7 +50,7 @@ const ImageAnnotation = () => {
           id: "panoptic-segmentation",
           title: "Panoptic Segmentation",
           description: "Combine semantic and instance segmentation for complete scene understanding",
-          beforeImage: "/images/image_annotation/ps_parent.png",
+          beforeImage: "/images/image_annotation/ps_parent.jpg",
           afterImage: "/images/image_annotation/ps_child.png"
         }
       ]
