@@ -22,15 +22,8 @@ const ImageAnnotation = () => {
           id: "2d-boxes",
           title: "2D Bounding Boxes",
           description: "Standard rectangular bounding boxes for object detection and localization",
-          beforeImage: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&w=800&q=80",
-          afterImage: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80"
-        },
-        {
-          id: "3d-boxes",
-          title: "3D Bounding Boxes",
-          description: "Three-dimensional bounding boxes for spatial object detection and depth estimation",
-          beforeImage: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80",
-          afterImage: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80"
+          beforeImage: "/images/image_annotation/2d_detection_parent.jpg",
+          afterImage: "/images/image_annotation/2d_detection_child.jpg"
         }
       ]
     },
@@ -43,22 +36,22 @@ const ImageAnnotation = () => {
           id: "semantic-segmentation",
           title: "Semantic Segmentation",
           description: "Classify every pixel in an image to understand scene composition",
-          beforeImage: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=800&q=80",
-          afterImage: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80"
+          beforeImage: "/images/image_annotation/ss_parent.jpg",
+          afterImage: "/images/image_annotation/ss_child.png"
         },
         {
           id: "instance-segmentation",
           title: "Instance Segmentation",
           description: "Identify and separate individual object instances in images",
-          beforeImage: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&w=800&q=80",
-          afterImage: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80"
+          beforeImage: "/images/image_annotation/is_parent.png",
+          afterImage: "/images/image_annotation/is_child.png"
         },
         {
           id: "panoptic-segmentation",
           title: "Panoptic Segmentation",
           description: "Combine semantic and instance segmentation for complete scene understanding",
-          beforeImage: "https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?auto=format&fit=crop&w=800&q=80",
-          afterImage: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=800&q=80"
+          beforeImage: "/images/image_annotation/ps_parent.png",
+          afterImage: "/images/image_annotation/ps_child.png"
         }
       ]
     },
@@ -68,53 +61,25 @@ const ImageAnnotation = () => {
       description: "Precise keypoint detection and shape annotation for detailed structural analysis.",
       subProjects: [
         {
-          id: "landmarks",
-          title: "Landmarks",
-          description: "Detect and annotate key landmark points in images for facial and object analysis",
-          beforeImage: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80",
-          afterImage: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&w=800&q=80"
-        },
-        {
           id: "pose-estimation",
           title: "Pose Estimation",
           description: "Human pose detection and tracking for motion analysis",
-          beforeImage: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=80",
-          afterImage: "https://images.unsplash.com/photo-1544717297-fa95b6ee9643?auto=format&fit=crop&w=800&q=80"
+          beforeImage: "/images/image_annotation/pe_parent.jpg",
+          afterImage: "/images/image_annotation/pe_child.jpg"
         },
         {
           id: "lines-splines",
           title: "Lines/Splines",
           description: "Precise line and curve annotations for structural and path analysis",
-          beforeImage: "https://images.unsplash.com/photo-1516110833967-0b5ee0d87d9b?auto=format&fit=crop&w=800&q=80",
-          afterImage: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80"
+          beforeImage: "/images/image_annotation/spline_parent.jpg",
+          afterImage: "/images/image_annotation/spline_child.png"
         },
         {
-          id: "polylines",
-          title: "Polylines",
-          description: "Complex polyline annotations for detailed shape and boundary marking",
-          beforeImage: "https://images.unsplash.com/photo-1533134486753-c833f0ed4866?auto=format&fit=crop&w=800&q=80",
-          afterImage: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=800&q=80"
-        }
-      ]
-    },
-    {
-      id: "tracking",
-      title: "Tracking & Counting",
-      description: "Advanced tracking and counting techniques for object analysis and monitoring.",
-      subProjects: [
-        {
-          id: "object-tracking",
-          title: "Object Tracking",
-          description: "Track objects across multiple frames for motion and behavior analysis",
-          beforeImage: "https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?auto=format&fit=crop&w=800&q=80",
-          afterImage: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=800&q=80"
-        },
-        {
-          id: "object-counting",
-          title: "Object Counting",
-          description: "Automated counting of objects in images for inventory and analysis",
-          beforeImage: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80",
-          afterImage: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80"
+          id: "landmarks",
+          title: "Landmarks",
+          description: "Detect and annotate key landmark points in images for facial and object analysis",
+          beforeImage: "/images/image_annotation/landmark_parent.jpg",
+          afterImage: "/images/image_annotation/landmark_child.jpg"
         }
       ]
     }

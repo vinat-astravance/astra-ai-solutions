@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const Blogs = () => {
   const blogArticles = [
+    /*
     {
       title: "YOLOv12: The Future of Real-Time Object Detection with Attention Mechanisms",
       url: "https://medium.com/@fahey_james/yolov12-the-future-of-real-time-object-detection-with-attention-mechanisms-df6d910722e7",
@@ -40,6 +41,7 @@ const Blogs = () => {
       image: "/images/research.jpg",
       description: "Systematic approaches to AI research and development for practical applications."
     }
+    */
   ];
 
   return (

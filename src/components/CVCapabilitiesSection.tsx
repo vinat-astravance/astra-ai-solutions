@@ -21,18 +21,24 @@ const CVCapabilitiesSection: React.FC = () => {
           afterImage: "/images/computer_vision/detection_child.png"
         },
         {
-          id: "face-recognition",
-          title: "Face Recognition",
-          description: "Accurate facial recognition and identification systems for security applications",
-          beforeImage: "/images/computer_vision/fr_parent.png",
-          afterImage: "/images/computer_vision/fr_child.png"
-        },
-        {
           id: "anomaly-detection",
           title: "Anomaly Detection",
           description: "Identify unusual patterns and defects in manufacturing and quality control",
           beforeImage: "/images/computer_vision/fault_parent.jpg",
           afterImage: "/images/computer_vision/fault_child.jpg"
+        },
+        {
+          id: "object-counting",
+          title: "Object Counting",
+          description: "Automated counting of objects in images for inventory and analysis",
+          beforeImage: "/images/computer_vision/oc.png"
+        },
+        {
+          id: "face-recognition",
+          title: "Face Recognition",
+          description: "Accurate facial recognition and identification systems for security applications",
+          beforeImage: "/images/computer_vision/fr_parent.png",
+          afterImage: "/images/computer_vision/fr_child.png"
         }
       ]
     },
@@ -45,22 +51,22 @@ const CVCapabilitiesSection: React.FC = () => {
           id: "semantic-segmentation",
           title: "Semantic Segmentation",
           description: "Classify every pixel in an image to understand scene composition",
-          beforeImage: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=800&q=80",
-          afterImage: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80"
+          beforeImage: "/images/computer_vision/segmentation_parent.png",
+          afterImage: "/images/computer_vision/segmentation_child.png"
         },
         {
           id: "instance-segmentation",
           title: "Instance Segmentation",
           description: "Identify and separate individual object instances in images",
-          beforeImage: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&w=800&q=80",
-          afterImage: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80"
+          beforeImage: "/images/computer_vision/is_parent.png",
+          afterImage: "/images/computer_vision/is_child.png"
         },
         {
           id: "panoptic-segmentation",
           title: "Panoptic Segmentation",
           description: "Combine semantic and instance segmentation for complete scene understanding",
-          beforeImage: "/images/computer_vision/segmentation_parent.png",
-          afterImage: "/images/computer_vision/segmentation_child.png"
+          beforeImage: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=800&q=80",
+          afterImage: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80"
         }
       ]
     },
@@ -87,29 +93,29 @@ const CVCapabilitiesSection: React.FC = () => {
           id: "super-resolution",
           title: "Super-Resolution",
           description: "Enhance image resolution and quality using AI upscaling",
-          beforeImage: "https://images.unsplash.com/photo-1516110833967-0b5ee0d87d9b?auto=format&fit=crop&w=800&q=80",
-          afterImage: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80"
+          beforeImage: "/images/computer_vision/sr_parent.jpg",
+          afterImage: "/images/computer_vision/sr_child.jpg"
         },
-        {
-          id: "dehazing",
-          title: "Dehazing",
-          description: "Remove atmospheric haze and improve image clarity",
-          beforeImage: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=800&q=80",
-          afterImage: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=800&q=80&brightness=1.2"
-        },
-        {
+        /*{
           id: "inpainting",
           title: "Inpainting",
           description: "Intelligently fill missing or damaged parts of images",
           beforeImage: "https://images.unsplash.com/photo-1533134486753-c833f0ed4866?auto=format&fit=crop&w=800&q=80",
           afterImage: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=800&q=80"
-        },
+        },*/
         {
           id: "enhancement",
           title: "Enhancement",
           description: "General image enhancement for better visual quality",
-          beforeImage: "https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?auto=format&fit=crop&w=800&q=80",
-          afterImage: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=800&q=80"
+          beforeImage: "/images/computer_vision/ie_parent.png",
+          afterImage: "/images/computer_vision/ie_child.png"
+        },
+        {
+          id: "dehazing",
+          title: "Dehazing",
+          description: "Remove atmospheric haze and improve image clarity",
+          beforeImage: "/images/computer_vision/id_parent.jpg",
+          afterImage: "/images/computer_vision/id_child.jpg"
         }
       ]
     },
