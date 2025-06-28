@@ -143,10 +143,11 @@ const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({ project }) => {
       {/* Single Slider Handle - positioned within image bounds only */}
       {imageBounds.width > 0 && (
         <div 
-          className="absolute w-1 bg-white shadow-lg z-10 pointer-events-none"
+          className="absolute bg-white shadow-lg z-10 pointer-events-none"
           style={{ 
-            left: `${imageBounds.left + (sliderValue / 100) * imageBounds.width}px`,
+            left: `${imageBounds.left + (sliderValue / 100) * imageBounds.width - 1}px`,
             top: `${imageBounds.top}px`,
+            width: '2px',
             height: `${imageBounds.height}px`
           }}
         >
