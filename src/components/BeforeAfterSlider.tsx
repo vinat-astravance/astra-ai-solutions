@@ -76,7 +76,7 @@ const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({ project }) => {
       <div 
         className="absolute inset-0 transition-all duration-75 ease-out"
         style={{ 
-          clipPath: `inset(0 ${100 - (sliderValue * imageBounds.width / (containerRef.current?.offsetWidth || 1))}% 0 0)` 
+          clipPath: `inset(0 ${100 - sliderValue}% 0 0)` 
         }}
       >
         <img 
@@ -86,22 +86,25 @@ const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({ project }) => {
           className="w-full h-full object-contain"
           onLoad={handleImageLoad}
         />
-        <div 
-          className="absolute bg-black/70 text-white px-3 py-1 rounded text-sm font-medium"
-          style={{ 
-            top: `${imageBounds.top + 16}px`,
-            left: `${imageBounds.left + 16}px`
-          }}
-        >
-          Original
-        </div>
+        {/* Original label - positioned at left edge of image */}
+        {imageBounds.width > 0 && (
+          <div 
+            className="absolute bg-black/70 text-white px-3 py-1 rounded text-sm font-medium"
+            style={{ 
+              top: `${imageBounds.top + 16}px`,
+              left: `${imageBounds.left + 16}px`
+            }}
+          >
+            Original
+          </div>
+        )}
       </div>
       
       {/* After Image */}
       <div 
         className="absolute inset-0 transition-all duration-75 ease-out"
         style={{ 
-          clipPath: `inset(0 0 0 ${(sliderValue * imageBounds.width / (containerRef.current?.offsetWidth || 1))}%)` 
+          clipPath: `inset(0 0 0 ${sliderValue}%)` 
         }}
       >
         <img 
@@ -109,39 +112,45 @@ const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({ project }) => {
           alt={`${project.title} - After`}
           className="w-full h-full object-contain"
         />
-        <div 
-          className="absolute bg-cyan-600 text-white px-3 py-1 rounded text-sm font-medium"
-          style={{ 
-            top: `${imageBounds.top + 16}px`,
-            right: `${containerRef.current?.offsetWidth ? containerRef.current.offsetWidth - (imageBounds.left + imageBounds.width) + 16 : 16}px`
-          }}
-        >
-          Processed
-        </div>
+        {/* Processed label - positioned at right edge of image */}
+        {imageBounds.width > 0 && (
+          <div 
+            className="absolute bg-cyan-600 text-white px-3 py-1 rounded text-sm font-medium"
+            style={{ 
+              top: `${imageBounds.top + 16}px`,
+              right: `${containerRef.current?.offsetWidth ? containerRef.current.offsetWidth - (imageBounds.left + imageBounds.width) + 16 : 16}px`
+            }}
+          >
+            Processed
+          </div>
+        )}
       </div>
 
       {/* Interactive overlay - only over image area */}
-      <div 
-        className="absolute cursor-col-resize"
-        style={{
-          left: `${imageBounds.left}px`,
-          top: `${imageBounds.top}px`,
-          width: `${imageBounds.width}px`,
-          height: `${imageBounds.height}px`
-        }}
-        onMouseMove={handleMouseMove}
-      />
-
-      {/* Slider Handle - positioned within image bounds */}
       {imageBounds.width > 0 && (
         <div 
-          className="absolute top-0 bottom-0 w-1 bg-white shadow-lg z-10 transition-all duration-75 ease-out pointer-events-none"
+          className="absolute cursor-col-resize"
+          style={{
+            left: `${imageBounds.left}px`,
+            top: `${imageBounds.top}px`,
+            width: `${imageBounds.width}px`,
+            height: `${imageBounds.height}px`
+          }}
+          onMouseMove={handleMouseMove}
+        />
+      )}
+
+      {/* Single Slider Handle - positioned within image bounds only */}
+      {imageBounds.width > 0 && (
+        <div 
+          className="absolute w-1 bg-white shadow-lg z-10 transition-all duration-75 ease-out pointer-events-none"
           style={{ 
             left: `${imageBounds.left + (sliderValue / 100) * imageBounds.width}px`,
             top: `${imageBounds.top}px`,
             height: `${imageBounds.height}px`
           }}
         >
+          {/* Slider Handle Circle */}
           <div 
             className="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-white rounded-full shadow-lg border-2 border-gray-300 flex items-center justify-center"
             style={{ top: `${imageBounds.height / 2 - 16}px` }}
