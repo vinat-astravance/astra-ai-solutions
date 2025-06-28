@@ -146,7 +146,7 @@ const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({ project }) => {
           alt={`${project.title} - After`}
           className="w-full h-full object-contain"
         />
-        {/* Processed label - positioned at image edge */}
+        {/* Annotated label - positioned at image edge */}
         {imageLoaded && imageBounds.width > 0 && (
           <div 
             className="absolute bg-cyan-600 text-white px-3 py-1 text-sm font-medium"
@@ -155,7 +155,7 @@ const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({ project }) => {
               top: `${imageBounds.top + 16}px`
             }}
           >
-            Processed
+            Annotated
           </div>
         )}
       </div>
