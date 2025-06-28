@@ -74,7 +74,7 @@ const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({ project }) => {
     <div ref={containerRef} className="relative w-full bg-white rounded-lg overflow-hidden" style={{ height: '540px' }}>
       {/* Before Image */}
       <div 
-        className="absolute inset-0 transition-all duration-75 ease-out"
+        className="absolute inset-0"
         style={{ 
           clipPath: `inset(0 ${100 - sliderValue}% 0 0)` 
         }}
@@ -102,7 +102,7 @@ const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({ project }) => {
       
       {/* After Image */}
       <div 
-        className="absolute inset-0 transition-all duration-75 ease-out"
+        className="absolute inset-0"
         style={{ 
           clipPath: `inset(0 0 0 ${sliderValue}%)` 
         }}
@@ -143,7 +143,7 @@ const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({ project }) => {
       {/* Single Slider Handle - positioned within image bounds only */}
       {imageBounds.width > 0 && (
         <div 
-          className="absolute w-1 bg-white shadow-lg z-10 transition-all duration-75 ease-out pointer-events-none"
+          className="absolute w-1 bg-white shadow-lg z-10 pointer-events-none"
           style={{ 
             left: `${imageBounds.left + (sliderValue / 100) * imageBounds.width}px`,
             top: `${imageBounds.top}px`,
