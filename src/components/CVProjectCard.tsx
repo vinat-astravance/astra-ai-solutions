@@ -9,7 +9,7 @@ interface SubProject {
   title: string;
   description: string;
   beforeImage: string;
-  afterImage: string;
+  afterImage?: string;
 }
 
 interface CVProjectCardProps {
@@ -30,7 +30,7 @@ const CVProjectCard: React.FC<CVProjectCardProps> = ({ projectType }) => {
           {projectType.description}
         </CardDescription>
       </CardHeader>
-      <CardContent className="p-8">
+      <CardContent className="p-8 bg-white">
         {/* Child Carousel - Sub Projects */}
         <div className="max-w-5xl mx-auto relative">
           <Carousel 
@@ -48,7 +48,17 @@ const CVProjectCard: React.FC<CVProjectCardProps> = ({ projectType }) => {
                       <h3 className="text-2xl font-semibold text-gray-900 mb-2">{subProject.title}</h3>
                       <p className="text-gray-600 text-base">{subProject.description}</p>
                     </div>
-                    <BeforeAfterSlider project={subProject} />
+                    {subProject.afterImage ? (
+                      <BeforeAfterSlider project={subProject} />
+                    ) : (
+                      <div className="relative w-full bg-white rounded-lg overflow-hidden" style={{ height: '540px' }}>
+                        <img 
+                          src={subProject.beforeImage}
+                          alt={subProject.title}
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
+                    )}
                   </div>
                 </CarouselItem>
               ))}
