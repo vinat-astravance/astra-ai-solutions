@@ -11,21 +11,21 @@ const DocumentAI = () => {
       description: "Automatically categorize and organize documents using advanced AI models that understand document structure, content, and context.",
       icon: FileText,
       features: ["Multi-format Support", "Custom Categories", "Confidence Scoring", "Batch Processing"],
-      videoUrl: "https://videos.unsplash.com/video/854: Seconds of a person typing on a laptop"
+      gifUrl: "/gifs/document-classification.gif"
     },
     {
       title: "Smart Search & Document Q&A",
       description: "Enable intelligent document search and question-answering capabilities that understand context and provide precise answers from your document corpus.",
       icon: Search,
       features: ["Semantic Search", "Natural Language Queries", "Context-Aware Answers", "Multi-document Reasoning"],
-      videoUrl: "https://videos.unsplash.com/video/1072: Person using a computer with documents"
+      gifUrl: "/gifs/smart-search.gif"
     },
     {
       title: "OCR & Content Extraction",
       description: "Extract text, tables, and structured data from scanned documents, images, and PDFs with high accuracy using advanced OCR technology.",
       icon: ScanLine,
       features: ["High-Accuracy OCR", "Table Extraction", "Form Processing", "Handwriting Recognition"],
-      videoUrl: "https://videos.unsplash.com/video/1234: Document scanning process"
+      gifUrl: "/gifs/ocr-extraction.gif"
     }
   ];
 
@@ -70,14 +70,12 @@ const DocumentAI = () => {
               <div key={index} className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-12 items-center`}>
                 <div className="lg:w-1/2">
                   <div className="bg-gray-100 rounded-lg p-8 flex justify-center">
-                    <div className="relative bg-gray-900 rounded-lg overflow-hidden shadow-lg max-w-full">
-                      <div className="aspect-video bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center">
-                        <div className="text-center text-white">
-                          <service.icon className="w-16 h-16 mx-auto mb-4 opacity-80" />
-                          <p className="text-lg font-medium">Video Demo</p>
-                          <p className="text-sm opacity-80">Coming Soon</p>
-                        </div>
-                      </div>
+                    <div className="relative bg-white rounded-lg overflow-hidden shadow-lg max-w-full">
+                      <img 
+                        src={service.gifUrl} 
+                        alt={`${service.title} demonstration`}
+                        className="w-full h-auto max-w-md rounded-lg"
+                      />
                     </div>
                   </div>
                 </div>
