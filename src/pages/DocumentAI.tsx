@@ -1,3 +1,4 @@
+
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -11,21 +12,21 @@ const DocumentAI = () => {
       description: "Automatically categorize and organize documents using advanced AI models that understand document structure, content, and context.",
       icon: FileText,
       features: ["Multi-format Support", "Custom Categories", "Confidence Scoring", "Batch Processing"],
-      gifUrl: "/gifs/document-classification.gif"
+      gifUrl: "https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif"
     },
     {
       title: "Smart Search & Document Q&A",
       description: "Enable intelligent document search and question-answering capabilities that understand context and provide precise answers from your document corpus.",
       icon: Search,
       features: ["Semantic Search", "Natural Language Queries", "Context-Aware Answers", "Multi-document Reasoning"],
-      gifUrl: "/gifs/smart-search.gif"
+      gifUrl: "https://media.giphy.com/media/3oKIPnAiaMCws8nOsE/giphy.gif"
     },
     {
       title: "OCR & Content Extraction",
       description: "Extract text, tables, and structured data from scanned documents, images, and PDFs with high accuracy using advanced OCR technology.",
       icon: ScanLine,
       features: ["High-Accuracy OCR", "Table Extraction", "Form Processing", "Handwriting Recognition"],
-      gifUrl: "/gifs/ocr-extraction.gif"
+      gifUrl: "https://media.giphy.com/media/l46Cy1rHbQ92uuLXa/giphy.gif"
     }
   ];
 
