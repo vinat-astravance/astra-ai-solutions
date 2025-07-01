@@ -1,3 +1,4 @@
+
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -23,6 +24,18 @@ const Index = () => {
       image: "/images/home_page/llm.jpg"
     },
     {
+      title: "Document AI",
+      description: "Intelligent document processing with OCR, classification, search, and automated content extraction capabilities.",
+      link: "/document-ai",
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+    },
+    {
+      title: "Audio AI",
+      description: "Advanced audio processing solutions including speech recognition, voice synthesis, emotion detection, and sound analysis.",
+      link: "/audio-ai",
+      image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+    },
+    {
       title: "Data Annotation Services",
       description: "High-quality, human-in-the-loop data labeling for images, video, audio, and text classification.",
       link: "/data-annotation",
@@ -39,6 +52,12 @@ const Index = () => {
       description: "Deep research and feasibility studies to validate AI approaches before development begins.",
       link: "/research",
       image: "/images/research.jpg"
+    },
+    {
+      title: "Cloud Infrastructure",
+      description: "Scalable cloud infrastructure solutions through strategic partnerships with leading providers for reliable IaaS deployment.",
+      link: "/cloud-infrastructure",
+      image: "https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
     }
   ];
 
