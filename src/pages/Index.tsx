@@ -106,7 +106,7 @@ const Index = () => {
                   <img 
                     src={service.gifUrl || service.image} 
                     alt={service.title}
-                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                    className="max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105"
                   />
                 </div>
                 <CardHeader>
