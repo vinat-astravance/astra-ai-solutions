@@ -1,4 +1,3 @@
-
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
@@ -76,12 +75,15 @@ const Navigation = () => {
                   {solutionItems.map((item) => (
                     item.hasSubmenu ? (
                       <div key={item.path} className="relative group/sub">
-                        <div className="px-4 py-2 text-gray-700 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 cursor-pointer flex items-center justify-between">
+                        <Link
+                          to={item.path}
+                          className="px-4 py-2 text-gray-700 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 cursor-pointer flex items-center justify-between"
+                        >
                           {item.label}
                           <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>
-                        </div>
+                        </Link>
                         
                         {/* Computer Vision Submenu */}
                         {item.path === "/computer-vision" && (
