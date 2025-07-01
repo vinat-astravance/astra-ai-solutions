@@ -14,7 +14,8 @@ const Index = () => {
       title: "Computer Vision",
       description: "Advanced vision models for object detection, recognition, segmentation, OCR, and real-time analytics across industries.",
       link: "/computer-vision",
-      image: "/images/home_page/cv.jpg"
+      image: "/images/home_page/cv.jpg",
+      gifUrl: "https://media.giphy.com/media/3oKIPnAiaMCws8nOsE/giphy.gif"
     },
     {
       title: "Generative AI & LLMs",
@@ -103,7 +104,7 @@ const Index = () => {
               <Card key={index} className="hover:shadow-lg transition-shadow duration-300 overflow-hidden">
                 <div className="aspect-video overflow-hidden">
                   <img 
-                    src={service.image} 
+                    src={service.gifUrl || service.image} 
                     alt={service.title}
                     className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                   />
