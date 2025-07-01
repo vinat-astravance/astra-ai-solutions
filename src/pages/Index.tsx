@@ -1,4 +1,3 @@
-
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -12,7 +11,7 @@ const Index = () => {
   const services = [
     {
       title: "Computer Vision",
-      description: "Advanced vision models for object detection, recognition, segmentation, OCR, and real-time analytics across industries.",
+      description: "Comprehensive visual AI solutions including image analysis, video processing, object detection, and real-time analytics.",
       link: "/computer-vision",
       image: "/images/home_page/cv.jpg",
       gifUrl: "https://media.giphy.com/media/3oKIPnAiaMCws8nOsE/giphy.gif"
@@ -22,12 +21,6 @@ const Index = () => {
       description: "Fine-tuned language models and diffusion systems for chatbots, content generation, and document processing.",
       link: "/generative-ai",
       image: "/images/home_page/llm.jpg"
-    },
-    {
-      title: "Video AI Solutions",
-      description: "Advanced video processing, detection, and generation capabilities including image-to-video transformation.",
-      link: "/custom-ai",
-      image: "/images/home_page/video_ai.jpg"
     },
     {
       title: "Data Annotation Services",

@@ -6,13 +6,17 @@ const Navigation = () => {
   const location = useLocation();
 
   const solutionItems = [
-    { path: "/computer-vision", label: "Computer Vision" },
+    { path: "/computer-vision", label: "Computer Vision", hasSubmenu: true },
     { path: "/generative-ai", label: "Generative AI", hasSubmenu: true },
-    { path: "/custom-ai", label: "Video AI" },
     { path: "/document-ai", label: "Document AI" },
     { path: "/audio-ai", label: "Audio AI" },
     { path: "/mlops", label: "MLOps" },
     { path: "/cloud-infrastructure", label: "Cloud Infrastructure" },
+  ];
+
+  const computerVisionItems = [
+    { path: "/image-ai", label: "Image AI" },
+    { path: "/custom-ai", label: "Video AI" },
   ];
 
   const generativeAIItems = [
@@ -79,20 +83,39 @@ const Navigation = () => {
                           </svg>
                         </div>
                         
-                        {/* Generative AI Submenu */}
-                        <div className="absolute left-full top-0 ml-1 w-48 bg-white border border-blue-200 shadow-xl rounded-md opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-200 z-50">
-                          <div className="py-2">
-                            {generativeAIItems.map((subItem) => (
-                              <Link
-                                key={subItem.path}
-                                to={subItem.path}
-                                className="block px-4 py-2 text-gray-600 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50"
-                              >
-                                {subItem.label}
-                              </Link>
-                            ))}
+                        {/* Computer Vision Submenu */}
+                        {item.path === "/computer-vision" && (
+                          <div className="absolute left-full top-0 ml-1 w-48 bg-white border border-blue-200 shadow-xl rounded-md opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-200 z-50">
+                            <div className="py-2">
+                              {computerVisionItems.map((subItem) => (
+                                <Link
+                                  key={subItem.path}
+                                  to={subItem.path}
+                                  className="block px-4 py-2 text-gray-600 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50"
+                                >
+                                  {subItem.label}
+                                </Link>
+                              ))}
+                            </div>
                           </div>
-                        </div>
+                        )}
+                        
+                        {/* Generative AI Submenu */}
+                        {item.path === "/generative-ai" && (
+                          <div className="absolute left-full top-0 ml-1 w-48 bg-white border border-blue-200 shadow-xl rounded-md opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-200 z-50">
+                            <div className="py-2">
+                              {generativeAIItems.map((subItem) => (
+                                <Link
+                                  key={subItem.path}
+                                  to={subItem.path}
+                                  className="block px-4 py-2 text-gray-600 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50"
+                                >
+                                  {subItem.label}
+                                </Link>
+                              ))}
+                            </div>
+                          </div>
+                        )}
                       </div>
                     ) : (
                       <Link

@@ -8,6 +8,7 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import ComputerVision from "./pages/ComputerVision";
+import ImageAI from "./pages/ImageAI";
 import GenerativeAI from "./pages/GenerativeAI";
 import LLMs from "./pages/LLMs";
 import AgenticAI from "./pages/AgenticAI";
@@ -40,6 +41,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/computer-vision" element={<ComputerVision />} />
+            <Route path="/image-ai" element={<ImageAI />} />
             <Route path="/generative-ai" element={<GenerativeAI />} />
             <Route path="/generative-ai/llms" element={<LLMs />} />
             <Route path="/generative-ai/agentic-ai" element={<AgenticAI />} />
