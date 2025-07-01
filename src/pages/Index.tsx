@@ -1,3 +1,4 @@
+
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -101,7 +102,7 @@ const Index = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
               <Card key={index} className="hover:shadow-lg transition-shadow duration-300 overflow-hidden">
-                <div className="overflow-hidden h-48 flex items-center justify-center bg-gray-50 p-4">
+                <div className="h-48 flex items-center justify-center bg-gray-50 p-6">
                   <img 
                     src={service.gifUrl || service.image} 
                     alt={service.title}
