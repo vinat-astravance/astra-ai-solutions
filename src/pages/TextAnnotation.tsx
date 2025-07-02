@@ -1,31 +1,63 @@
+
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, CarouselApi } from "@/components/ui/carousel";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 const TextAnnotation = () => {
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    if (!api) {
+      return;
+    }
+
+    setCurrent(api.selectedScrollSnap());
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap());
+    });
+  }, [api]);
+
   const services = [
     {
       title: "Named Entity Recognition",
       description: "Identify and classify entities like persons, organizations, locations, and custom entities.",
-      features: ["Person identification", "Organization detection", "Location tagging", "Custom entity types"]
+      detailedDescription: "Our Named Entity Recognition (NER) service provides comprehensive identification and classification of entities within text data. We specialize in recognizing standard entities like persons, organizations, and locations, as well as custom domain-specific entities tailored to your industry needs. Essential for information extraction, knowledge graphs, and content analysis systems.",
+      features: ["Person identification", "Organization detection", "Location tagging", "Custom entity types"],
+      gif: "/gifs/text_annotation.gif"
     },
     {
       title: "Sentiment Analysis",
       description: "Annotate text with sentiment labels for opinion mining and emotion detection.",
-      features: ["Positive/negative sentiment", "Emotion classification", "Aspect-based sentiment", "Intensity scoring"]
+      detailedDescription: "Advanced sentiment analysis annotation services that go beyond simple positive/negative classifications. Our expert annotators provide nuanced emotion detection, aspect-based sentiment analysis, and intensity scoring to help you understand the full emotional context of textual content for social media monitoring, customer feedback analysis, and brand reputation management.",
+      features: ["Positive/negative sentiment", "Emotion classification", "Aspect-based sentiment", "Intensity scoring"],
+      gif: "/gifs/text_annotation.gif"
     },
     {
       title: "Text Classification",
       description: "Categorize documents and text passages for content organization and filtering.",
-      features: ["Document categorization", "Topic classification", "Content filtering", "Multi-label annotation"]
+      detailedDescription: "Comprehensive text classification services for organizing and categorizing large volumes of textual content. Our classification annotations support document categorization, topic modeling, content filtering, and multi-label classification scenarios. Perfect for content management systems, automated routing, and information retrieval applications.",
+      features: ["Document categorization", "Topic classification", "Content filtering", "Multi-label annotation"],
+      gif: "/gifs/text_annotation.gif"
     },
     {
       title: "Intent & Dialog Annotation",
       description: "Label conversational data for chatbots and virtual assistant training.",
-      features: ["Intent classification", "Entity extraction", "Dialog flow mapping", "Response quality rating"]
+      detailedDescription: "Specialized conversational AI annotation services for training sophisticated chatbots and virtual assistants. Our intent classification, entity extraction, and dialog flow mapping services help create natural, context-aware conversational experiences. Includes response quality rating and multi-turn conversation understanding for advanced AI applications.",
+      features: ["Intent classification", "Entity extraction", "Dialog flow mapping", "Response quality rating"],
+      gif: "/gifs/text_annotation.gif"
     }
   ];
+
+  const scrollToSlide = (index: number) => {
+    if (api) {
+      api.scrollTo(index);
+    }
+  };
 
   return (
     <Layout>
@@ -55,35 +87,93 @@ const TextAnnotation = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Text Annotation Capabilities
+              Interactive Text Annotation Services
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Our linguistic experts provide comprehensive text annotation services 
-              to power your NLP models with high-quality, contextually accurate training data.
+              Explore our comprehensive text annotation capabilities. 
+              Navigate through different annotation types to see detailed information and examples.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {services.map((service, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow duration-300">
-                <CardHeader>
-                  <CardTitle className="text-xl text-gray-900">{service.title}</CardTitle>
-                  <CardDescription className="text-gray-600">
-                    {service.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2">
-                    {service.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-center text-sm text-gray-700">
-                        <span className="w-2 h-2 bg-cyan-600 rounded-full mr-3"></span>
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            ))}
+          <div className="max-w-6xl mx-auto">
+            <Carousel 
+              className="w-full"
+              opts={{
+                loop: true,
+                align: "start"
+              }}
+              setApi={setApi}
+            >
+              <CarouselContent>
+                {services.map((service, index) => (
+                  <CarouselItem key={index}>
+                    <Card className="border-0 shadow-lg">
+                      <CardContent className="p-0">
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 min-h-[600px]">
+                          {/* GIF Display */}
+                          <div className="bg-gradient-to-br from-cyan-50 to-blue-50 p-8 flex items-center justify-center">
+                            <div className="max-w-full">
+                              <img 
+                                src={service.gif} 
+                                alt={service.title} 
+                                className="w-full h-auto rounded-lg shadow-lg max-h-96 object-contain"
+                              />
+                            </div>
+                          </div>
+                          
+                          {/* Service Information */}
+                          <div className="p-8 flex flex-col justify-center bg-white">
+                            <div className="mb-6">
+                              <h3 className="text-3xl font-bold text-gray-900 mb-4">
+                                {service.title}
+                              </h3>
+                              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+                                {service.detailedDescription}
+                              </p>
+                            </div>
+                            
+                            <div className="mb-8">
+                              <h4 className="text-xl font-semibold text-gray-900 mb-4">Key Features:</h4>
+                              <div className="grid grid-cols-1 gap-3">
+                                {service.features.map((feature, idx) => (
+                                  <div key={idx} className="flex items-center text-gray-700">
+                                    <span className="w-3 h-3 bg-cyan-600 rounded-full mr-4"></span>
+                                    <span className="text-base">{feature}</span>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                            
+                            <div className="flex gap-4">
+                              <Link to="/contact">
+                                <Button className="bg-cyan-600 hover:bg-cyan-700 text-white px-6 py-2">
+                                  Get Quote
+                                </Button>
+                              </Link>
+                            </div>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="left-4 bg-cyan-600 hover:bg-cyan-700 text-white border-none" />
+              <CarouselNext className="right-4 bg-cyan-600 hover:bg-cyan-700 text-white border-none" />
+            </Carousel>
+
+            {/* Service Navigation Dots */}
+            <div className="flex justify-center mt-8 space-x-2">
+              {services.map((_, index) => (
+                <button
+                  key={index}
+                  className={`w-3 h-3 rounded-full transition-colors cursor-pointer ${
+                    current === index ? 'bg-cyan-600' : 'bg-gray-300 hover:bg-gray-400'
+                  }`}
+                  onClick={() => scrollToSlide(index)}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>
