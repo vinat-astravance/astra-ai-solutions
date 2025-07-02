@@ -28,28 +28,28 @@ const AudioAnnotation = () => {
       description: "Accurate transcription and labeling of speech data for ASR model training.",
       detailedDescription: "Our speech-to-text annotation service provides precise transcription of audio content with speaker identification, timestamp alignment, and multi-language support. Essential for building robust automatic speech recognition systems that can handle diverse accents, background noise, and speaking patterns.",
       features: ["Multi-language support", "Speaker identification", "Timestamp alignment", "Noise handling"],
-      gif: "/gifs/audio_ai_annotations.gif"
+      gif: "/gifs/audio/speech_to_text.gif"
     },
     {
       title: "Sound Event Detection",
       description: "Precise labeling of acoustic events and environmental sounds.",
       detailedDescription: "Identify and classify acoustic events in complex audio environments. Our sound event detection annotation covers everything from environmental sounds to specific audio patterns, providing temporal boundaries and context labels essential for audio monitoring and classification systems.",
       features: ["Event classification", "Temporal boundaries", "Multi-label annotation", "Context labeling"],
-      gif: "/gifs/audio_ai_annotations.gif"
+      gif: "/gifs/audio/sound_event_detection.gif"
     },
     {
       title: "Music & Audio Classification",
       description: "Genre, instrument, and mood classification for music AI applications.",
       detailedDescription: "Comprehensive music and audio classification services including genre identification, instrument detection, mood analysis, and beat tracking. Perfect for music recommendation systems, content analysis, and audio processing applications that require deep understanding of musical content.",
       features: ["Genre classification", "Instrument detection", "Mood analysis", "Beat tracking"],
-      gif: "/gifs/audio_ai_annotations.gif"
+      gif: "/gifs/audio/audio_classification.gif"
     },
     {
       title: "Audio Quality Assessment",
       description: "Quality evaluation and enhancement labeling for audio processing models.",
       detailedDescription: "Evaluate and label audio quality metrics including noise levels, distortion detection, and enhancement targets. Our quality assessment annotations help train models for audio restoration, enhancement, and quality control applications across various audio processing scenarios.",
       features: ["Quality scoring", "Noise assessment", "Distortion detection", "Enhancement targets"],
-      gif: "/gifs/audio_ai_annotations.gif"
+      gif: "/gifs/audio/speaker_recognition.gif"
     }
   ];
 

@@ -1,4 +1,3 @@
-
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -31,25 +30,53 @@ const TextAnnotation = () => {
       gif: "/gifs/text_annotation.gif"
     },
     {
+      title: "Layout Analysis",
+      description: "Analyze document structure and identify text regions, headers, paragraphs, and layout elements.",
+      detailedDescription: "Advanced layout analysis annotation services that understand document structure and hierarchy. Our experts identify and classify different text regions including headers, paragraphs, tables, figures, and captions. Essential for document processing, content extraction, and automated document understanding systems.",
+      features: ["Region identification", "Hierarchy mapping", "Table detection", "Figure captioning"],
+      gif: "/gifs/text/la.jpg"
+    },
+    {
+      title: "OCR (Optical Character Recognition)",
+      description: "Convert images of text into machine-encoded text with high accuracy and formatting preservation.",
+      detailedDescription: "Professional OCR annotation services that transform scanned documents, images, and handwritten text into structured digital format. Our OCR specialists ensure accurate character recognition, preserve formatting, and handle complex layouts including tables, forms, and multi-column documents for digitization projects.",
+      features: ["Character recognition", "Format preservation", "Handwriting support", "Multi-language OCR"],
+      gif: "/gifs/text/OCR.gif"
+    },
+    {
       title: "Sentiment Analysis",
       description: "Annotate text with sentiment labels for opinion mining and emotion detection.",
       detailedDescription: "Advanced sentiment analysis annotation services that go beyond simple positive/negative classifications. Our expert annotators provide nuanced emotion detection, aspect-based sentiment analysis, and intensity scoring to help you understand the full emotional context of textual content for social media monitoring, customer feedback analysis, and brand reputation management.",
       features: ["Positive/negative sentiment", "Emotion classification", "Aspect-based sentiment", "Intensity scoring"],
-      gif: "/gifs/text_annotation.gif"
+      gif: "/gifs/text/sentiment_analysis.gif"
     },
     {
       title: "Text Classification",
       description: "Categorize documents and text passages for content organization and filtering.",
       detailedDescription: "Comprehensive text classification services for organizing and categorizing large volumes of textual content. Our classification annotations support document categorization, topic modeling, content filtering, and multi-label classification scenarios. Perfect for content management systems, automated routing, and information retrieval applications.",
       features: ["Document categorization", "Topic classification", "Content filtering", "Multi-label annotation"],
-      gif: "/gifs/text_annotation.gif"
+      gif: "/gifs/text/text_classification.gif"
     },
     {
-      title: "Intent & Dialog Annotation",
-      description: "Label conversational data for chatbots and virtual assistant training.",
-      detailedDescription: "Specialized conversational AI annotation services for training sophisticated chatbots and virtual assistants. Our intent classification, entity extraction, and dialog flow mapping services help create natural, context-aware conversational experiences. Includes response quality rating and multi-turn conversation understanding for advanced AI applications.",
-      features: ["Intent classification", "Entity extraction", "Dialog flow mapping", "Response quality rating"],
-      gif: "/gifs/text_annotation.gif"
+      title: "Summarization",
+      description: "Create concise summaries and key point extraction from long-form content.",
+      detailedDescription: "Expert text summarization annotation services that create high-quality abstractive and extractive summaries. Our linguists identify key information, main themes, and critical points while maintaining context and coherence. Ideal for news summarization, document analysis, and content curation applications.",
+      features: ["Abstractive summaries", "Extractive summaries", "Key point extraction", "Multi-document summarization"],
+      gif: "/gifs/text/summarization.gif"
+    },
+    {
+      title: "Translation",
+      description: "High-quality translation annotation with cultural context and linguistic nuance preservation.",
+      detailedDescription: "Professional translation annotation services that go beyond word-for-word conversion. Our native linguists provide culturally appropriate translations, maintain context and tone, and ensure linguistic accuracy across multiple language pairs. Essential for multilingual AI systems, localization, and cross-cultural communication applications.",
+      features: ["Cultural adaptation", "Context preservation", "Multi-language pairs", "Domain expertise"],
+      gif: "/gifs/text/translation.gif"
+    },
+    {
+      title: "Question Answering",
+      description: "Annotate question-answer pairs for reading comprehension and information retrieval systems.",
+      detailedDescription: "Specialized question answering annotation services that create high-quality QA datasets for training intelligent systems. Our annotators develop comprehensive question-answer pairs, reading comprehension tasks, and factual verification annotations to enhance AI's ability to understand and respond to natural language queries.",
+      features: ["Reading comprehension", "Factual QA pairs", "Context understanding", "Answer validation"],
+      gif: "/gifs/text/QA.gif"
     }
   ];
 
