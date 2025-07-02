@@ -28,28 +28,28 @@ const ImageAnnotation = () => {
       description: "Precise rectangular bounding box annotation for object detection and localization.",
       detailedDescription: "Our bounding box annotation service provides accurate rectangular boundaries around objects in images. This fundamental computer vision technique is essential for object detection models, enabling precise localization and classification of objects within images for various AI applications.",
       features: ["2D object detection", "Multi-class labeling", "Precise boundary definition", "Quality assurance"],
-      gif: "/gifs/image_data_annotation.gif"
+      gif: "/gifs/image_annotation/object_detection.gif"
     },
     {
       title: "Polygon & Polyline Annotations",
       description: "Complex shape annotation using polygons and polylines for irregular objects and boundaries.",
       detailedDescription: "Handle complex, irregular shapes that cannot be captured by simple bounding boxes. Our polygon and polyline annotation services provide precise boundary definition for objects with complex geometries, road markings, and custom-shaped elements in images.",
       features: ["Irregular object boundaries", "Road marking annotation", "Building footprints", "Custom shape definition"],
-      gif: "/gifs/image_data_annotation.gif"
+      gif: "/gifs/image_annotation/line_spline.png"
     },
     {
       title: "Segmentation Masks",
       description: "Pixel-level segmentation masks for detailed image analysis and scene understanding.",
       detailedDescription: "Achieve pixel-perfect accuracy with our semantic and instance segmentation services. We provide detailed pixel-level masks that enable comprehensive scene understanding, separating objects from backgrounds and identifying every element in your images with precision.",
       features: ["Semantic segmentation", "Instance segmentation", "Pixel-level accuracy", "Background separation"],
-      gif: "/gifs/image_data_annotation.gif"
+      gif: "/gifs/image_annotation/image_segmentation.gif"
     },
     {
       title: "Keypoint / Landmark Annotations",
       description: "Precise keypoint and landmark detection for pose estimation and facial analysis.",
       detailedDescription: "Specialized annotation for detecting and marking key points on objects, humans, and faces. Essential for pose estimation, facial recognition, and structural analysis applications where specific anatomical or geometric points need to be identified and tracked.",
       features: ["Human pose estimation", "Facial landmark detection", "Object keypoints", "Motion analysis"],
-      gif: "/gifs/image_data_annotation.gif"
+      gif: "/gifs/image_annotation/pose_estimation.gif"
     }
   ];
 

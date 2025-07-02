@@ -27,35 +27,35 @@ const MultiSensorAnnotation = () => {
       description: "Precise 3D bounding box annotation for objects in LiDAR point cloud data.",
       detailedDescription: "Our 3D cuboid annotation service provides accurate volumetric bounding boxes around objects in LiDAR point clouds. This technique is essential for autonomous vehicle perception, robotics, and spatial AI applications where precise object localization and size estimation are critical.",
       features: ["Accurate 3D object localization", "Multi-class object detection", "Orientation annotation", "Size estimation"],
-      gif: "/gifs/3D_data_annotation.gif"
+      gif: "/gifs/3D_annotation/3D_data_annotation.gif"
     },
     {
       title: "3D Polygon & Polyline",
       description: "Complex shape annotation using polygons and polylines for irregular objects in 3D space.",
       detailedDescription: "Handle complex, irregular shapes that cannot be captured by simple bounding boxes. Our polygon and polyline annotation services provide precise boundary definition for road markings, building footprints, and custom-shaped objects in 3D space.",
       features: ["Irregular object boundaries", "Road marking annotation", "Building footprints", "Custom shape definition"],
-      gif: "/gifs/3D_data_annotation.gif"
+      gif: "/gifs/3D_annotation/polyline.gif"
     },
     {
       title: "3D Segmentation",
       description: "Point-level classification and segmentation of LiDAR point clouds for detailed scene understanding.",
       detailedDescription: "Achieve pixel-perfect accuracy with point-level classification of LiDAR data. Our semantic and instance segmentation services enable detailed scene understanding by classifying every point in the cloud according to object categories and instances.",
       features: ["Semantic segmentation", "Instance segmentation", "Ground plane detection", "Vegetation classification"],
-      gif: "/gifs/3D_data_annotation.gif"
+      gif: "/gifs/3D_annotation/3D_segmentation.gif"
     },
     {
       title: "Object Tracking",
       description: "Temporal tracking of objects across multiple LiDAR frames for dynamic scene analysis.",
       detailedDescription: "Track objects through time across multiple LiDAR frames to understand motion patterns and behavior. Essential for dynamic scene analysis, trajectory prediction, and temporal consistency in autonomous systems.",
       features: ["Multi-frame tracking", "Trajectory annotation", "Object behavior modeling", "Temporal consistency"],
-      gif: "/gifs/3D_data_annotation.gif"
+      gif: "/gifs/3D_annotation/object_tracking.gif"
     },
     {
       title: "Sensor Fusion",
       description: "Annotation services combining LiDAR data with camera and radar inputs for comprehensive scene understanding.",
       detailedDescription: "Combine multiple sensor modalities for enhanced accuracy and robustness. Our sensor fusion annotation services align and correlate data from LiDAR, cameras, and radar to provide comprehensive scene understanding with cross-modal validation.",
       features: ["Multi-modal alignment", "Cross-sensor validation", "Fused object detection", "Enhanced accuracy"],
-      gif: "/gifs/3D_data_annotation.gif"
+      gif: "/gifs/3D_annotation/sensor_fusion.gif"
     }
   ];
 

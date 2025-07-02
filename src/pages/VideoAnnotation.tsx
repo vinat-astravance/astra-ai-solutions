@@ -28,14 +28,14 @@ const VideoAnnotation = () => {
       description: "Advanced object detection and tracking across video frames with temporal consistency.",
       detailedDescription: "Object tracking and detection in videos involves performing object annotation in each frame along with assigning unique object IDs to add temporal information. This enables continuous tracking of objects as they move through the video sequence, maintaining identity consistency across frames for comprehensive motion analysis.",
       features: ["Multi-object tracking", "Temporal consistency", "Identity preservation", "Motion analysis"],
-      gif: "/gifs/video_data_annotation.gif"
+      gif: "/gifs/video_annotation/object_tracking.gif"
     },
     {
       title: "Object Segmentation",
       description: "Pixel-level object segmentation with temporal tracking for detailed video analysis.",
       detailedDescription: "Similar to object tracking, object segmentation combines segmentation annotation of each frame with object ID assignment. This provides pixel-perfect boundaries for objects while maintaining temporal consistency, enabling detailed analysis of object shape changes and interactions throughout the video sequence.",
       features: ["Pixel-level segmentation", "Temporal object ID tracking", "Shape analysis", "Object interaction mapping"],
-      gif: "/gifs/video_data_annotation.gif"
+      gif: "/gifs/video_annotation/video_segmentation.gif"
     },
     {
       title: "Person Re-identification",
@@ -49,14 +49,14 @@ const VideoAnnotation = () => {
       description: "Precise human pose estimation and keypoint tracking across video sequences.",
       detailedDescription: "Keypoint and pose tracking involves detecting and tracking specific anatomical points on humans throughout video sequences. This enables detailed motion analysis, gesture recognition, sports performance analysis, and health monitoring applications by maintaining temporal consistency of pose information.",
       features: ["Human pose estimation", "Keypoint detection", "Motion analysis", "Gesture recognition"],
-      gif: "/gifs/video_data_annotation.gif"
+      gif: "/gifs/video_annotation/pose_estimation.gif"
     },
     {
       title: "Action & Event Annotation",
       description: "Comprehensive annotation of actions, events, and activities in video content.",
       detailedDescription: "Action and event annotation involves identifying, labeling, and temporally localizing specific activities, behaviors, and events within video sequences. This includes activity recognition, event detection, and behavioral analysis that provides context and semantic understanding of video content.",
       features: ["Activity recognition", "Event detection", "Temporal localization", "Behavioral analysis"],
-      gif: "/gifs/video_data_annotation.gif"
+      gif: "/gifs/video_annotation/video_action_recognition.png"
     }
   ];
 
@@ -99,9 +99,7 @@ const VideoAnnotation = () => {
             <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
               Video data annotation involves extracting information from video sequences frame by frame. 
               Video annotation is essentially image annotation enhanced with temporal information, 
-              creating a comprehensive understanding of objects, actions, and events as they evolve over time.
-            </p>
-            <p className="text-lg text-gray-500 max-w-2xl mx-auto">
+              creating a comprehensive understanding of objects, actions, and events as they evolve over time. 
               Explore our comprehensive video annotation capabilities through interactive demonstrations 
               and detailed service descriptions.
             </p>
