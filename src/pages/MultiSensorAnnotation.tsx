@@ -1,4 +1,3 @@
-
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -138,9 +137,6 @@ const MultiSensorAnnotation = () => {
                                   Get Quote
                                 </Button>
                               </Link>
-                              <Button variant="outline" className="border-purple-600 text-purple-600 hover:bg-purple-50 px-6 py-2">
-                                Learn More
-                              </Button>
                             </div>
                           </div>
                         </div>
