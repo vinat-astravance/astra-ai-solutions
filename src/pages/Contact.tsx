@@ -5,8 +5,72 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { useToast } from "@/hooks/use-toast";
+import { useState } from "react";
 
 const Contact = () => {
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    company: '',
+    projectType: '',
+    message: ''
+  });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [id]: value
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('/functions/v1/send-contact-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        toast({
+          title: "Message sent successfully!",
+          description: "Thank you for your inquiry. We'll get back to you within 24 hours.",
+        });
+        
+        // Reset form
+        setFormData({
+          firstName: '',
+          lastName: '',
+          email: '',
+          company: '',
+          projectType: '',
+          message: ''
+        });
+      } else {
+        throw new Error('Failed to send message');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      toast({
+        title: "Error sending message",
+        description: "Please try again or contact us directly at info@astravance.ai",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   const contactMethods = [
     {
       title: "Project Consultation",
@@ -82,44 +146,82 @@ const Contact = () => {
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <Label htmlFor="firstName">First Name</Label>
-                      <Input id="firstName" placeholder="John" />
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <Label htmlFor="firstName">First Name</Label>
+                        <Input 
+                          id="firstName" 
+                          placeholder="John" 
+                          value={formData.firstName}
+                          onChange={handleInputChange}
+                          required
+                        />
+                      </div>
+                      <div>
+                        <Label htmlFor="lastName">Last Name</Label>
+                        <Input 
+                          id="lastName" 
+                          placeholder="Doe" 
+                          value={formData.lastName}
+                          onChange={handleInputChange}
+                          required
+                        />
+                      </div>
                     </div>
+                    
                     <div>
-                      <Label htmlFor="lastName">Last Name</Label>
-                      <Input id="lastName" placeholder="Doe" />
+                      <Label htmlFor="email">Email Address</Label>
+                      <Input 
+                        id="email" 
+                        type="email" 
+                        placeholder="john@company.com" 
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        required
+                      />
                     </div>
-                  </div>
-                  
-                  <div>
-                    <Label htmlFor="email">Email Address</Label>
-                    <Input id="email" type="email" placeholder="john@company.com" />
-                  </div>
-                  
-                  <div>
-                    <Label htmlFor="company">Company</Label>
-                    <Input id="company" placeholder="Your Company" />
-                  </div>
-                  
-                  <div>
-                    <Label htmlFor="projectType">Project Type</Label>
-                    <Input id="projectType" placeholder="e.g., Computer Vision, Custom AI App" />
-                  </div>
-                  
-                  <div>
-                    <Label htmlFor="message">Project Details</Label>
-                    <Textarea 
-                      id="message" 
-                      placeholder="Tell us about your AI project, requirements, timeline, and any specific challenges you're facing..."
-                      className="min-h-[120px]"
-                    />
-                  </div>
-                  
-                  <Button className="w-full bg-cyan-600 hover:bg-cyan-700">
-                    Send Message
-                  </Button>
+                    
+                    <div>
+                      <Label htmlFor="company">Company</Label>
+                      <Input 
+                        id="company" 
+                        placeholder="Your Company" 
+                        value={formData.company}
+                        onChange={handleInputChange}
+                      />
+                    </div>
+                    
+                    <div>
+                      <Label htmlFor="projectType">Project Type</Label>
+                      <Input 
+                        id="projectType" 
+                        placeholder="e.g., Computer Vision, Custom AI App" 
+                        value={formData.projectType}
+                        onChange={handleInputChange}
+                      />
+                    </div>
+                    
+                    <div>
+                      <Label htmlFor="message">Project Details</Label>
+                      <Textarea 
+                        id="message" 
+                        placeholder="Tell us about your AI project, requirements, timeline, and any specific challenges you're facing..."
+                        className="min-h-[120px]"
+                        value={formData.message}
+                        onChange={handleInputChange}
+                        required
+                      />
+                    </div>
+                    
+                    <Button 
+                      type="submit"
+                      className="w-full bg-cyan-600 hover:bg-cyan-700"
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? "Sending..." : "Send Message"}
+                    </Button>
+                  </form>
                 </CardContent>
               </Card>
             </div>
