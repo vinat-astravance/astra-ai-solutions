@@ -16,7 +16,7 @@ const DataAnnotation = () => {
       title: "Audio Annotation",
       description: "Professional audio labeling services for speech recognition, sound classification, and audio analysis models.",
       features: ["Speech-to-Text", "Sound Event Detection", "Music Classification", "Audio Quality Assessment"],
-      image: "/lovable-uploads/fea3c9cb-6aa5-4dd2-8afb-702aec3b9a04.png",
+      image: "/gifs/audio_ai_annotations.gif",
       link: "/audio-annotation",
       bgColor: "from-green-50 to-teal-50"
     },
@@ -32,7 +32,7 @@ const DataAnnotation = () => {
       title: "Text Annotation",
       description: "Advanced text labeling services for NLP models including entity recognition, sentiment analysis, and classification.",
       features: ["Named Entity Recognition", "Sentiment Analysis", "Text Classification", "Intent Labeling"],
-      image: "/lovable-uploads/d20347dc-1fdc-4387-a5d2-e0e5825d52b8.png",
+      image: "/gifs/text_annotation.gif",
       link: "/text-annotation",
       bgColor: "from-cyan-50 to-blue-50"
     },
