@@ -9,7 +9,7 @@ const DataAnnotation = () => {
       title: "Image Annotation",
       description: "Precision labeling for computer vision models including bounding boxes, polygons, semantic segmentation, and landmark annotations.",
       features: ["2D Bounding Boxes", "Polygon Annotation", "Semantic Segmentation", "Point & Landmark Detection"],
-      image: "/lovable-uploads/3029fb0a-9008-453e-93ae-ba505b8c7086.png",
+      image: "/gifs/image_data_annotation.gif",
       link: "/image-annotation",
       bgColor: "from-blue-50 to-purple-50"
     },
@@ -25,7 +25,7 @@ const DataAnnotation = () => {
       title: "Video Annotation",
       description: "Comprehensive video labeling for object tracking, action recognition, and temporal analysis in video sequences.",
       features: ["Object Tracking", "Action Recognition", "Temporal Segmentation", "Frame-by-Frame Analysis"],
-      image: "/lovable-uploads/198d1bba-2de5-4091-9fd0-171714330d43.png",
+      image: "/gifs/video_data_annotation.gif",
       link: "/video-annotation",
       bgColor: "from-orange-50 to-red-50"
     },
@@ -41,7 +41,7 @@ const DataAnnotation = () => {
       title: "3D Data Annotation",
       description: "Specialized 3D annotation services for LiDAR point clouds, autonomous vehicles, and spatial AI applications.",
       features: ["3D Cuboid Annotation", "3D Polygon & Polyline", "3D Segmentation", "Object Tracking"],
-      image: "/lovable-uploads/fea3c9cb-6aa5-4dd2-8afb-702aec3b9a04.png",
+      image: "/gifs/3D_data_annotation.gif",
       link: "/multi-sensor-annotation",
       bgColor: "from-purple-50 to-pink-50"
     }
