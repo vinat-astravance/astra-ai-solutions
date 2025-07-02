@@ -1,3 +1,4 @@
+
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -37,9 +38,9 @@ const DataAnnotation = () => {
       bgColor: "from-cyan-50 to-blue-50"
     },
     {
-      title: "Multi Sensor Data",
-      description: "Complex multi-modal annotation services combining data from various sensors for advanced AI applications.",
-      features: ["LiDAR Point Clouds", "Radar Data", "IoT Sensor Fusion", "Autonomous Vehicle Data"],
+      title: "3D Data Annotation",
+      description: "Specialized 3D annotation services for LiDAR point clouds, autonomous vehicles, and spatial AI applications.",
+      features: ["3D Cuboid Annotation", "3D Polygon & Polyline", "3D Segmentation", "Object Tracking"],
       image: "/lovable-uploads/fea3c9cb-6aa5-4dd2-8afb-702aec3b9a04.png",
       link: "/multi-sensor-annotation",
       bgColor: "from-purple-50 to-pink-50"

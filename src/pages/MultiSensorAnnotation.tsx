@@ -1,3 +1,4 @@
+
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -6,24 +7,29 @@ import { Link } from "react-router-dom";
 const MultiSensorAnnotation = () => {
   const services = [
     {
-      title: "LiDAR Point Cloud Annotation",
-      description: "3D object detection and segmentation in LiDAR point cloud data for autonomous systems.",
-      features: ["3D bounding boxes", "Point cloud segmentation", "Object tracking", "Ground truth labeling"]
+      title: "3D Cuboid Annotation",
+      description: "Precise 3D bounding box annotation for objects in LiDAR point cloud data.",
+      features: ["Accurate 3D object localization", "Multi-class object detection", "Orientation annotation", "Size estimation"]
     },
     {
-      title: "Radar Data Annotation",
-      description: "Radar signal analysis and target identification for defense and automotive applications.",
-      features: ["Target classification", "Range-Doppler analysis", "Clutter filtering", "Track annotation"]
+      title: "3D Polygon & Polyline",
+      description: "Complex shape annotation using polygons and polylines for irregular objects in 3D space.",
+      features: ["Irregular object boundaries", "Road marking annotation", "Building footprints", "Custom shape definition"]
     },
     {
-      title: "IoT Sensor Fusion",
-      description: "Multi-modal sensor data annotation combining various IoT device inputs.",
-      features: ["Sensor correlation", "Event synchronization", "Anomaly detection", "Pattern recognition"]
+      title: "3D Segmentation",
+      description: "Point-level classification and segmentation of LiDAR point clouds for detailed scene understanding.",
+      features: ["Semantic segmentation", "Instance segmentation", "Ground plane detection", "Vegetation classification"]
     },
     {
-      title: "Autonomous Vehicle Data",
-      description: "Comprehensive annotation of multi-sensor data from autonomous driving systems.",
-      features: ["Camera-LiDAR fusion", "Object behavior modeling", "Scene understanding", "Safety validation"]
+      title: "Object Tracking",
+      description: "Temporal tracking of objects across multiple LiDAR frames for dynamic scene analysis.",
+      features: ["Multi-frame tracking", "Trajectory annotation", "Object behavior modeling", "Temporal consistency"]
+    },
+    {
+      title: "Sensor Fusion",
+      description: "Annotation services combining LiDAR data with camera and radar inputs for comprehensive scene understanding.",
+      features: ["Multi-modal alignment", "Cross-sensor validation", "Fused object detection", "Enhanced accuracy"]
     }
   ];
 
@@ -33,12 +39,13 @@ const MultiSensorAnnotation = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Multi-Sensor Data Annotation
+              3D LiDAR Data Annotation
             </h1>
             <p className="text-xl mb-8 text-purple-100">
-              Complex multi-modal annotation services combining data from various sensors 
-              for advanced AI applications. Our specialists handle LiDAR, radar, IoT sensors, 
-              and autonomous vehicle data with precision and expertise.
+              Professional 3D annotation services for LiDAR point cloud data, 
+              enabling advanced autonomous systems and spatial AI applications. 
+              Our experts deliver precise 3D labeling for object detection, segmentation, 
+              and tracking in complex 3D environments.
             </p>
             <div className="flex justify-center sm:justify-start">
               <Link to="/contact">
@@ -55,11 +62,11 @@ const MultiSensorAnnotation = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Advanced Multi-Sensor Capabilities
+              Comprehensive 3D LiDAR Annotation Services
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              From 3D point clouds to complex sensor fusion scenarios, 
-              we provide expert annotation services for the most challenging multi-modal data types.
+              From basic 3D object detection to complex sensor fusion scenarios, 
+              we provide expert annotation services for all your 3D LiDAR data needs.
             </p>
           </div>
 
@@ -91,11 +98,11 @@ const MultiSensorAnnotation = () => {
       <section className="bg-purple-600 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Transform Complex Sensor Data
+            Advanced 3D LiDAR Solutions
           </h2>
           <p className="text-xl text-purple-100 mb-8 max-w-2xl mx-auto">
-            Ready to tackle your most challenging multi-sensor annotation projects? 
-            Let's discuss your specific requirements.
+            Ready to enhance your autonomous systems with precision 3D LiDAR annotations? 
+            Let's discuss your specific project requirements.
           </p>
           <Link to="/contact">
             <Button size="lg" variant="secondary" className="px-8 py-3">
