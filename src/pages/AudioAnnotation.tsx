@@ -1,4 +1,3 @@
-
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -45,10 +44,10 @@ const AudioAnnotation = () => {
       gif: "/gifs/audio/audio_classification.gif"
     },
     {
-      title: "Audio Quality Assessment",
-      description: "Quality evaluation and enhancement labeling for audio processing models.",
-      detailedDescription: "Evaluate and label audio quality metrics including noise levels, distortion detection, and enhancement targets. Our quality assessment annotations help train models for audio restoration, enhancement, and quality control applications across various audio processing scenarios.",
-      features: ["Quality scoring", "Noise assessment", "Distortion detection", "Enhancement targets"],
+      title: "Speaker Recognition",
+      description: "Voice identification and verification for security and biometric authentication systems.",
+      detailedDescription: "Advanced speaker recognition annotation services that enable accurate voice identification and verification. Our expert annotators create speaker profiles, voice embeddings, and biometric voice patterns essential for security applications, access control, and personalized user experiences. Includes anti-spoofing detection and cross-session speaker verification for robust biometric authentication systems.",
+      features: ["Voice identification", "Biometric verification", "Anti-spoofing detection", "Speaker profiling"],
       gif: "/gifs/audio/speaker_recognition.gif"
     }
   ];
