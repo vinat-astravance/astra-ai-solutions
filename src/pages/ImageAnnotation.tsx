@@ -2,12 +2,25 @@
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, CarouselApi } from "@/components/ui/carousel";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const ImageAnnotation = () => {
-  const [selectedService, setSelectedService] = useState(0);
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    if (!api) {
+      return;
+    }
+
+    setCurrent(api.selectedScrollSnap());
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap());
+    });
+  }, [api]);
 
   const services = [
     {
@@ -39,6 +52,12 @@ const ImageAnnotation = () => {
       gif: "/gifs/image_data_annotation.gif"
     }
   ];
+
+  const scrollToSlide = (index: number) => {
+    if (api) {
+      api.scrollTo(index);
+    }
+  };
 
   return (
     <Layout>
@@ -83,6 +102,7 @@ const ImageAnnotation = () => {
                 loop: true,
                 align: "start"
               }}
+              setApi={setApi}
             >
               <CarouselContent>
                 {services.map((service, index) => (
@@ -147,10 +167,10 @@ const ImageAnnotation = () => {
               {services.map((_, index) => (
                 <button
                   key={index}
-                  className={`w-3 h-3 rounded-full transition-colors ${
-                    selectedService === index ? 'bg-blue-600' : 'bg-gray-300'
+                  className={`w-3 h-3 rounded-full transition-colors cursor-pointer ${
+                    current === index ? 'bg-blue-600' : 'bg-gray-300 hover:bg-gray-400'
                   }`}
-                  onClick={() => setSelectedService(index)}
+                  onClick={() => scrollToSlide(index)}
                 />
               ))}
             </div>
