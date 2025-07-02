@@ -12,32 +12,33 @@ const Index = () => {
   const services = [
     {
       title: "Computer Vision",
-      description: "Comprehensive visual AI solutions including image analysis, video processing, object detection, and real-time analytics.",
+      description: "Comprehensive visual AI for image analysis, video processing and real-time analytics—object detection, segmentation & tracking, pose estimation, 2D→3D reconstruction, enhancement, super-resolution & more.",
       link: "/computer-vision",
       image: "/images/home_page/cv.jpg",
-      gifUrl: "https://media.giphy.com/media/3oKIPnAiaMCws8nOsE/giphy.gif"
+      gifUrl: "/gifs/computer_vision.gif"
     },
     {
       title: "Generative AI & LLMs",
-      description: "Fine-tuned language models and diffusion systems for chatbots, content generation, and document processing.",
+      description: "Fine-tuned LLMs and diffusion models for chatbots, content generation, decision automation and document processing.",
       link: "/generative-ai",
-      image: "/images/home_page/llm.jpg"
+      image: "/images/home_page/llm.jpg",
+      gifUrl: "/gifs/LLMs.gif"
     },
     {
       title: "Document AI",
-      description: "Intelligent document processing with OCR, classification, search, and automated content extraction capabilities.",
+      description: "Automated OCR, form-parsing, classification, smart search and content extraction to digitize and analyze documents at scale.",
       link: "/document-ai",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+      gifUrl: "/gifs/document_ai.gif"
     },
     {
       title: "Audio AI",
-      description: "Advanced audio processing solutions including speech recognition, voice synthesis, emotion detection, and sound analysis.",
+      description: "Speech-to-text, text-to-speech, speaker diarization, emotion detection, audio enhancement & source separation for advanced sound analysis.",
       link: "/audio-ai",
-      image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+      gifUrl: "/gifs/audio_ai.gif"
     },
     {
       title: "Data Annotation Services",
-      description: "High-quality, human-in-the-loop data labeling for images, video, audio, and text classification.",
+      description: "Human-in-the-loop annotations for images, video, audio, text, 3D point clouds and multi-sensor data.",
       link: "/data-annotation",
       image: "/images/home_page/da.jpg"
     },
@@ -49,7 +50,7 @@ const Index = () => {
     },
     {
       title: "Research & Feasibility",
-      description: "Deep research and feasibility studies to validate AI approaches before development begins.",
+      description: "POC development backed by literature surveys, open-source solution mapping and strategic feasibility studies.",
       link: "/research",
       image: "/images/research.jpg"
     },
@@ -57,7 +58,7 @@ const Index = () => {
       title: "Cloud Infrastructure",
       description: "Scalable cloud infrastructure solutions through strategic partnerships with leading providers for reliable IaaS deployment.",
       link: "/cloud-infrastructure",
-      image: "https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+      gifUrl: "/gifs/cloud.gif"
     }
   ];
 
