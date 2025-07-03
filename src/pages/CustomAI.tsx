@@ -121,8 +121,8 @@ const CustomAI = () => {
           title: "Object Tracking & People Counting",
           description: "Real-time object tracking and automated people counting for crowd analysis, retail analytics, and security monitoring.",
           briefDescription: "Intelligent tracking and counting solutions for comprehensive crowd and object analytics.",
-          beforeVideo: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-          afterVideo: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"
+          beforeVideo: "/videos/ot_parent.mp4",
+          afterVideo: "/videos/ot_child.mp4",
         },
         {
           title: "Action Recognition & Behavior Analysis",

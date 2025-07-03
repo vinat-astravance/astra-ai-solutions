@@ -69,8 +69,8 @@ const CVCapabilitiesSection: React.FC = () => {
           id: "panoptic-segmentation",
           title: "Panoptic Segmentation",
           description: "Combine semantic and instance segmentation for complete scene understanding",
-          beforeImage: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=800&q=80",
-          afterImage: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80"
+          beforeImage: "/images/computer_vision/ps_parent.jpg",
+          afterImage: "/images/computer_vision/ps_child.png"
         }
       ]
     },
