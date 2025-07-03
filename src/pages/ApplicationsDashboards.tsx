@@ -1,4 +1,3 @@
-
 import Layout from "@/components/Layout";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -219,15 +218,10 @@ const ApplicationsDashboards = () => {
             Whether you need web applications, mobile solutions, or interactive dashboards, 
             our development team can create the perfect solution for your business.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex justify-center">
             <Link to="/contact">
               <Button size="lg" variant="secondary" className="px-8 py-3">
                 Get Started Today
-              </Button>
-            </Link>
-            <Link to="/research">
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600 px-8 py-3">
-                Request Consultation
               </Button>
             </Link>
           </div>
