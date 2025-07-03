@@ -36,12 +36,6 @@ const Index = () => {
       gifUrl: "/gifs/audio_ai.gif"
     },
     {
-      title: "Applications & Dashboards",
-      description: "Custom web applications, mobile solutions, desktop applications, and interactive dashboards tailored to your business needs.",
-      link: "/applications-dashboards",
-      image: "/images/custom-applications.jpg"
-    },
-    {
       title: "Data Annotation Services",
       description: "Human-in-the-loop annotations for images, video, audio, text, 3D point clouds and multi-sensor data.",
       link: "/data-annotation",
@@ -54,16 +48,22 @@ const Index = () => {
       image: "/images/home_page/mlops.jpg"
     },
     {
-      title: "Research & Feasibility",
-      description: "POC development backed by literature surveys, open-source solution mapping and strategic feasibility studies.",
-      link: "/research",
-      image: "/images/research.jpg"
+      title: "Applications & Dashboards",
+      description: "Custom web applications, mobile solutions, desktop applications, and interactive dashboards tailored to your business needs.",
+      link: "/applications-dashboards",
+      gifUrl: "/gifs/ui.gif"
     },
     {
       title: "Cloud Infrastructure",
       description: "Scalable cloud infrastructure solutions through strategic partnerships with leading providers for reliable IaaS deployment.",
       link: "/cloud-infrastructure",
       gifUrl: "/gifs/cloud.gif"
+    },
+    {
+      title: "Research & Feasibility",
+      description: "POC development backed by literature surveys, open-source solution mapping and strategic feasibility studies.",
+      link: "/research",
+      image: "/images/research.jpg"
     }
   ];
 
