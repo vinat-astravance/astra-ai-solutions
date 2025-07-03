@@ -1,3 +1,4 @@
+
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
@@ -9,6 +10,7 @@ const Navigation = () => {
     { path: "/generative-ai", label: "Generative AI", hasSubmenu: true },
     { path: "/document-ai", label: "Document AI" },
     { path: "/audio-ai", label: "Audio AI" },
+    { path: "/applications-dashboards", label: "Applications & Dashboards" },
     { path: "/mlops", label: "MLOps" },
     { path: "/cloud-infrastructure", label: "Cloud Infrastructure" },
   ];

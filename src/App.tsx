@@ -28,6 +28,7 @@ import Blogs from "./pages/Blogs";
 import AudioAI from "./pages/AudioAI";
 import DocumentAI from "./pages/DocumentAI";
 import CloudInfrastructure from "./pages/CloudInfrastructure";
+import ApplicationsDashboards from "./pages/ApplicationsDashboards";
 
 const queryClient = new QueryClient();
 
@@ -55,6 +56,7 @@ const App = () => (
             <Route path="/other-services" element={<OtherServices />} />
             <Route path="/mlops" element={<MLOps />} />
             <Route path="/cloud-infrastructure" element={<CloudInfrastructure />} />
+            <Route path="/applications-dashboards" element={<ApplicationsDashboards />} />
             <Route path="/research" element={<Research />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
