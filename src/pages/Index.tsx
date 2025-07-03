@@ -1,4 +1,3 @@
-
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -35,6 +34,12 @@ const Index = () => {
       description: "Speech-to-text, text-to-speech, speaker diarization, emotion detection, audio enhancement & source separation for advanced sound analysis.",
       link: "/audio-ai",
       gifUrl: "/gifs/audio_ai.gif"
+    },
+    {
+      title: "Applications & Dashboards",
+      description: "Custom web applications, mobile solutions, desktop applications, and interactive dashboards tailored to your business needs.",
+      link: "/applications-dashboards",
+      image: "/images/custom-applications.jpg"
     },
     {
       title: "Data Annotation Services",

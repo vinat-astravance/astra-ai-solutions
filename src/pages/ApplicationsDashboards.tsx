@@ -113,10 +113,18 @@ const ApplicationsDashboards = () => {
     <Layout>
       <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-cyan-50">
         {/* Hero Section */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto text-center">
-            <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-blue-700 to-cyan-600 bg-clip-text text-transparent mb-6">
-              Applications & Dashboards
+        <section className="relative py-20 px-4 sm:px-6 lg:px-8">
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 to-cyan-600/5"></div>
+          <div className="relative max-w-7xl mx-auto text-center">
+            <div className="mb-8">
+              <Badge variant="outline" className="px-4 py-2 text-blue-700 border-blue-200 bg-blue-50">
+                Custom Software Solutions
+              </Badge>
+            </div>
+            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+              <span className="bg-gradient-to-r from-blue-700 to-cyan-600 bg-clip-text text-transparent">
+                Applications & Dashboards
+              </span>
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
               Custom software solutions and interactive dashboards tailored to your business needs. 
