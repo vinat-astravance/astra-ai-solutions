@@ -4,84 +4,84 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { Monitor, Smartphone, Laptop, BarChart3, Globe, Zap, Shield, Users } from "lucide-react";
+import { Monitor, Smartphone, Laptop, BarChart3, Globe, Zap, Shield, Users, MapPin } from "lucide-react";
 
 const ApplicationsDashboards = () => {
   const services = [
     {
-      title: "Custom Web Applications",
-      description: "Tailored web solutions built with modern technologies for your specific business needs.",
+      title: "Industry-Focused Web Platforms",
+      description: "Web applications tailored to the workflows and data needs of specific sectors. Browser-based, centrally hosted, and highly customizable with interactive features.",
       icon: Globe,
       features: [
-        "React & Next.js Development",
-        "Responsive Design",
-        "Real-time Features",
-        "API Integration",
-        "Cloud Deployment"
+        "Interactive maps for fleet tracking",
+        "Widgetized data-overlays for quality control",
+        "Geospatial crop-health visualizations",
+        "Sector-specific workflow optimization",
+        "Centralized hosting & management"
       ],
       industries: [
-        "E-commerce",
-        "Healthcare",
-        "Education",
-        "Finance",
-        "Manufacturing"
+        "Logistics",
+        "Manufacturing",
+        "Agriculture",
+        "Supply Chain",
+        "Transportation"
       ]
     },
     {
-      title: "Mobile Solutions",
-      description: "Cross-platform mobile applications that deliver native performance and user experience.",
+      title: "Mobile & Edge Field Apps",
+      description: "Native or cross-platform smartphone/tablet applications that bring AI tools directly into the hands of on-site teams with offline capabilities.",
       icon: Smartphone,
       features: [
-        "iOS & Android Development",
-        "Cross-Platform Solutions",
-        "Native Performance",
-        "Offline Capabilities",
-        "Push Notifications"
+        "Offline operation capabilities",
+        "On-device inference for low-latency",
+        "Barcode scanning integration",
+        "Plant-disease detection AI",
+        "Automatic sync when connected"
       ],
       industries: [
-        "Retail",
-        "Transportation",
-        "Healthcare",
-        "Food & Beverage",
-        "Field Services"
+        "Warehouses",
+        "Agriculture",
+        "Remote Inspection",
+        "Field Services",
+        "Quality Control"
       ]
     },
     {
-      title: "Desktop Applications",
-      description: "Powerful desktop solutions for complex workflows and specialized business processes.",
-      icon: Laptop,
+      title: "Desktop & Control-Room Software",
+      description: "Standalone clients designed for heavy-duty processing and situational awareness in control rooms or back-offices with native system integrations.",
+      icon: Monitor,
       features: [
-        "Cross-Platform Desktop Apps",
-        "Native OS Integration",
-        "High Performance",
-        "Advanced UI Components",
-        "System Resources Access"
+        "Bulk video review capabilities",
+        "Batch inference job processing",
+        "Simulation modules for predictive maintenance",
+        "Drag-and-drop data-ops pipelines",
+        "Native OS integrations"
       ],
       industries: [
-        "Engineering",
-        "Scientific Research",
-        "Creative Industries",
-        "Enterprise Software",
-        "Data Analysis"
+        "Control Rooms",
+        "Back-office Operations",
+        "Video Analytics",
+        "Predictive Maintenance",
+        "Data Processing"
       ]
     },
     {
-      title: "Interactive Dashboards",
-      description: "Data visualization and business intelligence dashboards for informed decision-making.",
+      title: "Adaptive Analytics Dashboards",
+      description: "Role-based dashboards that deliver exactly what each user needs—real-time KPIs, drill-down charts, anomaly alerts, and automated notifications.",
       icon: BarChart3,
       features: [
-        "Real-time Data Visualization",
-        "Custom Charts & Graphs",
-        "Interactive Controls",
-        "Multi-source Integration",
-        "Export & Sharing"
+        "Role-based access & views",
+        "Real-time KPI monitoring",
+        "Drill-down analytics charts",
+        "ML-powered anomaly alerts",
+        "Automated notifications (Slack/email)"
       ],
       industries: [
-        "Business Intelligence",
-        "Operations Management",
-        "Sales & Marketing",
-        "Quality Control",
-        "Performance Monitoring"
+        "Executive Management",
+        "Business Analytics",
+        "Operations Monitoring",
+        "Retail Intelligence",
+        "Performance Tracking"
       ]
     }
   ];
