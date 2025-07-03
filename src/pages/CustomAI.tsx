@@ -106,116 +106,78 @@ const CustomAI = () => {
 
   const projectTypes = [
     {
-      id: "video-analytics",
-      title: "Video Analytics",
-      description: "Advanced AI-powered video analysis for real-time insights, detection, and monitoring across various applications.",
+      id: "detection-tracking",
+      title: "Detection & Tracking",
+      description: "Advanced AI-powered detection and tracking capabilities for comprehensive video analysis and real-time monitoring.",
       projects: [
         {
-          title: "Facial Recognition & License Plate Recognition",
-          description: "Advanced facial recognition and automatic license plate detection with high accuracy for security and access control systems.",
-          briefDescription: "AI-powered identification and recognition systems for enhanced security and automated access control.",
-          beforeVideo: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-          afterVideo: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
+          title: "Video Object Detection",
+          description: "Real-time detection and classification of multiple objects in video streams with high accuracy and performance.",
+          briefDescription: "Intelligent object identification and classification in video content.",
+          beforeVideo: "/videos/videoss/object_detection_parent.mp4",
+          afterVideo: "/videos/videoss/object_detection_child.mp4"
         },
         {
-          title: "Object Tracking & People Counting",
-          description: "Real-time object tracking and automated people counting for crowd analysis, retail analytics, and security monitoring.",
-          briefDescription: "Intelligent tracking and counting solutions for comprehensive crowd and object analytics.",
-          beforeVideo: "/videos/ot_parent.mp4",
-          afterVideo: "/videos/ot_child.mp4",
+          title: "Video Segmentation",
+          description: "Precise pixel-level segmentation of objects and scenes in video content for detailed analysis and understanding.",
+          briefDescription: "Advanced video segmentation for detailed scene understanding.",
+          beforeVideo: "/videos/videoss/vd_parent.mp4",
+          afterVideo: "/videos/videoss/vd_child.mp4"
         },
         {
-          title: "Action Recognition & Behavior Analysis",
-          description: "AI-powered activity recognition and behavioral pattern analysis for security, healthcare, and sports applications.",
-          briefDescription: "Advanced behavior analysis for understanding and predicting human activities and patterns.",
-          beforeVideo: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
-          afterVideo: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4"
+          title: "Video Keypoint (Pose Estimation)",
+          description: "Accurate human pose detection and keypoint tracking for motion analysis, sports analytics, and health monitoring.",
+          briefDescription: "Precise human pose detection and keypoint tracking for motion analysis.",
+          beforeVideo: "/videos/videoss/video.mp4",
+          afterVideo: "/videos/videoss/video.mp4_keypoint.mp4"
         },
         {
-          title: "Video Summarization & Highlights",
-          description: "Automatic video summarization and highlight generation from long-form content for efficient content consumption.",
-          briefDescription: "Intelligent content curation and summarization for streamlined video consumption and analysis.",
-          video: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4"
+          title: "Object Tracking & Speed Estimation",
+          description: "Advanced multi-object tracking with real-time speed estimation for traffic monitoring and analytics.",
+          briefDescription: "Comprehensive object tracking with speed analysis capabilities.",
+          beforeVideo: "/videos/videoss/ot_parent.mp4",
+          afterVideo: "/videos/videoss/ot_child.mp4"
+        },
+        {
+          title: "Motion Flow",
+          description: "Optical flow analysis and motion estimation for understanding movement patterns and dynamics in video content.",
+          briefDescription: "Advanced motion flow analysis for understanding movement patterns.",
+          video: "/videos/videoss/highway_mini.mp4"
         }
       ]
     },
     {
-      id: "scene-segmentation",
-      title: "Scene & Video Segmentation",
-      description: "Precise segmentation of objects, scenes, and regions in video content using state-of-the-art AI models.",
+      id: "enhancement",
+      title: "Enhancement",
+      description: "AI-driven video quality improvement and enhancement techniques for superior visual output and clarity.",
       projects: [
         {
-          title: "Semantic Scene Segmentation",
-          description: "Pixel-level scene understanding and semantic segmentation in video streams for autonomous systems and content analysis.",
-          briefDescription: "Detailed scene understanding with pixel-perfect segmentation for advanced video analysis.",
-          video: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4"
-        },
-        {
-          title: "Instance Segmentation",
-          description: "Individual object instance detection and segmentation in complex scenes for precise object identification and tracking.",
-          briefDescription: "Precise object separation and identification in complex multi-object environments.",
-          beforeVideo: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4",
-          afterVideo: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/VolkswagenGTIReview.mp4"
-        }
-      ]
-    },
-    {
-      id: "video-enhancement",
-      title: "Video Enhancement & Optimization",
-      description: "AI-driven video quality improvement, resolution enhancement, and noise reduction for superior visual output.",
-      projects: [
-        {
-          title: "Super-Resolution",
+          title: "Video Super-Resolution",
           description: "AI-powered video upscaling and super-resolution for enhanced quality and detail preservation in low-resolution content.",
-          briefDescription: "Transform low-quality videos into high-resolution content with AI-powered enhancement.",
-          beforeVideo: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WhatCarCanYouGetForAGrand.mp4",
-          afterVideo: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4"
+          briefDescription: "Transform low-quality videos into high-resolution content with AI enhancement.",
+          beforeVideo: "/videos/videoss/super_resolution_parentt.mp4",
+          afterVideo: "/videos/videoss/super_resolution_childd.mp4"
         },
         {
-          title: "Denoising",
-          description: "Advanced video denoising and artifact removal for cleaner output and improved visual quality in noisy environments.",
-          briefDescription: "Remove noise and artifacts to produce crystal-clear video content.",
-          video: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+          title: "Video De-Blurring",
+          description: "Advanced deblurring algorithms to restore clarity and sharpness in motion-blurred or out-of-focus video content.",
+          briefDescription: "Restore clarity and sharpness to blurred video content.",
+          beforeVideo: "/videos/videoss/blurred.mp4",
+          afterVideo: "/videos/videoss/deblurred.mp4"
         }
       ]
     },
     {
-      id: "event-detection",
-      title: "Event & Anomaly Detection",
-      description: "Intelligent detection of events, anomalies, and unusual patterns in video streams for security and monitoring.",
+      id: "reconstruction",
+      title: "Reconstruction",
+      description: "Advanced 3D reconstruction and depth estimation techniques for spatial understanding and immersive content creation.",
       projects: [
         {
-          title: "Anomaly Detection",
-          description: "Real-time detection of unusual activities and behavioral anomalies for proactive security and safety monitoring.",
-          briefDescription: "Identify unusual patterns and behaviors automatically for enhanced security and safety.",
-          video: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
-        },
-        {
-          title: "Event Recognition",
-          description: "Automated detection and classification of specific events in video content for surveillance and content analysis.",
-          briefDescription: "Automatically detect and classify important events in video streams.",
-          beforeVideo: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-          afterVideo: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"
-        }
-      ]
-    },
-    {
-      id: "content-moderation",
-      title: "Content Moderation & Compliance",
-      description: "AI-powered content analysis and moderation to ensure compliance with platform guidelines and regulations.",
-      projects: [
-        {
-          title: "Automated Content Screening",
-          description: "AI-driven content analysis for policy compliance and safety screening to maintain platform standards and regulations.",
-          briefDescription: "Ensure content compliance and safety through intelligent automated screening.",
-          video: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4"
-        },
-        {
-          title: "Inappropriate Content Detection",
-          description: "Advanced detection of inappropriate or harmful content in video streams for safer digital environments.",
-          briefDescription: "Protect users by detecting and filtering inappropriate or harmful video content.",
-          beforeVideo: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
-          afterVideo: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4"
+          title: "2D → 3D Conversion",
+          description: "Transform 2D video content into immersive 3D experiences using advanced depth estimation and reconstruction algorithms.",
+          briefDescription: "Convert 2D video content into immersive 3D experiences.",
+          beforeVideo: "/videos/videoss/2d_video_to_3d_parent.mp4",
+          afterVideo: "/videos/videoss/2d_video_to_3d_child.mp4"
         }
       ]
     }
