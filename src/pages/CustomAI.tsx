@@ -115,34 +115,64 @@ const CustomAI = () => {
           description: "Real-time detection and classification of multiple objects in video streams with high accuracy and performance.",
           briefDescription: "Intelligent object identification and classification in video content.",
           beforeVideo: "/videos/videoss/object_detection_parent.mp4",
-          afterVideo: "/videos/videoss/object_detection_child.mp4"
+          afterVideo: "/videos/videoss/object_detection_child.mp4",
+          industries: [
+            { name: "Retail", use: "Inventory management, theft prevention, and customer behavior analysis" },
+            { name: "Security", use: "Surveillance systems for threat detection and access control" },
+            { name: "Autonomous Vehicles", use: "Real-time detection of pedestrians, vehicles, and obstacles" },
+            { name: "Manufacturing", use: "Quality control and defect detection on production lines" }
+          ]
         },
         {
           title: "Video Segmentation",
           description: "Precise pixel-level segmentation of objects and scenes in video content for detailed analysis and understanding.",
           briefDescription: "Advanced video segmentation for detailed scene understanding.",
           beforeVideo: "/videos/videoss/vd_parent.mp4",
-          afterVideo: "/videos/videoss/vd_child.mp4"
+          afterVideo: "/videos/videoss/vd_child.mp4",
+          industries: [
+            { name: "Medical Imaging", use: "Precise organ and tissue segmentation for surgical planning" },
+            { name: "Film & Entertainment", use: "Background replacement and visual effects production" },
+            { name: "Agriculture", use: "Crop monitoring and yield estimation through aerial imagery" },
+            { name: "Urban Planning", use: "Building and infrastructure analysis from satellite imagery" }
+          ]
         },
         {
           title: "Video Keypoint (Pose Estimation)",
           description: "Accurate human pose detection and keypoint tracking for motion analysis, sports analytics, and health monitoring.",
           briefDescription: "Precise human pose detection and keypoint tracking for motion analysis.",
           beforeVideo: "/videos/videoss/video.mp4",
-          afterVideo: "/videos/videoss/video.mp4_keypoint.mp4"
+          afterVideo: "/videos/videoss/video.mp4_keypoint.mp4",
+          industries: [
+            { name: "Sports Analytics", use: "Performance analysis and technique improvement for athletes" },
+            { name: "Healthcare", use: "Physical therapy monitoring and rehabilitation progress tracking" },
+            { name: "Fitness Technology", use: "Form correction and workout guidance in fitness apps" },
+            { name: "Gaming & AR", use: "Motion capture for character animation and interactive experiences" }
+          ]
         },
         {
           title: "Object Tracking & Speed Estimation",
           description: "Advanced multi-object tracking with real-time speed estimation for traffic monitoring and analytics.",
           briefDescription: "Comprehensive object tracking with speed analysis capabilities.",
           beforeVideo: "/videos/videoss/ot_parent.mp4",
-          afterVideo: "/videos/videoss/ot_child.mp4"
+          afterVideo: "/videos/videoss/ot_child.mp4",
+          industries: [
+            { name: "Traffic Management", use: "Speed enforcement and traffic flow optimization" },
+            { name: "Logistics", use: "Package tracking and warehouse automation systems" },
+            { name: "Sports Broadcasting", use: "Player tracking and performance statistics in real-time" },
+            { name: "Wildlife Conservation", use: "Animal movement tracking for research and protection" }
+          ]
         },
         {
           title: "Motion Flow",
           description: "Optical flow analysis and motion estimation for understanding movement patterns and dynamics in video content.",
           briefDescription: "Advanced motion flow analysis for understanding movement patterns.",
-          video: "/videos/videoss/highway_mini.mp4"
+          video: "/videos/videoss/highway_mini.mp4",
+          industries: [
+            { name: "Meteorology", use: "Weather pattern analysis and storm tracking systems" },
+            { name: "Robotics", use: "Navigation and obstacle avoidance in autonomous systems" },
+            { name: "Video Compression", use: "Efficient encoding by predicting inter-frame motion" },
+            { name: "Medical Diagnostics", use: "Blood flow analysis and cardiac motion assessment" }
+          ]
         }
       ]
     },
@@ -156,14 +186,26 @@ const CustomAI = () => {
           description: "AI-powered video upscaling and super-resolution for enhanced quality and detail preservation in low-resolution content.",
           briefDescription: "Transform low-quality videos into high-resolution content with AI enhancement.",
           beforeVideo: "/videos/videoss/super_resolution_parentt.mp4",
-          afterVideo: "/videos/videoss/super_resolution_childd.mp4"
+          afterVideo: "/videos/videoss/super_resolution_childd.mp4",
+          industries: [
+            { name: "Broadcasting", use: "Upscaling legacy content for modern high-definition displays" },
+            { name: "Security", use: "Enhancing low-quality surveillance footage for forensic analysis" },
+            { name: "Entertainment", use: "Restoring and remastering classic films and TV shows" },
+            { name: "Medical Imaging", use: "Improving resolution of diagnostic imaging for better analysis" }
+          ]
         },
         {
           title: "Video De-Blurring",
           description: "Advanced deblurring algorithms to restore clarity and sharpness in motion-blurred or out-of-focus video content.",
           briefDescription: "Restore clarity and sharpness to blurred video content.",
           beforeVideo: "/videos/videoss/blurred.mp4",
-          afterVideo: "/videos/videoss/deblurred.mp4"
+          afterVideo: "/videos/videoss/deblurred.mp4",
+          industries: [
+            { name: "Law Enforcement", use: "Clarifying evidence from body cameras and surveillance systems" },
+            { name: "Autonomous Vehicles", use: "Improving camera clarity in adverse weather conditions" },
+            { name: "Content Creation", use: "Salvaging footage with camera shake or focus issues" },
+            { name: "Scientific Research", use: "Enhancing microscopy and telescope imagery for analysis" }
+          ]
         }
       ]
     },
@@ -177,7 +219,13 @@ const CustomAI = () => {
           description: "Transform 2D video content into immersive 3D experiences using advanced depth estimation and reconstruction algorithms.",
           briefDescription: "Convert 2D video content into immersive 3D experiences.",
           beforeVideo: "/videos/videoss/2d_video_to_3d_parent.mp4",
-          afterVideo: "/videos/videoss/2d_video_to_3d_child.mp4"
+          afterVideo: "/videos/videoss/2d_video_to_3d_child.mp4",
+          industries: [
+            { name: "Entertainment", use: "Converting classic films to 3D for immersive cinema experiences" },
+            { name: "VR/AR", use: "Creating depth maps for virtual and augmented reality applications" },
+            { name: "Architecture", use: "Converting 2D blueprints into 3D visualizations for clients" },
+            { name: "E-commerce", use: "Creating 3D product views from 2D images for online shopping" }
+          ]
         }
       ]
     }
@@ -262,7 +310,7 @@ const CustomAI = () => {
                                       {project.briefDescription}
                                     </CardDescription>
                                   </CardHeader>
-                                  <CardContent>
+                                  <CardContent className="space-y-6">
                                     {project.beforeVideo && project.afterVideo ? (
                                       <VideoComparisonSlider
                                         beforeVideo={project.beforeVideo}
@@ -275,6 +323,29 @@ const CustomAI = () => {
                                         description={project.description}
                                       />
                                     )}
+                                    
+                                    {/* Industry Applications */}
+                                    <div className="bg-gradient-to-br from-blue-50 to-cyan-50 p-6 rounded-lg border border-blue-100">
+                                      <h4 className="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                                        <svg className="w-5 h-5 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                                        </svg>
+                                        Industry Applications
+                                      </h4>
+                                      <div className="grid gap-3">
+                                        {project.industries?.map((industry, idx) => (
+                                          <div key={idx} className="bg-white p-4 rounded-lg border border-blue-200 shadow-sm">
+                                            <div className="flex items-start space-x-3">
+                                              <div className="flex-shrink-0 w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
+                                              <div>
+                                                <h5 className="font-semibold text-gray-800 text-sm">{industry.name}</h5>
+                                                <p className="text-gray-600 text-sm mt-1">{industry.use}</p>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        ))}
+                                      </div>
+                                    </div>
                                   </CardContent>
                                 </Card>
                               </CarouselItem>
