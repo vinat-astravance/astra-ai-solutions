@@ -5,22 +5,36 @@ import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+  'Access-Control-Allow-Methods': 'POST, OPTIONS',
 }
 
 serve(async (req) => {
+  // Handle CORS preflight requests
   if (req.method === 'OPTIONS') {
-    return new Response('ok', { headers: corsHeaders })
+    return new Response('ok', { 
+      headers: corsHeaders,
+      status: 200
+    })
   }
 
   try {
+    console.log('Received request:', req.method, req.url)
+    
     const { firstName, lastName, email, company, projectType, message } = await req.json()
+    console.log('Form data received:', { firstName, lastName, email, company, projectType })
 
     // Send email using Resend
     const resendApiKey = Deno.env.get('RESEND_API_KEY')
     
     if (!resendApiKey) {
       console.error('RESEND_API_KEY not found in environment variables')
-      throw new Error('Email service not configured')
+      return new Response(
+        JSON.stringify({ error: 'Email service not configured' }),
+        {
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+          status: 500,
+        }
+      )
     }
 
     const emailContent = `
@@ -38,6 +52,7 @@ serve(async (req) => {
       <p><em>This message was sent from the Astravance AI website contact form.</em></p>
     `
 
+    console.log('Sending email via Resend...')
     const resendResponse = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
@@ -56,7 +71,13 @@ serve(async (req) => {
     if (!resendResponse.ok) {
       const errorText = await resendResponse.text()
       console.error('Resend API error:', errorText)
-      throw new Error(`Failed to send email: ${resendResponse.status}`)
+      return new Response(
+        JSON.stringify({ error: `Failed to send email: ${resendResponse.status}` }),
+        {
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+          status: 500,
+        }
+      )
     }
 
     const resendResult = await resendResponse.json()
@@ -84,6 +105,7 @@ serve(async (req) => {
 
     if (error) {
       console.error('Database error:', error)
+      // Don't fail the request if database insert fails
     }
 
     return new Response(
@@ -91,16 +113,19 @@ serve(async (req) => {
       {
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
         status: 200,
-      },
+      }
     )
   } catch (error) {
-    console.error('Error:', error)
+    console.error('Error in function:', error)
     return new Response(
-      JSON.stringify({ error: 'Failed to process contact form' }),
+      JSON.stringify({ 
+        error: 'Failed to process contact form', 
+        details: error.message 
+      }),
       {
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
         status: 500,
-      },
+      }
     )
   }
 })
