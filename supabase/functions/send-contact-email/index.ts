@@ -17,11 +17,32 @@ serve(async (req) => {
     })
   }
 
+  if (req.method !== 'POST') {
+    return new Response(
+      JSON.stringify({ error: 'Method not allowed' }),
+      {
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        status: 405,
+      }
+    )
+  }
+
   try {
     console.log('Received request:', req.method, req.url)
     
     const { firstName, lastName, email, company, projectType, message } = await req.json()
     console.log('Form data received:', { firstName, lastName, email, company, projectType })
+
+    // Validate required fields
+    if (!firstName || !lastName || !email || !message) {
+      return new Response(
+        JSON.stringify({ error: 'Missing required fields' }),
+        {
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+          status: 400,
+        }
+      )
+    }
 
     // Send email using Resend
     const resendApiKey = Deno.env.get('RESEND_API_KEY')
@@ -83,7 +104,7 @@ serve(async (req) => {
     const resendResult = await resendResponse.json()
     console.log('Email sent successfully:', resendResult)
 
-    // Store the submission in Supabase database
+    // Store the submission in Supabase database (optional)
     const supabase = createClient(
       Deno.env.get('SUPABASE_URL') ?? '',
       Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? ''
