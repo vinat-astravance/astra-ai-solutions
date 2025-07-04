@@ -33,7 +33,7 @@ const Contact = () => {
 
     try {
       // Replace with your actual Supabase project URL
-      const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'https://your-project-ref.supabase.co';
+      const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'https://tugqgzviwvukzcpfdxsl.supabase.co';
       const response = await fetch(`${supabaseUrl}/functions/v1/send-contact-email`, {
         method: 'POST',
         headers: {
