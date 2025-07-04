@@ -32,15 +32,35 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      // Replace with your actual Supabase project URL
+      // Use environment variable or fallback to the hardcoded URL
       const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'https://tugqgzviwvukzcpfdxsl.supabase.co';
-      const response = await fetch(`${supabaseUrl}/functions/v1/send-contact-email`, {
+      const functionUrl = `${supabaseUrl}/functions/v1/send-contact-email`;
+      
+      console.log('Submitting form to:', functionUrl);
+      console.log('Form data:', formData);
+
+      const response = await fetch(functionUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY || ''}`,
         },
         body: JSON.stringify(formData),
       });
+
+      console.log('Response status:', response.status);
+      console.log('Response headers:', response.headers);
+
+      const responseText = await response.text();
+      console.log('Response text:', responseText);
+
+      let responseData;
+      try {
+        responseData = JSON.parse(responseText);
+      } catch (parseError) {
+        console.error('Failed to parse response as JSON:', parseError);
+        responseData = { error: responseText };
+      }
 
       if (response.ok) {
         toast({
@@ -58,15 +78,14 @@ const Contact = () => {
           message: ''
         });
       } else {
-        const errorData = await response.json().catch(() => ({}));
-        console.error('Error response:', errorData);
-        throw new Error('Failed to send message');
+        console.error('Error response:', responseData);
+        throw new Error(responseData.error || `Server responded with status ${response.status}`);
       }
     } catch (error) {
       console.error('Error submitting form:', error);
       toast({
         title: "Error sending message",
-        description: "Please try again or contact us directly at info@astravance.ai",
+        description: error instanceof Error ? error.message : "Please try again or contact us directly at info@astravance.ai",
         variant: "destructive",
       });
     } finally {
