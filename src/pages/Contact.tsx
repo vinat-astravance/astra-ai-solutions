@@ -1,4 +1,3 @@
-
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -33,7 +32,9 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('/functions/v1/send-contact-email', {
+      // Replace with your actual Supabase project URL
+      const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'https://your-project-ref.supabase.co';
+      const response = await fetch(`${supabaseUrl}/functions/v1/send-contact-email`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -57,6 +58,8 @@ const Contact = () => {
           message: ''
         });
       } else {
+        const errorData = await response.json().catch(() => ({}));
+        console.error('Error response:', errorData);
         throw new Error('Failed to send message');
       }
     } catch (error) {
