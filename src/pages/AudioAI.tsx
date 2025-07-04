@@ -13,7 +13,7 @@ const AudioAI = () => {
       title: "Speech Processing",
       description: "AI systems that analyze and interpret human speech.",
       icon: Mic,
-      gifUrl: "/gifs/audio/speech_to_text.gif",
+      gifUrl: "/gifs/speech/audio_ai_annotations.gif",
       color: "bg-blue-500",
       subtypes: [
         {
@@ -43,7 +43,7 @@ const AudioAI = () => {
       title: "Text-to-Speech and Voice Generation",
       description: "Converting text into expressive and human-like audio.",
       icon: Volume2,
-      gifUrl: "/gifs/audio/speaker_recognition.gif",
+      gifUrl: "/gifs/speech/Text-to-speech.gif",
       color: "bg-green-500",
       subtypes: [
         {
@@ -68,7 +68,7 @@ const AudioAI = () => {
       title: "Emotion and Sentiment Recognition",
       description: "Extracting emotional cues and affective states from audio.",
       icon: Brain,
-      gifUrl: "/gifs/audio/audio_classification.gif",
+      gifUrl: "/gifs/speech/sentiment.gif",
       color: "bg-purple-500",
       subtypes: [
         {
@@ -113,7 +113,7 @@ const AudioAI = () => {
       title: "Audio Classification and Event Detection",
       description: "Identifying and tagging audio events in real-time or recorded streams.",
       icon: AlertTriangle,
-      gifUrl: "/gifs/audio/sound_event_detection.gif",
+      gifUrl: "/gifs/speech/event_detection.gif",
       color: "bg-orange-500",
       subtypes: [
         {
@@ -138,7 +138,7 @@ const AudioAI = () => {
       title: "Audio Enhancement and Source Separation",
       description: "Improving audio quality and isolating target sources.",
       icon: Settings,
-      gifUrl: "/gifs/audio_ai_annotations.gif",
+      gifUrl: "/gifs/speech/source_separation.png",
       color: "bg-indigo-500",
       subtypes: [
         {
