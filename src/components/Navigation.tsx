@@ -13,6 +13,7 @@ const Navigation = () => {
     { path: "/applications-dashboards", label: "Applications & Dashboards" },
     { path: "/mlops", label: "MLOps" },
     { path: "/cloud-infrastructure", label: "Cloud Infrastructure" },
+    { path: "/data-annotation", label: "Data Annotations", hasSubmenu: true },
   ];
 
   const computerVisionItems = [
@@ -75,122 +76,188 @@ const Navigation = () => {
                 Solutions
               </Button>
               
-              {/* Solutions Dropdown */}
-              <div className="absolute left-0 top-full mt-1 w-64 bg-white border border-blue-200 shadow-xl rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                <div className="py-2">
-                  {solutionItems.map((item) => (
-                    item.hasSubmenu ? (
-                      <div key={item.path} className="relative group/sub">
-                        <Link
-                          to={item.path}
-                          className="px-4 py-2 text-gray-700 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 cursor-pointer flex items-center justify-between"
-                        >
-                          {item.label}
-                          <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                          </svg>
-                        </Link>
-                        
-                        {/* Computer Vision Submenu */}
-                        {item.path === "/computer-vision" && (
-                          <div className="absolute left-full top-0 ml-1 w-48 bg-white border border-blue-200 shadow-xl rounded-md opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-200 z-50">
-                            <div className="py-2">
-                              {computerVisionItems.map((subItem) => (
-                                <Link
-                                  key={subItem.path}
-                                  to={subItem.path}
-                                  className="block px-4 py-2 text-gray-600 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50"
-                                >
-                                  {subItem.label}
-                                </Link>
-                              ))}
-                            </div>
-                          </div>
-                        )}
-                        
-                        {/* Generative AI Submenu */}
-                        {item.path === "/generative-ai" && (
-                          <div className="absolute left-full top-0 ml-1 w-48 bg-white border border-blue-200 shadow-xl rounded-md opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-200 z-50">
-                            <div className="py-2">
-                              {generativeAIItems.map((subItem) => (
-                                <Link
-                                  key={subItem.path}
-                                  to={subItem.path}
-                                  className="block px-4 py-2 text-gray-600 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50"
-                                >
-                                  {subItem.label}
-                                </Link>
-                              ))}
-                            </div>
-                          </div>
-                        )}
-                      </div>
-                    ) : (
-                      <Link
-                        key={item.path}
-                        to={item.path}
-                        className="block px-4 py-2 text-gray-700 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50"
-                      >
-                        {item.label}
-                      </Link>
-                    )
-                  ))}
-                </div>
-              </div>
-            </div>
+              {/* Solutions Dropdown - 2 Column Layout */}
+              <div className="absolute left-0 top-full mt-1 w-[32rem] bg-white border border-blue-200 shadow-xl rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div className="py-4 px-2">
+                  <div className="grid grid-cols-2 gap-4">
+                    {/* Left Column */}
+                    <div className="space-y-1">
+                      {solutionItems.slice(0, Math.ceil(solutionItems.length / 2)).map((item) => (
+                        item.hasSubmenu ? (
+                          <div key={item.path} className="relative group/sub">
+                            <Link
+                              to={item.path}
+                              className="px-3 py-2 text-gray-700 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 cursor-pointer flex items-center justify-between rounded-md"
+                            >
+                              {item.label}
+                              <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                              </svg>
+                            </Link>
+                            
+                            {/* Computer Vision Submenu */}
+                            {item.path === "/computer-vision" && (
+                              <div className="absolute left-full top-0 ml-1 w-48 bg-white border border-blue-200 shadow-xl rounded-md opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-200 z-50">
+                                <div className="py-2">
+                                  {computerVisionItems.map((subItem) => (
+                                    <Link
+                                      key={subItem.path}
+                                      to={subItem.path}
+                                      className="block px-4 py-2 text-gray-600 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 rounded-md mx-2"
+                                    >
+                                      {subItem.label}
+                                    </Link>
+                                  ))}
+                                </div>
+                              </div>
+                            )}
+                            
+                            {/* Generative AI Submenu */}
+                            {item.path === "/generative-ai" && (
+                              <div className="absolute left-full top-0 ml-1 w-48 bg-white border border-blue-200 shadow-xl rounded-md opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-200 z-50">
+                                <div className="py-2">
+                                  {generativeAIItems.map((subItem) => (
+                                    <Link
+                                      key={subItem.path}
+                                      to={subItem.path}
+                                      className="block px-4 py-2 text-gray-600 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 rounded-md mx-2"
+                                    >
+                                      {subItem.label}
+                                    </Link>
+                                  ))}
+                                </div>
+                              </div>
+                            )}
 
-            {/* Data Annotations Menu */}
-            <div className="relative group">
-              <Link to="/data-annotation">
-                <Button 
-                  variant="ghost" 
-                  size="sm" 
-                  className="text-sm text-gray-700 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 font-medium transition-all duration-200"
-                >
-                  Data Annotations
-                </Button>
-              </Link>
-              
-              {/* Data Annotations Dropdown */}
-              <div className="absolute left-0 top-full mt-1 w-64 bg-white border border-blue-200 shadow-xl rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                <div className="py-2">
-                  {dataAnnotationItems.map((item, index) => (
-                    item.hasSubmenu ? (
-                      <div key={index} className="relative group/sub">
-                        <div className="px-4 py-2 text-gray-700 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 cursor-pointer flex items-center justify-between">
-                          {item.label}
-                          <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                          </svg>
-                        </div>
-                        
-                        {/* Vision Submenu */}
-                        {item.path === "/vision" && (
-                          <div className="absolute left-full top-0 ml-1 w-48 bg-white border border-blue-200 shadow-xl rounded-md opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-200 z-50">
-                            <div className="py-2">
-                              {visionItems.map((subItem) => (
-                                <Link
-                                  key={subItem.path}
-                                  to={subItem.path}
-                                  className="block px-4 py-2 text-gray-600 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50"
-                                >
-                                  {subItem.label}
-                                </Link>
-                              ))}
-                            </div>
+                            {/* Data Annotations Submenu */}
+                            {item.path === "/data-annotation" && (
+                              <div className="absolute left-full top-0 ml-1 w-48 bg-white border border-blue-200 shadow-xl rounded-md opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-200 z-50">
+                                <div className="py-2">
+                                  {dataAnnotationItems.map((subItem, index) => (
+                                    subItem.hasSubmenu ? (
+                                      <div key={index} className="relative group/subsub">
+                                        <div className="px-4 py-2 text-gray-600 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 cursor-pointer flex items-center justify-between rounded-md mx-2">
+                                          {subItem.label}
+                                          <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                          </svg>
+                                        </div>
+                                        
+                                        {/* Vision Submenu */}
+                                        {subItem.path === "/vision" && (
+                                          <div className="absolute left-full top-0 ml-1 w-48 bg-white border border-blue-200 shadow-xl rounded-md opacity-0 invisible group-hover/subsub:opacity-100 group-hover/subsub:visible transition-all duration-200 z-50">
+                                            <div className="py-2">
+                                              {visionItems.map((visionItem) => (
+                                                <Link
+                                                  key={visionItem.path}
+                                                  to={visionItem.path}
+                                                  className="block px-4 py-2 text-gray-600 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 rounded-md mx-2"
+                                                >
+                                                  {visionItem.label}
+                                                </Link>
+                                              ))}
+                                            </div>
+                                          </div>
+                                        )}
+                                      </div>
+                                    ) : (
+                                      <Link
+                                        key={index}
+                                        to={subItem.path}
+                                        className="block px-4 py-2 text-gray-600 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 rounded-md mx-2"
+                                      >
+                                        {subItem.label}
+                                      </Link>
+                                    )
+                                  ))}
+                                </div>
+                              </div>
+                            )}
                           </div>
-                        )}
-                      </div>
-                    ) : (
-                      <Link
-                        key={index}
-                        to={item.path}
-                        className="block px-4 py-2 text-gray-700 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50"
-                      >
-                        {item.label}
-                      </Link>
-                    )
-                  ))}
+                        ) : (
+                          <Link
+                            key={item.path}
+                            to={item.path}
+                            className="block px-3 py-2 text-gray-700 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 rounded-md"
+                          >
+                            {item.label}
+                          </Link>
+                        )
+                      ))}
+                    </div>
+                    
+                    {/* Right Column */}
+                    <div className="space-y-1">
+                      {solutionItems.slice(Math.ceil(solutionItems.length / 2)).map((item) => (
+                        item.hasSubmenu ? (
+                          <div key={item.path} className="relative group/sub">
+                            <Link
+                              to={item.path}
+                              className="px-3 py-2 text-gray-700 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 cursor-pointer flex items-center justify-between rounded-md"
+                            >
+                              {item.label}
+                              <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                              </svg>
+                            </Link>
+                            
+                            {/* Data Annotations Submenu */}
+                            {item.path === "/data-annotation" && (
+                              <div className="absolute right-full top-0 mr-1 w-48 bg-white border border-blue-200 shadow-xl rounded-md opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-200 z-50">
+                                <div className="py-2">
+                                  {dataAnnotationItems.map((subItem, index) => (
+                                    subItem.hasSubmenu ? (
+                                      <div key={index} className="relative group/subsub">
+                                        <div className="px-4 py-2 text-gray-600 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 cursor-pointer flex items-center justify-between rounded-md mx-2">
+                                          {subItem.label}
+                                          <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                          </svg>
+                                        </div>
+                                        
+                                        {/* Vision Submenu */}
+                                        {subItem.path === "/vision" && (
+                                          <div className="absolute right-full top-0 mr-1 w-48 bg-white border border-blue-200 shadow-xl rounded-md opacity-0 invisible group-hover/subsub:opacity-100 group-hover/subsub:visible transition-all duration-200 z-50">
+                                            <div className="py-2">
+                                              {visionItems.map((visionItem) => (
+                                                <Link
+                                                  key={visionItem.path}
+                                                  to={visionItem.path}
+                                                  className="block px-4 py-2 text-gray-600 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 rounded-md mx-2"
+                                                >
+                                                  {visionItem.label}
+                                                </Link>
+                                              ))}
+                                            </div>
+                                          </div>
+                                        )}
+                                      </div>
+                                    ) : (
+                                      <Link
+                                        key={index}
+                                        to={subItem.path}
+                                        className="block px-4 py-2 text-gray-600 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 rounded-md mx-2"
+                                      >
+                                        {subItem.label}
+                                      </Link>
+                                    )
+                                  ))}
+                                </div>
+                              </div>
+                            )}
+                          </div>
+                        ) : (
+                          <Link
+                            key={item.path}
+                            to={item.path}
+                            className="block px-3 py-2 text-gray-700 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 rounded-md"
+                          >
+                            {item.label}
+                          </Link>
+                        )
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
