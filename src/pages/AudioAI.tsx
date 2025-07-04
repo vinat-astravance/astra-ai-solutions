@@ -1,9 +1,10 @@
+
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
-import { Play, Mic, Volume2, Brain, Music, AlertTriangle, Settings } from "lucide-react";
+import { Mic, Volume2, Brain, Music, AlertTriangle, Settings } from "lucide-react";
 
 const AudioAI = () => {
   const projectTypes = [
@@ -12,7 +13,7 @@ const AudioAI = () => {
       title: "Speech Processing",
       description: "AI systems that analyze and interpret human speech.",
       icon: Mic,
-      videoPlaceholder: "speech-processing-demo.mp4",
+      gifUrl: "/gifs/audio/speech_to_text.gif",
       color: "bg-blue-500",
       subtypes: [
         {
@@ -42,7 +43,7 @@ const AudioAI = () => {
       title: "Text-to-Speech and Voice Generation",
       description: "Converting text into expressive and human-like audio.",
       icon: Volume2,
-      videoPlaceholder: "tts-voice-generation-demo.mp4",
+      gifUrl: "/gifs/audio/speaker_recognition.gif",
       color: "bg-green-500",
       subtypes: [
         {
@@ -67,7 +68,7 @@ const AudioAI = () => {
       title: "Emotion and Sentiment Recognition",
       description: "Extracting emotional cues and affective states from audio.",
       icon: Brain,
-      videoPlaceholder: "emotion-recognition-demo.mp4",
+      gifUrl: "/gifs/audio/audio_classification.gif",
       color: "bg-purple-500",
       subtypes: [
         {
@@ -87,7 +88,7 @@ const AudioAI = () => {
       title: "Music and Sound Understanding",
       description: "Analyzing and generating music or general soundscapes.",
       icon: Music,
-      videoPlaceholder: "music-sound-demo.mp4",
+      gifUrl: "/gifs/audio_ai.gif",
       color: "bg-pink-500",
       subtypes: [
         {
@@ -112,7 +113,7 @@ const AudioAI = () => {
       title: "Audio Classification and Event Detection",
       description: "Identifying and tagging audio events in real-time or recorded streams.",
       icon: AlertTriangle,
-      videoPlaceholder: "audio-classification-demo.mp4",
+      gifUrl: "/gifs/audio/sound_event_detection.gif",
       color: "bg-orange-500",
       subtypes: [
         {
@@ -137,7 +138,7 @@ const AudioAI = () => {
       title: "Audio Enhancement and Source Separation",
       description: "Improving audio quality and isolating target sources.",
       icon: Settings,
-      videoPlaceholder: "audio-enhancement-demo.mp4",
+      gifUrl: "/gifs/audio_ai_annotations.gif",
       color: "bg-indigo-500",
       subtypes: [
         {
@@ -199,14 +200,12 @@ const AudioAI = () => {
               <div key={project.id} className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-12 items-center`}>
                 <div className="lg:w-1/2">
                   <div className="bg-gray-100 rounded-lg p-8 flex justify-center">
-                    <div className="relative bg-gray-900 rounded-xl overflow-hidden w-80 h-48">
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="text-center text-white">
-                          <Play className="h-8 w-8 mx-auto mb-2 opacity-80" />
-                          <p className="text-sm font-medium">Demo Video</p>
-                          <p className="text-xs opacity-75">{project.videoPlaceholder}</p>
-                        </div>
-                      </div>
+                    <div className="relative bg-white rounded-xl overflow-hidden shadow-lg max-w-full">
+                      <img 
+                        src={project.gifUrl} 
+                        alt={`${project.title} demonstration`}
+                        className="w-full h-auto max-w-md rounded-lg"
+                      />
                     </div>
                   </div>
                 </div>
@@ -262,15 +261,10 @@ const AudioAI = () => {
             Whether you need speech recognition, voice generation, or audio analysis, 
             our AI solutions can be customized to meet your specific requirements.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex justify-center">
             <Link to="/contact">
               <Button size="lg" variant="secondary" className="px-8 py-3">
                 Start Your Project
-              </Button>
-            </Link>
-            <Link to="/research">
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-purple-600 px-8 py-3">
-                Request Consultation
               </Button>
             </Link>
           </div>

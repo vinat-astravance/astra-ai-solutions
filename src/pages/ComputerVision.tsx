@@ -1,4 +1,3 @@
-
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -22,11 +21,6 @@ const ComputerVision = () => {
               <Link to="/contact">
                 <Button size="lg" variant="secondary" className="px-8 py-3">
                   Get Started Today
-                </Button>
-              </Link>
-              <Link to="/image-ai">
-                <Button variant="outline" size="lg" className="px-8 py-3 border-white text-white hover:bg-white hover:text-indigo-600">
-                  Explore Image AI
                 </Button>
               </Link>
             </div>
@@ -134,7 +128,7 @@ const ComputerVision = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="order-2 lg:order-1 flex items-center justify-center">
               <img 
-                src="/images/home_page/video_ai.jpg" 
+                src="/gifs/video_ai.gif" 
                 alt="Video AI Solutions"
                 className="max-w-full h-auto rounded-lg shadow-lg"
               />
@@ -239,11 +233,6 @@ const ComputerVision = () => {
             <Link to="/contact">
               <Button size="lg" variant="secondary" className="px-8 py-3">
                 Start Your Vision Project
-              </Button>
-            </Link>
-            <Link to="/image-ai">
-              <Button variant="outline" size="lg" className="px-8 py-3 border-white text-white hover:bg-white hover:text-indigo-600">
-                Explore Image AI
               </Button>
             </Link>
           </div>

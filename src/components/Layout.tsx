@@ -79,6 +79,9 @@ const Layout = ({ children }: LayoutProps) => {
                   </Link>
                 </div>
                 <div className="flex flex-col space-y-2">
+                  <Link to="/applications-dashboards" onClick={handleLinkClick} className="hover:text-foreground transition-colors">
+                    Applications & Dashboards
+                  </Link>
                   <Link to="/mlops" onClick={handleLinkClick} className="hover:text-foreground transition-colors">
                     MLOps
                   </Link>

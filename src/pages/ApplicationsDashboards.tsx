@@ -4,8 +4,13 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Monitor, Smartphone, Laptop, BarChart3, Globe, Zap, Shield, Users, MapPin } from "lucide-react";
+import { useEffect } from "react";
 
 const ApplicationsDashboards = () => {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, []);
+
   const services = [
     {
       title: "Industry-Focused Web Platforms",
