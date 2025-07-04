@@ -45,35 +45,6 @@ const ComputerVision = () => {
         </div>
       </section>
 
-      {/* Difference Section */}
-      <section className="bg-gray-50 py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-              Image AI vs Video AI: Understanding the Difference
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-              <div className="bg-white p-8 rounded-lg shadow-md">
-                <h3 className="text-2xl font-bold text-indigo-600 mb-4">Image AI</h3>
-                <p className="text-gray-600 leading-relaxed">
-                  Image AI focuses on analyzing and understanding static visual content. It excels at tasks like 
-                  object detection, classification, segmentation, and optical character recognition. Perfect for 
-                  applications requiring detailed analysis of individual frames or photographs.
-                </p>
-              </div>
-              <div className="bg-white p-8 rounded-lg shadow-md">
-                <h3 className="text-2xl font-bold text-purple-600 mb-4">Video AI</h3>
-                <p className="text-gray-600 leading-relaxed">
-                  Video AI processes sequential visual data to understand motion, temporal patterns, and dynamic 
-                  events. It combines frame-by-frame analysis with temporal modeling for applications like action 
-                  recognition, surveillance, and real-time video analytics.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Image AI Section */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -113,7 +84,7 @@ const ComputerVision = () => {
             </div>
             <div className="flex items-center justify-center">
               <img 
-                src="/images/home_page/cv.jpg" 
+                src="/gifs/image_ai.gif" 
                 alt="Image AI Solutions"
                 className="max-w-full h-auto rounded-lg shadow-lg"
               />
@@ -128,7 +99,7 @@ const ComputerVision = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="order-2 lg:order-1 flex items-center justify-center">
               <img 
-                src="/gifs/video_ai.gif" 
+                src="/gifs/video_surveillance.gif" 
                 alt="Video AI Solutions"
                 className="max-w-full h-auto rounded-lg shadow-lg"
               />
@@ -169,7 +140,34 @@ const ComputerVision = () => {
           </div>
         </div>
       </section>
-
+      {/* Difference Section */}
+      <section className="bg-gray-50 py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              Image AI vs Video AI: Understanding the Difference
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+              <div className="bg-white p-8 rounded-lg shadow-md">
+                <h3 className="text-2xl font-bold text-indigo-600 mb-4">Image AI</h3>
+                <p className="text-gray-600 leading-relaxed">
+                  Image AI focuses on analyzing and understanding static visual content. It excels at tasks like 
+                  object detection, classification, segmentation, and optical character recognition. Perfect for 
+                  applications requiring detailed analysis of individual frames or photographs.
+                </p>
+              </div>
+              <div className="bg-white p-8 rounded-lg shadow-md">
+                <h3 className="text-2xl font-bold text-purple-600 mb-4">Video AI</h3>
+                <p className="text-gray-600 leading-relaxed">
+                  Video AI processes sequential visual data to understand motion, temporal patterns, and dynamic 
+                  events. It combines frame-by-frame analysis with temporal modeling for applications like action 
+                  recognition, surveillance, and real-time video analytics.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       {/* Technology Stack */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
