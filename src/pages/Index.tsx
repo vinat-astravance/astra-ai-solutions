@@ -27,7 +27,7 @@ const Index = () => {
       title: "Document AI",
       description: "Automated OCR, form-parsing, classification, smart search and content extraction to digitize and analyze documents at scale.",
       link: "/document-ai",
-      gifUrl: "/gifs/document_ai.gif"
+      gifUrl: "/gifs/document_ai/document_ai.gif"
     },
     {
       title: "Audio AI",

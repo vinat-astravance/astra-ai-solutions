@@ -11,42 +11,42 @@ const DocumentAI = () => {
       description: "Automatically sort, tag or cluster documents—routing invoices vs. contracts or grouping by topic—so your archive stays orderly and actionable.",
       icon: FileText,
       features: ["Multi-format Support", "Custom Categories", "Confidence Scoring", "Batch Processing"],
-      gifUrl: "https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif"
+      gifUrl: "/gifs/document_ai/document_classifier.gif"
     },
     {
       title: "OCR & Structured Data Extraction", 
       description: "Turn PDFs/images into clean text, table data and key–value pairs (dates, amounts, names)—even from handwritten or complex layouts.",
       icon: ScanLine,
       features: ["High-Accuracy OCR", "Table Extraction", "Form Processing", "Handwriting Recognition"],
-      gifUrl: "https://media.giphy.com/media/l46Cy1rHbQ92uuLXa/giphy.gif"
+      gifUrl: "/gifs/document_ai/information_extraction.gif"
     },
     {
       title: "Semantic Search & LLM-Enhanced Q&A",
       description: "Embed-driven \"search by meaning\" across your corpus and let users ask free-form questions (\"What's the total due on invoice #342?\") with context-aware, multi-document answers powered by large-model embeddings and retrieval-augmented prompts.",
       icon: Search,
       features: ["Semantic Search", "Natural Language Queries", "Context-Aware Answers", "Multi-document Reasoning"],
-      gifUrl: "https://media.giphy.com/media/3oKIPnAiaMCws8nOsE/giphy.gif"
+      gifUrl: "/gifs/document_ai/document_chatbot.gif"
     },
     {
       title: "Summarization, Translation & Insights",
       description: "Generate executive-grade summaries or multilingual translations of long reports, legal texts or research papers—surfacing key takeaways and trends with abstractive LLM calls.",
       icon: Languages,
       features: ["Executive Summaries", "Multilingual Translation", "Key Insights", "Trend Analysis"],
-      gifUrl: "https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif"
+      gifUrl: "/gifs/document_ai/document_summary.gif"
     },
     {
       title: "Compliance, Risk & Redaction",
       description: "Automatically flag non-standard contract clauses, score deal-level risk, and redact PII/sensitive data (SSNs, credit cards) to stay audit-ready in regulated environments.",
       icon: Shield,
       features: ["Contract Analysis", "Risk Scoring", "PII Redaction", "Compliance Monitoring"],
-      gifUrl: "https://media.giphy.com/media/3oKIPnAiaMCws8nOsE/giphy.gif"
+      gifUrl: "/gifs/document_ai/redact_PII.gif"/*highres.gif"*/
     },
     {
       title: "Document LLM Services",
       description: "Fine-tune and deploy large language models on your own documents for tasks like custom classification, entity extraction, contract review annotations, template filling or even full-document generation—complete with prompt engineering, vector-DB integration and end-to-end pipeline support.",
       icon: Brain,
       features: ["Custom LLM Fine-tuning", "Entity Extraction", "Contract Review", "Template Generation"],
-      gifUrl: "https://media.giphy.com/media/l46Cy1rHbQ92uuLXa/giphy.gif"
+      gifUrl: "/gifs/document_ai/document_ai.gif"
     }
   ];
 
