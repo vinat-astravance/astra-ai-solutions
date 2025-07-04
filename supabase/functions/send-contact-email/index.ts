@@ -15,31 +15,54 @@ serve(async (req) => {
   try {
     const { firstName, lastName, email, company, projectType, message } = await req.json()
 
-    // Create email content
+    // Send email using Resend
+    const resendApiKey = Deno.env.get('RESEND_API_KEY')
+    
+    if (!resendApiKey) {
+      console.error('RESEND_API_KEY not found in environment variables')
+      throw new Error('Email service not configured')
+    }
+
     const emailContent = `
-      New Contact Form Submission
+      <h2>New Contact Form Submission</h2>
       
-      Name: ${firstName} ${lastName}
-      Email: ${email}
-      Company: ${company}
-      Project Type: ${projectType}
+      <p><strong>Name:</strong> ${firstName} ${lastName}</p>
+      <p><strong>Email:</strong> ${email}</p>
+      <p><strong>Company:</strong> ${company || 'Not provided'}</p>
+      <p><strong>Project Type:</strong> ${projectType || 'Not specified'}</p>
       
-      Message:
-      ${message}
+      <h3>Message:</h3>
+      <p>${message}</p>
       
-      ---
-      This message was sent from the Astravance AI website contact form.
+      <hr>
+      <p><em>This message was sent from the Astravance AI website contact form.</em></p>
     `
 
-    // Here you would integrate with an email service like Resend, SendGrid, etc.
-    // For now, we'll log the email and return success
-    console.log('Email to send:', {
-      to: ['vinat@astravance.ai', 'info@astravance.ai'],
-      subject: `New Contact Form Submission from ${firstName} ${lastName}`,
-      content: emailContent
+    const resendResponse = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${resendApiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: 'Contact Form <noreply@astravance.ai>',
+        to: ['vinat@astravance.ai', 'info@astravance.ai'],
+        subject: `New Contact Form Submission from ${firstName} ${lastName}`,
+        html: emailContent,
+        reply_to: email
+      }),
     })
 
-    // You can also store the submission in Supabase database
+    if (!resendResponse.ok) {
+      const errorText = await resendResponse.text()
+      console.error('Resend API error:', errorText)
+      throw new Error(`Failed to send email: ${resendResponse.status}`)
+    }
+
+    const resendResult = await resendResponse.json()
+    console.log('Email sent successfully:', resendResult)
+
+    // Store the submission in Supabase database
     const supabase = createClient(
       Deno.env.get('SUPABASE_URL') ?? '',
       Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? ''
